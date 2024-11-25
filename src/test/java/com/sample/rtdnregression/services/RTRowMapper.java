@@ -8,10 +8,21 @@ import org.springframework.jdbc.core.RowMapper;
 import com.sample.rtdnregression.entities.RTEntity;
 
 public class RTRowMapper implements RowMapper<RTEntity> {
+	
+	private String rtName;
+	
+	public RTRowMapper() {
+		super();
+	}
+	
+	public RTRowMapper(String rtName) {
+		this.rtName = rtName;
+	}
 
 	@Override
 	public RTEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
 		RTEntity entity = new RTEntity();
+		entity.setRtName(rtName);
 		entity.setTransactionId(rs.getString("trans_id"));
 		entity.setMsgType(rs.getString("msg_type"));
 		entity.setDraftCapture(rs.getString("draft_capture"));

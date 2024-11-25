@@ -18,7 +18,7 @@ public class RTService {
 	
 	public List<RTEntity> getRTData() {
 		String sql = "SELECT * FROM rt";
-		List<RTEntity> rtEntities = jdbcTemplate.query(sql, new RTRowMapper());
+		List<RTEntity> rtEntities = jdbcTemplate.query(sql, new RTRowMapper("RT01"));
 		return rtEntities;
 	}
 }

@@ -1,6 +1,7 @@
 package com.sample.rtdnregression.entities;
 
 public class RTEntity {
+	private String rtName;
 	private String transactionId;
 	private String msgType;
 	private String draftCapture;
@@ -100,6 +101,14 @@ public class RTEntity {
 
 	public void setSrcnodeConversionRate(String srcnodeConversionRate) {
 		this.srcnodeConversionRate = srcnodeConversionRate;
+	}
+
+	public String getRtName() {
+		return rtName;
+	}
+
+	public void setRtName(String rtName) {
+		this.rtName = rtName;
 	}
 
 	
