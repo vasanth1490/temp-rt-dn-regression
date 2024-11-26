@@ -32,7 +32,7 @@ public class ValidationService {
 
 		Map<String, DNEntity> dnMap = new HashMap<>();
 		for (DNEntity dn : dnEntities) {
-			dnMap.put(dn.getTransactionId(), dn);
+			dnMap.put(dn.getTranNumber(), dn);
 		}
 
 		for (RTEntity rt : rtEntities) {

@@ -113,7 +113,7 @@ public class ExcelService {
 			DNEntity dnEntity = dnEntities.get(j - 1);
 
 			Map<String, Object> dnMap = new HashMap<String, Object>();
-			dnMap.put(Constants.DN_TRAN_NUMBER, dnEntity.getTransactionId());
+			dnMap.put(Constants.DN_TRAN_NUMBER, dnEntity.getTranNumber());
 			dnMap.put(Constants.DN_MTI, dnEntity.getMti());
 			dnMap.put(Constants.DN_FUNC_CODE, dnEntity.getFuncCode());
 			dnMap.put(Constants.DN_DRAFT_CAPTURE_FLG, dnEntity.getDraftCaptureFlg());

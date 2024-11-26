@@ -1,7 +1,7 @@
 package com.sample.rtdnregression.entities;
 
 public class DNEntity {
-	private String transactionId;
+	private String tranNumber;
 	private String mti;
 	private String funcCode;
 	private String draftCaptureFlg;
@@ -26,19 +26,11 @@ public class DNEntity {
 		super();
 	}
 
-	public DNEntity(String transactionId, String mti, String funcCode) {
+	public DNEntity(String tranNumber, String mti, String funcCode) {
 		super();
-		this.transactionId = transactionId;
+		this.tranNumber = tranNumber;
 		this.mti = mti;
 		this.funcCode = funcCode;
-	}
-
-	public String getTransactionId() {
-		return transactionId;
-	}
-
-	public void setTransactionId(String transactionId) {
-		this.transactionId = transactionId;
 	}
 
 	public String getMti() {
@@ -192,8 +184,13 @@ public class DNEntity {
 	public void setoAmtReconNet(String oAmtReconNet) {
 		this.oAmtReconNet = oAmtReconNet;
 	}
-	
-	
 
-	
+	public String getTranNumber() {
+		return tranNumber;
+	}
+
+	public void setTranNumber(String tranNumber) {
+		this.tranNumber = tranNumber;
+	}
+
 }

@@ -13,7 +13,7 @@ public class DNRowMapper implements RowMapper<DNEntity> {
 	@Override
 	public DNEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
 		DNEntity entity = new DNEntity();
-		entity.setTransactionId(rs.getString(Constants.DN_TRAN_NUMBER));
+		entity.setTranNumber(rs.getString(Constants.DN_TRAN_NUMBER));
 		entity.setMti(rs.getString(Constants.DN_MTI));
 		entity.setFuncCode(rs.getString(Constants.DN_FUNC_CODE));
 		entity.setDraftCaptureFlg(rs.getString(Constants.DN_DRAFT_CAPTURE_FLG));
