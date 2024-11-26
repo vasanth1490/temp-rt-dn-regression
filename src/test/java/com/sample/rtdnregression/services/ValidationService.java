@@ -23,7 +23,7 @@ public class ValidationService {
 	private DNService dnService;
 
 	@Autowired
-	private ExcelService excelService;
+	private ExcelReportService excelService;
 
 	public void validation() {
 		List<RTEntity> rtEntities = rtService.getRTData();

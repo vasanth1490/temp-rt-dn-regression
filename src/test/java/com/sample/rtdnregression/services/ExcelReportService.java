@@ -25,7 +25,7 @@ import com.sample.rtdnregression.entities.ValidationEntity;
 import com.sample.rtdnregression.models.StyleKey;
 
 @Service
-public class ExcelService {
+public class ExcelReportService {
 
 	public void createExcel(List<RTEntity> rtEntities, List<DNEntity> dnEntities,
 			List<ValidationEntity> validationEntities) {
