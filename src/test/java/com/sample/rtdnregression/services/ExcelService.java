@@ -1,7 +1,6 @@
 package com.sample.rtdnregression.services;
 
 import java.io.FileOutputStream;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +18,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
 
+import com.sample.rtdnregression.Constants;
 import com.sample.rtdnregression.entities.DNEntity;
 import com.sample.rtdnregression.entities.RTEntity;
 import com.sample.rtdnregression.entities.ValidationEntity;
@@ -26,13 +26,6 @@ import com.sample.rtdnregression.models.StyleKey;
 
 @Service
 public class ExcelService {
-
-	private final List<String> rtHeaders = Arrays.asList("trans_id", "msg_type", "draft_capture", "stand_in",
-			"srcnode_date_settle", "srcnode_amount_requested", "srcnode_cash_requested", "srcnode_currency_code",
-			"srcnode_date_conversion", "srcnode_conversion_rate");
-	private final List<String> dnHeaders = Arrays.asList("trans_id", "mti", "func_code", "draft_capture_flg",
-			"standin_act", "date_recon_acq", "amt_recon_acq", "o_amt_recon_acq", "adl_rqst_amt1", "cur_recon_acq",
-			"date_cnv_acq", "cnv_rcn_acq_de_pos", "cnv_rcn_acq_rate");
 
 	public void createExcel(List<RTEntity> rtEntities, List<DNEntity> dnEntities,
 			List<ValidationEntity> validationEntities) {
@@ -58,9 +51,9 @@ public class ExcelService {
 		Sheet sheet = workbook.createSheet("rt");
 		Row headerRow = sheet.createRow(0);
 
-		for (int i = 0; i < rtHeaders.size(); i++) {
+		for (int i = 0; i < Constants.rtHeaders.size(); i++) {
 			Cell cell = headerRow.createCell(i);
-			cell.setCellValue(rtHeaders.get(i));
+			cell.setCellValue(Constants.rtHeaders.get(i));
 			cell.setCellStyle(stylesMap.get(StyleKey.HEADER));
 		}
 
@@ -70,28 +63,34 @@ public class ExcelService {
 			RTEntity rtEntity = rtEntities.get(j - 1);
 
 			Map<String, Object> rtMap = new HashMap<String, Object>();
-			rtMap.put("trans_id", rtEntity.getTransactionId());
-			rtMap.put("msg_type", rtEntity.getMsgType());
-			rtMap.put("draft_capture", rtEntity.getDraftCapture());
-			rtMap.put("stand_in", rtEntity.getStandIn());
-			rtMap.put("srcnode_date_settle", rtEntity.getSrcnodeDateSettle());
-			rtMap.put("srcnode_amount_requested", rtEntity.getSrcnodeAmountRequested());
-			rtMap.put("srcnode_cash_requested", rtEntity.getSrcnodeCashRequested());
-			rtMap.put("srcnode_currency_code", rtEntity.getSrcnodeCurrencyCode());
-			rtMap.put("srcnode_date_conversion", rtEntity.getSrcnodeDateConversion());
-			rtMap.put("srcnode_conversion_rate", rtEntity.getSrcnodeConversionRate());
+			rtMap.put(Constants.RT_NAME, rtEntity.getRtName());
+			rtMap.put(Constants.RT_TRAN_NR, rtEntity.getTranNr());
+			rtMap.put(Constants.RT_MSG_TYPE, rtEntity.getMsgType());
+			rtMap.put(Constants.RT_DRAFT_CAPTURE, rtEntity.getDraftCapture());
+			rtMap.put(Constants.RT_STAND_IN, rtEntity.getStandIn());
+			rtMap.put(Constants.RT_SRCNODE_DATE_SETTLE, rtEntity.getSrcnodeDateSettle());
+			rtMap.put(Constants.RT_SRCNODE_AMOUNT_REQUESTED, rtEntity.getSrcnodeAmountRequested());
+			rtMap.put(Constants.RT_SRCNODE_CASH_REQUESTED, rtEntity.getSrcnodeCashRequested());
+			rtMap.put(Constants.RT_SRCNODE_CURRENCY_CODE, rtEntity.getSrcnodeCurrencyCode());
+			rtMap.put(Constants.RT_SRCNODE_DATE_CONVERSION, rtEntity.getSrcnodeDateConversion());
+			rtMap.put(Constants.RT_SRCNODE_CONVERSION_RATE, rtEntity.getSrcnodeConversionRate());
+			rtMap.put(Constants.RT_SNKNODE_REQ_SYS_TRACE, rtEntity.getSnknodeReqSysTrace());
+			rtMap.put(Constants.RT_SNKNODE_REV_SYS_TRACE, rtEntity.getSnknodeRevSysTrace());
+			rtMap.put(Constants.RT_SNKNODE_ADV_SYS_TRACE, rtEntity.getSnknodeAdvSysTrace());
 
-			for (int x = 0; x < rtHeaders.size(); x++) {
+			for (int x = 0; x < Constants.rtHeaders.size(); x++) {
 				Cell cell = dataRow.createCell(x);
 				cell.setCellStyle(stylesMap.get(StyleKey.COMMON));
 				
-				String value = (String) rtMap.get(rtHeaders.get(x));
+				String value = (String) rtMap.get(Constants.rtHeaders.get(x));
 				if(isNotNumeric(value) || (value.length() > 1 && value.startsWith("0"))) {
 					cell.setCellValue(value);
 				} else {
 					cell.setCellValue(Integer.valueOf(value));
 				}
 			}
+			
+			System.out.println("Created RT Sheet");
 
 		}
 
@@ -102,9 +101,9 @@ public class ExcelService {
 		Sheet sheet = workbook.createSheet("dn");
 		Row headerRow = sheet.createRow(0);
 
-		for (int i = 0; i < dnHeaders.size(); i++) {
+		for (int i = 0; i < Constants.dnHeaders.size(); i++) {
 			Cell cell = headerRow.createCell(i);
-			cell.setCellValue(dnHeaders.get(i));
+			cell.setCellValue(Constants.dnHeaders.get(i));
 			cell.setCellStyle(stylesMap.get(StyleKey.HEADER));
 		}
 
@@ -114,25 +113,26 @@ public class ExcelService {
 			DNEntity dnEntity = dnEntities.get(j - 1);
 
 			Map<String, Object> dnMap = new HashMap<String, Object>();
-			dnMap.put("trans_id", dnEntity.getTransactionId());
-			dnMap.put("mti", dnEntity.getMti());
-			dnMap.put("func_code", dnEntity.getFuncCode());
-			dnMap.put("draft_capture_flg", dnEntity.getDraftCaptureFlg());
-			dnMap.put("standin_act", dnEntity.getStandinAct());
-			dnMap.put("date_recon_acq", dnEntity.getDateReconAcq());
-			dnMap.put("amt_recon_acq", dnEntity.getAmtReconAcq());
-			dnMap.put("o_amt_recon_acq", dnEntity.getoAmtReconAcq());
-			dnMap.put("adl_rqst_amt1", dnEntity.getAdlRqstAmt1());
-			dnMap.put("cur_recon_acq", dnEntity.getCurReconAcq());
-			dnMap.put("date_cnv_acq", dnEntity.getDateCnvAcq());
-			dnMap.put("cnv_rcn_acq_de_pos", dnEntity.getCnvRcnAcqDePos());
-			dnMap.put("cnv_rcn_acq_rate", dnEntity.getCnvRcnAcqRate());
-
-			for (int x = 0; x < dnHeaders.size(); x++) {
+			dnMap.put(Constants.DN_TRAN_NUMBER, dnEntity.getTransactionId());
+			dnMap.put(Constants.DN_MTI, dnEntity.getMti());
+			dnMap.put(Constants.DN_FUNC_CODE, dnEntity.getFuncCode());
+			dnMap.put(Constants.DN_DRAFT_CAPTURE_FLG, dnEntity.getDraftCaptureFlg());
+			dnMap.put(Constants.DN_STANDIN_ACT, dnEntity.getStandinAct());
+			dnMap.put(Constants.DN_DATE_RECON_ACQ, dnEntity.getDateReconAcq());
+			dnMap.put(Constants.DN_AMT_RECON_ACQ, dnEntity.getAmtReconAcq());
+			dnMap.put(Constants.DN_O_AMT_RECON_ACQ, dnEntity.getoAmtReconAcq());
+			dnMap.put(Constants.DN_ADL_RQST_AMT1, dnEntity.getAdlRqstAmt1());
+			dnMap.put(Constants.DN_CUR_RECON_ACQ, dnEntity.getCurReconAcq());
+			dnMap.put(Constants.DN_DATE_CNV_ACQ, dnEntity.getDateCnvAcq());
+			dnMap.put(Constants.DN_CNV_RCN_ACQ_DE_POS, dnEntity.getCnvRcnAcqDePos());
+			dnMap.put(Constants.DN_CNV_RCN_ACQ_RATE, dnEntity.getCnvRcnAcqRate());
+			dnMap.put(Constants.DN_SYS_AUDIT_TRACE, dnEntity.getSysAuditTrace());
+			
+			for (int x = 0; x < Constants.dnHeaders.size(); x++) {
 				Cell cell = dataRow.createCell(x);
 				cell.setCellStyle(stylesMap.get(StyleKey.COMMON));
 				
-				String value = (String)dnMap.get(dnHeaders.get(x));
+				String value = (String)dnMap.get(Constants.dnHeaders.get(x));
 				if(isNotNumeric(value) || (value.length() > 1 && value.startsWith("0"))) {
 					cell.setCellValue(value);
 				} else {
@@ -150,9 +150,9 @@ public class ExcelService {
 
 		Row headerRow = sheet.createRow(0);
 
-		for (int i = 0; i < rtHeaders.size(); i++) {
+		for (int i = 0; i < Constants.rtHeaders.size(); i++) {
 			Cell cell = headerRow.createCell(i);
-			cell.setCellValue(rtHeaders.get(i));
+			cell.setCellValue(Constants.rtHeaders.get(i));
 			cell.setCellStyle(stylesMap.get(StyleKey.HEADER));
 		}
 
@@ -162,25 +162,29 @@ public class ExcelService {
 			ValidationEntity validationEntity = validationEntities.get(j - 1);
 
 			Map<String, Object> validationMap = new HashMap<String, Object>();
-			validationMap.put("trans_id", validationEntity.getTransactionId());
-			validationMap.put("msg_type", validationEntity.isMsgType());
-			validationMap.put("draft_capture", validationEntity.isDraftCapture());
-			validationMap.put("stand_in", validationEntity.isStandin());
-			validationMap.put("srcnode_date_settle", validationEntity.isSrcnodeDateSettle());
-			validationMap.put("srcnode_amount_requested", validationEntity.isSrcnodeAmountRequested());
-			validationMap.put("srcnode_cash_requested", validationEntity.isSrcnodeCashRequested());
-			validationMap.put("srcnode_currency_code", validationEntity.isSrcnodeCurrencyCode());
-			validationMap.put("srcnode_date_conversion", validationEntity.isSrcnodeDateConversion());
-			validationMap.put("srcnode_conversion_rate", validationEntity.isSrcnodeConversionRate());
+			
+			validationMap.put(Constants.RT_TRAN_NR, validationEntity.getTranNr());
+			validationMap.put(Constants.RT_MSG_TYPE, validationEntity.isMsgType());
+			validationMap.put(Constants.RT_DRAFT_CAPTURE, validationEntity.isDraftCapture());
+			validationMap.put(Constants.RT_STAND_IN, validationEntity.isStandin());
+			validationMap.put(Constants.RT_SRCNODE_DATE_SETTLE, validationEntity.isSrcnodeDateSettle());
+			validationMap.put(Constants.RT_SRCNODE_AMOUNT_REQUESTED, validationEntity.isSrcnodeAmountRequested());
+			validationMap.put(Constants.RT_SRCNODE_CASH_REQUESTED, validationEntity.isSrcnodeCashRequested());
+			validationMap.put(Constants.RT_SRCNODE_CURRENCY_CODE, validationEntity.isSrcnodeCurrencyCode());
+			validationMap.put(Constants.RT_SRCNODE_DATE_CONVERSION, validationEntity.isSrcnodeDateConversion());
+			validationMap.put(Constants.RT_SRCNODE_CONVERSION_RATE, validationEntity.isSrcnodeConversionRate());
+			validationMap.put(Constants.RT_SNKNODE_REQ_SYS_TRACE, validationEntity.isSnknodeReqSysTrace());
+			validationMap.put(Constants.RT_SNKNODE_REV_SYS_TRACE, validationEntity.isSnknodeRevSysTrace());
+			validationMap.put(Constants.RT_SNKNODE_ADV_SYS_TRACE, validationEntity.isSnknodeAdvSysTrace());
 
-			for (int x = 0; x < rtHeaders.size(); x++) {
+			for (int x = 0; x < Constants.rtHeaders.size(); x++) {
 				Cell cell = dataRow.createCell(x);
 
 				if (x == 0) {
 					cell.setCellStyle(stylesMap.get(StyleKey.COMMON));
-					cell.setCellValue(Integer.valueOf((String) validationMap.get(rtHeaders.get(x))));
+					cell.setCellValue(Integer.valueOf((String) validationMap.get(Constants.rtHeaders.get(x))));
 				} else {
-					boolean flag = (boolean) validationMap.get(rtHeaders.get(x));
+					boolean flag = (boolean) validationMap.get(Constants.rtHeaders.get(x));
 					cell.setCellValue(flag ? "Passed" : "Failed");
 					if (flag) {
 						cell.setCellStyle(stylesMap.get(StyleKey.GREENCELL));

@@ -1,7 +1,7 @@
 package com.sample.rtdnregression.entities;
 
 public class ValidationEntity {
-	private String transactionId;
+	private String tranNr;
 	private boolean msgType;
 	private boolean draftCapture;
 	private boolean standin;
@@ -11,14 +11,11 @@ public class ValidationEntity {
 	private boolean srcnodeCurrencyCode;
 	private boolean srcnodeDateConversion;
 	private boolean srcnodeConversionRate;
+	private boolean snknodeReqSysTrace;
+	private boolean snknodeRevSysTrace;
+	private boolean snknodeAdvSysTrace;
+	private boolean snknodeAmountRequested;
 
-	public String getTransactionId() {
-		return transactionId;
-	}
-
-	public void setTransactionId(String transactionId) {
-		this.transactionId = transactionId;
-	}
 
 	public boolean isMsgType() {
 		return msgType;
@@ -90,6 +87,46 @@ public class ValidationEntity {
 
 	public void setSrcnodeConversionRate(boolean srcnodeConversionRate) {
 		this.srcnodeConversionRate = srcnodeConversionRate;
+	}
+
+	public String getTranNr() {
+		return tranNr;
+	}
+
+	public void setTranNr(String tranNr) {
+		this.tranNr = tranNr;
+	}
+
+	public boolean isSnknodeReqSysTrace() {
+		return snknodeReqSysTrace;
+	}
+
+	public void setSnknodeReqSysTrace(boolean snknodeReqSysTrace) {
+		this.snknodeReqSysTrace = snknodeReqSysTrace;
+	}
+
+	public boolean isSnknodeRevSysTrace() {
+		return snknodeRevSysTrace;
+	}
+
+	public void setSnknodeRevSysTrace(boolean snknodeRevSysTrace) {
+		this.snknodeRevSysTrace = snknodeRevSysTrace;
+	}
+
+	public boolean isSnknodeAdvSysTrace() {
+		return snknodeAdvSysTrace;
+	}
+
+	public void setSnknodeAdvSysTrace(boolean snknodeAdvSysTrace) {
+		this.snknodeAdvSysTrace = snknodeAdvSysTrace;
+	}
+
+	public boolean isSnknodeAmountRequested() {
+		return snknodeAmountRequested;
+	}
+
+	public void setSnknodeAmountRequested(boolean snknodeAmountRequested) {
+		this.snknodeAmountRequested = snknodeAmountRequested;
 	}
 
 }

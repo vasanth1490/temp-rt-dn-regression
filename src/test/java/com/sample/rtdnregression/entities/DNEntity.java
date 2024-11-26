@@ -14,6 +14,13 @@ public class DNEntity {
 	private String dateCnvAcq;
 	private String cnvRcnAcqDePos;
 	private String cnvRcnAcqRate;
+	private String sysAuditTrace;
+	private String amtReconIss;
+	private String amtReconNet;
+	private String amtCardBill;
+	private String oAmtCardBill;
+	private String oAmtReconIss;
+	private String oAmtReconNet;
 
 	public DNEntity() {
 		super();
@@ -129,6 +136,64 @@ public class DNEntity {
 	public void setCnvRcnAcqRate(String cnvRcnAcqRate) {
 		this.cnvRcnAcqRate = cnvRcnAcqRate;
 	}
+
+	public String getSysAuditTrace() {
+		return sysAuditTrace;
+	}
+
+	public void setSysAuditTrace(String sysAuditTrace) {
+		this.sysAuditTrace = sysAuditTrace;
+	}
+
+	public String getAmtReconIss() {
+		return amtReconIss;
+	}
+
+	public void setAmtReconIss(String amtReconIss) {
+		this.amtReconIss = amtReconIss;
+	}
+
+	public String getAmtReconNet() {
+		return amtReconNet;
+	}
+
+	public void setAmtReconNet(String amtReconNet) {
+		this.amtReconNet = amtReconNet;
+	}
+
+	public String getAmtCardBill() {
+		return amtCardBill;
+	}
+
+	public void setAmtCardBill(String amtCardBill) {
+		this.amtCardBill = amtCardBill;
+	}
+
+	public String getoAmtCardBill() {
+		return oAmtCardBill;
+	}
+
+	public void setoAmtCardBill(String oAmtCardBill) {
+		this.oAmtCardBill = oAmtCardBill;
+	}
+
+	public String getoAmtReconIss() {
+		return oAmtReconIss;
+	}
+
+	public void setoAmtReconIss(String oAmtReconIss) {
+		this.oAmtReconIss = oAmtReconIss;
+	}
+
+	public String getoAmtReconNet() {
+		return oAmtReconNet;
+	}
+
+	public void setoAmtReconNet(String oAmtReconNet) {
+		this.oAmtReconNet = oAmtReconNet;
+	}
+	
+	
 
 	
 }

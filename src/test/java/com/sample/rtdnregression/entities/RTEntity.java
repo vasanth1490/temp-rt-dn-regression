@@ -2,7 +2,7 @@ package com.sample.rtdnregression.entities;
 
 public class RTEntity {
 	private String rtName;
-	private String transactionId;
+	private String tranNr;
 	private String msgType;
 	private String draftCapture;
 	private String standIn;
@@ -12,6 +12,10 @@ public class RTEntity {
 	private String srcnodeCurrencyCode;
 	private String srcnodeDateConversion;
 	private String srcnodeConversionRate;
+	private String snknodeReqSysTrace;
+	private String snknodeRevSysTrace;
+	private String snknodeAdvSysTrace;
+	private String snknodeAmountRequested;
 
 	public RTEntity() {
 		super();
@@ -19,17 +23,11 @@ public class RTEntity {
 
 	public RTEntity(String transactionId, String msgType) {
 		super();
-		this.transactionId = transactionId;
+		this.setTranNr(transactionId);
 		this.msgType = msgType;
 	}
 
-	public String getTransactionId() {
-		return transactionId;
-	}
 
-	public void setTransactionId(String transactionId) {
-		this.transactionId = transactionId;
-	}
 
 	public String getMsgType() {
 		return msgType;
@@ -109,6 +107,46 @@ public class RTEntity {
 
 	public void setRtName(String rtName) {
 		this.rtName = rtName;
+	}
+
+	public String getTranNr() {
+		return tranNr;
+	}
+
+	public void setTranNr(String tranNr) {
+		this.tranNr = tranNr;
+	}
+
+	public String getSnknodeReqSysTrace() {
+		return snknodeReqSysTrace;
+	}
+
+	public void setSnknodeReqSysTrace(String snknodeReqSysTrace) {
+		this.snknodeReqSysTrace = snknodeReqSysTrace;
+	}
+
+	public String getSnknodeRevSysTrace() {
+		return snknodeRevSysTrace;
+	}
+
+	public void setSnknodeRevSysTrace(String snknodeRevSysTrace) {
+		this.snknodeRevSysTrace = snknodeRevSysTrace;
+	}
+
+	public String getSnknodeAdvSysTrace() {
+		return snknodeAdvSysTrace;
+	}
+
+	public void setSnknodeAdvSysTrace(String snknodeAdvSysTrace) {
+		this.snknodeAdvSysTrace = snknodeAdvSysTrace;
+	}
+
+	public String getSnknodeAmountRequested() {
+		return snknodeAmountRequested;
+	}
+
+	public void setSnknodeAmountRequested(String snknodeAmountRequested) {
+		this.snknodeAmountRequested = snknodeAmountRequested;
 	}
 
 	

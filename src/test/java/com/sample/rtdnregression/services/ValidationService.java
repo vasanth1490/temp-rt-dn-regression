@@ -1,6 +1,7 @@
 package com.sample.rtdnregression.services;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,11 +36,10 @@ public class ValidationService {
 		}
 
 		for (RTEntity rt : rtEntities) {
-			DNEntity dn = dnMap.get(rt.getTransactionId());
+			DNEntity dn = dnMap.get(rt.getTranNr());
 			ValidationEntity validationEntity = new ValidationEntity();
 
-			validationEntity.setTransactionId(rt.getTransactionId());
-
+			validationEntity.setTranNr(rt.getTranNr());
 			validationEntity.setMsgType(validateMsgType(dn, rt));
 			validationEntity.setDraftCapture(validateDraftCapture(dn, rt));
 			validationEntity.setStandin(validateStandin(dn, rt));
@@ -49,7 +49,9 @@ public class ValidationService {
 			validationEntity.setSrcnodeCurrencyCode(validateSrcnodeCurrencyCode(dn, rt));
 			validationEntity.setSrcnodeDateConversion(validateSrcnodeDateConversion(dn, rt));
 			validationEntity.setSrcnodeConversionRate(validateSrcnodeConversionRate(dn, rt));
-			
+			validationEntity.setSnknodeReqSysTrace(validateSnknodeReqSysTrace(dn, rt));
+			validationEntity.setSnknodeRevSysTrace(validateSnknodeRevSysTrace(dn, rt));
+			validationEntity.setSnknodeAdvSysTrace(validateSnknodeAdvSysTrace(dn, rt));
 
 			validationEntities.add(validationEntity);
 		}
@@ -78,29 +80,48 @@ public class ValidationService {
 	private boolean validateSrcnodeDateSettle(DNEntity dn, RTEntity rt) {
 		return rt.getSrcnodeDateSettle().substring(4).equals(dn.getDateReconAcq());
 	}
-	
+
 	private boolean validateSrcnodeAmountRequested(DNEntity dn, RTEntity rt) {
-		if(dn.getMti().equals("1430")) {
-			return rt.getSrcnodeAmountRequested().equals(dn.getAmtReconAcq()) && rt.getSrcnodeAmountRequested().equals(dn.getoAmtReconAcq());
+		if (dn.getMti().equals("1430")) {
+			return rt.getSrcnodeAmountRequested().equals(dn.getAmtReconAcq())
+					&& rt.getSrcnodeAmountRequested().equals(dn.getoAmtReconAcq());
 		} else {
 			return rt.getSrcnodeAmountRequested().equals(dn.getAmtReconAcq());
 		}
 	}
-	
+
 	private boolean validateSrcnodeCashRequested(DNEntity dn, RTEntity rt) {
 		return rt.getSrcnodeCashRequested().equals(dn.getAdlRqstAmt1());
 	}
-	
+
 	private boolean validateSrcnodeCurrencyCode(DNEntity dn, RTEntity rt) {
 		return rt.getSrcnodeCurrencyCode().equals(dn.getCurReconAcq());
 	}
-	
+
 	private boolean validateSrcnodeDateConversion(DNEntity dn, RTEntity rt) {
 		return rt.getSrcnodeDateConversion().equals(dn.getDateCnvAcq());
 	}
-	
+
 	private boolean validateSrcnodeConversionRate(DNEntity dn, RTEntity rt) {
 		return rt.getSrcnodeConversionRate().equals(dn.getCnvRcnAcqDePos() + dn.getCnvRcnAcqRate());
+	}
+
+	private boolean validateSnknodeReqSysTrace(DNEntity dn, RTEntity rt) {
+		return Arrays.asList("1110", "1210", "1410").contains(dn.getMti())
+				? dn.getSysAuditTrace().equals(rt.getSnknodeReqSysTrace())
+				: true;
+	}
+	
+	private boolean validateSnknodeRevSysTrace(DNEntity dn, RTEntity rt) {
+		return "1430".equals(dn.getMti())
+				? dn.getSysAuditTrace().equals(rt.getSnknodeRevSysTrace())
+				: true;
+	}
+	
+	private boolean validateSnknodeAdvSysTrace(DNEntity dn, RTEntity rt) {
+		return "1230".equals(dn.getMti())
+				? dn.getSysAuditTrace().equals(rt.getSnknodeAdvSysTrace())
+				: true;
 	}
 
 }
