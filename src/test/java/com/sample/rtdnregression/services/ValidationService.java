@@ -156,7 +156,12 @@ public class ValidationService {
 	}
 
 	private boolean validateSnknodeConversionRate(DNEntity dn, RTEntity rt) {
-		return rt.getSnknodeConversionRate().equals(dn.getCnvRcnIssDePos() + dn.getCnvRcnIssRate());
+		if(rt.getSnknodeConversionRate() == null) {
+			return dn.getCnvRcnIssDePos().equals("0") && dn.getCnvRcnIssRate().equals(0);
+		} else {
+			return rt.getSnknodeConversionRate().equals(dn.getCnvRcnIssDePos() + dn.getCnvRcnIssRate());
+		}
+		
 	}
 
 	private boolean validateSnknodeDateConversion(DNEntity dn, RTEntity rt) {
