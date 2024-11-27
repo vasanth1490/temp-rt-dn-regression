@@ -150,9 +150,15 @@ public class ValidationService {
 	}
 
 	private boolean validateSnknodeCurrencyCode(DNEntity dn, RTEntity rt) {
-		return rt.getSnknodeCurrencyCode().equals(dn.getCurReconIss())
-				&& rt.getSnknodeCurrencyCode().equals(dn.getCurReconNet())
-				&& rt.getSnknodeCurrencyCode().equals(dn.getCurCardBill());
+		if (rt.getSnknodeCurrencyCode() == null) {
+			return dn.getCurReconIss().trim().length() == 0 && dn.getCurReconNet().trim().length() == 0
+					&& dn.getCurCardBill().trim().length() == 0;
+		} else {
+			return rt.getSnknodeCurrencyCode().equals(dn.getCurReconIss())
+					&& rt.getSnknodeCurrencyCode().equals(dn.getCurReconNet())
+					&& rt.getSnknodeCurrencyCode().equals(dn.getCurCardBill());
+		}
+
 	}
 
 	private boolean validateSnknodeConversionRate(DNEntity dn, RTEntity rt) {
