@@ -59,7 +59,7 @@ public class ValidationService {
 			validationEntity.setSnknodeDateConversion(validateSnknodeDateConversion(dn, rt)); // 27
 			validationEntity.setTranType(validateTranType(dn, rt)); // 30
 			validationEntity.setToAccount(validateToAccount(dn, rt)); // 32
-			validationEntity.setAmountTranRequested(validateAmountTranRequested(dn, rt)); //33
+			validationEntity.setAmountTranRequested(validateAmountTranRequested(dn, rt)); // 33
 			validationEntity.setTimeLocal(validateTimeLocal(dn, rt)); // 40
 			validationEntity.setDateLocal(validateDateLocal(dn, rt)); // 41
 			validationEntities.add(validationEntity);
@@ -74,7 +74,7 @@ public class ValidationService {
 		String hex = Integer.toHexString(msgType).toUpperCase();
 		String calculatedMti = Integer.toHexString(Integer.parseInt(hex, 16) + Integer.parseInt("1010", 16))
 				.toUpperCase();
-		calculatedMti = String.valueOf((Integer.valueOf(calculatedMti)/10)*10);
+		calculatedMti = String.valueOf((Integer.valueOf(calculatedMti) / 10) * 10);
 		String calculatedFuncCode = Integer.toString((Integer.valueOf(hex) / 100) * 100);
 		return calculatedMti.equals(dn.getMti()) && calculatedFuncCode.equals(dn.getFuncCode());
 	}
@@ -156,16 +156,17 @@ public class ValidationService {
 	}
 
 	private boolean validateSnknodeConversionRate(DNEntity dn, RTEntity rt) {
-		if(rt.getSnknodeConversionRate() == null) {
+		if (rt.getSnknodeConversionRate() == null) {
 			return dn.getCnvRcnIssDePos().equals("0") && dn.getCnvRcnIssRate().equals(0);
 		} else {
 			return rt.getSnknodeConversionRate().equals(dn.getCnvRcnIssDePos() + dn.getCnvRcnIssRate());
 		}
-		
+
 	}
 
 	private boolean validateSnknodeDateConversion(DNEntity dn, RTEntity rt) {
-		return rt.getSnknodeDateConversion().equals(dn.getDateCnvIss());
+		return rt.getSnknodeDateConversion() == null ? dn.getDateCnvIss().trim().length() == 0
+				: rt.getSnknodeDateConversion().equals(dn.getDateCnvIss());
 	}
 
 	private boolean validateTranType(DNEntity dn, RTEntity rt) {
