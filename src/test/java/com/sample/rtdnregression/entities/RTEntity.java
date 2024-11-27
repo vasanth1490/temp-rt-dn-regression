@@ -16,6 +16,15 @@ public class RTEntity {
 	private String snknodeRevSysTrace;
 	private String snknodeAdvSysTrace;
 	private String snknodeAmountRequested;
+	private String snknodeCashRequested;
+	private String snknodeCurrencyCode;
+	private String snknodeConversionRate;
+	private String snknodeDateConversion;
+	private String tranType;
+	private String toAccount;
+	private String amountTranRequested;
+	private String timeLocal;
+	private String dateLocal;
 
 	public RTEntity() {
 		super();
@@ -26,8 +35,6 @@ public class RTEntity {
 		this.setTranNr(transactionId);
 		this.msgType = msgType;
 	}
-
-
 
 	public String getMsgType() {
 		return msgType;
@@ -149,5 +156,76 @@ public class RTEntity {
 		this.snknodeAmountRequested = snknodeAmountRequested;
 	}
 
-	
+	public String getSnknodeCashRequested() {
+		return snknodeCashRequested;
+	}
+
+	public void setSnknodeCashRequested(String snknodeCashRequested) {
+		this.snknodeCashRequested = snknodeCashRequested;
+	}
+
+	public String getSnknodeCurrencyCode() {
+		return snknodeCurrencyCode;
+	}
+
+	public void setSnknodeCurrencyCode(String snknodeCurrencyCode) {
+		this.snknodeCurrencyCode = snknodeCurrencyCode;
+	}
+
+	public String getSnknodeConversionRate() {
+		return snknodeConversionRate;
+	}
+
+	public void setSnknodeConversionRate(String snknodeConversionRate) {
+		this.snknodeConversionRate = snknodeConversionRate;
+	}
+
+	public String getSnknodeDateConversion() {
+		return snknodeDateConversion;
+	}
+
+	public void setSnknodeDateConversion(String snknodeDateConversion) {
+		this.snknodeDateConversion = snknodeDateConversion;
+	}
+
+	public String getTranType() {
+		return tranType;
+	}
+
+	public void setTranType(String tranType) {
+		this.tranType = tranType;
+	}
+
+	public String getToAccount() {
+		return toAccount;
+	}
+
+	public void setToAccount(String toAccount) {
+		this.toAccount = toAccount;
+	}
+
+	public String getAmountTranRequested() {
+		return amountTranRequested;
+	}
+
+	public void setAmountTranRequested(String amountTranRequested) {
+		this.amountTranRequested = amountTranRequested;
+	}
+
+	public String getTimeLocal() {
+		return timeLocal;
+	}
+
+	public void setTimeLocal(String timeLocal) {
+		this.timeLocal = timeLocal;
+	}
+
+	public String getDateLocal() {
+		return dateLocal;
+	}
+
+	public void setDateLocal(String dateLocal) {
+		this.dateLocal = dateLocal;
+	}
+
 }

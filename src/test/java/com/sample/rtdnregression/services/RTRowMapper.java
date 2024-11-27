@@ -9,13 +9,13 @@ import com.sample.rtdnregression.Constants;
 import com.sample.rtdnregression.entities.RTEntity;
 
 public class RTRowMapper implements RowMapper<RTEntity> {
-	
+
 	private String rtName;
-	
+
 	public RTRowMapper() {
 		super();
 	}
-	
+
 	public RTRowMapper(String rtName) {
 		this.rtName = rtName;
 	}
@@ -37,6 +37,16 @@ public class RTRowMapper implements RowMapper<RTEntity> {
 		entity.setSnknodeReqSysTrace(rs.getString(Constants.RT_SNKNODE_REQ_SYS_TRACE));
 		entity.setSnknodeRevSysTrace(rs.getString(Constants.RT_SNKNODE_REV_SYS_TRACE));
 		entity.setSnknodeAdvSysTrace(rs.getString(Constants.RT_SNKNODE_ADV_SYS_TRACE));
+		entity.setSnknodeAmountRequested(rs.getString(Constants.RT_SNKNODE_AMOUNT_REQUESTED));
+		entity.setSnknodeCashRequested(rs.getString(Constants.RT_SNKNODE_CASH_REQUESTED));
+		entity.setSnknodeCurrencyCode(rs.getString(Constants.RT_SNKNODE_CURRENCY_CODE));
+		entity.setSnknodeConversionRate(rs.getString(Constants.RT_SNKNODE_CONVERSION_RATE));
+		entity.setSnknodeDateConversion(rs.getString(Constants.RT_SNKNODE_DATE_CONVERSION));
+		entity.setTranType(rs.getString(Constants.RT_TRAN_TYPE));
+		entity.setToAccount(rs.getString(Constants.RT_TO_ACCOUNT));
+		entity.setAmountTranRequested(rs.getString(Constants.RT_AMOUNT_TRAN_REQUESTED));
+		entity.setTimeLocal(rs.getString(Constants.RT_TIME_LOCAL));
+		entity.setDateLocal(rs.getString(Constants.RT_DATE_LOCAL));
 		return entity;
 	}
 

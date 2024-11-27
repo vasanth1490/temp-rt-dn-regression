@@ -26,13 +26,26 @@ public class DNRowMapper implements RowMapper<DNEntity> {
 		entity.setDateCnvAcq(rs.getString(Constants.DN_DATE_CNV_ACQ));
 		entity.setCnvRcnAcqDePos(rs.getString(Constants.DN_CNV_RCN_ACQ_DE_POS));
 		entity.setCnvRcnAcqRate(rs.getString(Constants.DN_CNV_RCN_ACQ_RATE));
-		entity.setSysAuditTrace(rs.getString(Constants.DN_SYS_AUDIT_TRACE));
+		entity.setSysTraceAuditNo(rs.getString(Constants.DN_SYS_TRACE_AUDIT_NO));
 		entity.setAmtReconIss(rs.getString(Constants.DN_AMT_RECON_ISS));
 		entity.setAmtReconNet(rs.getString(Constants.DN_AMT_RECON_NET));
 		entity.setAmtCardBill(rs.getString(Constants.DN_AMT_CARD_BILL));
 		entity.setoAmtCardBill(rs.getString(Constants.DN_O_AMT_CARD_BILL));
 		entity.setoAmtReconIss(rs.getString(Constants.DN_O_AMT_RECON_ISS));
 		entity.setoAmtReconNet(rs.getString(Constants.DN_O_AMT_RECON_NET));
+
+		entity.setAdlRespAmt0(rs.getString(Constants.DN_ADL_RESP_AMT0));
+		entity.setCurReconIss(rs.getString(Constants.DN_CUR_RECON_ISS));
+		entity.setCurReconNet(rs.getString(Constants.DN_CUR_RECON_NET));
+		entity.setCurCardBill(rs.getString(Constants.DN_CUR_CARD_BILL));
+		entity.setCnvRcnIssDePos(rs.getString(Constants.DN_CNV_RCN_ISS_DE_POS));
+		entity.setCnvRcnIssRate(rs.getString(Constants.DN_CNV_RCN_ISS_RATE));
+		entity.setDateCnvIss(rs.getString(Constants.DN_DATE_CNV_ISS));
+		entity.setTranTypeId(rs.getString(Constants.DN_TRAN_TYPE_ID));
+		entity.setAmtTran(rs.getString(Constants.DN_AMT_TRAN));
+		entity.setoAmtTran(rs.getString(Constants.DN_O_AMT_TRAN));
+		entity.setTstampLocal(rs.getString(Constants.DN_TSTAMP_LOCAL));
+
 		return entity;
 	}
 

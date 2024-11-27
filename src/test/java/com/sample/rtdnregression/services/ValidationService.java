@@ -40,19 +40,28 @@ public class ValidationService {
 			ValidationEntity validationEntity = new ValidationEntity();
 
 			validationEntity.setTranNr(rt.getTranNr());
-			validationEntity.setMsgType(validateMsgType(dn, rt));
-			validationEntity.setDraftCapture(validateDraftCapture(dn, rt));
-			validationEntity.setStandin(validateStandin(dn, rt));
-			validationEntity.setSrcnodeDateSettle(validateSrcnodeDateSettle(dn, rt));
-			validationEntity.setSrcnodeAmountRequested(validateSrcnodeAmountRequested(dn, rt));
-			validationEntity.setSrcnodeCashRequested(validateSrcnodeCashRequested(dn, rt));
-			validationEntity.setSrcnodeCurrencyCode(validateSrcnodeCurrencyCode(dn, rt));
-			validationEntity.setSrcnodeDateConversion(validateSrcnodeDateConversion(dn, rt));
-			validationEntity.setSrcnodeConversionRate(validateSrcnodeConversionRate(dn, rt));
-			validationEntity.setSnknodeReqSysTrace(validateSnknodeReqSysTrace(dn, rt));
-			validationEntity.setSnknodeRevSysTrace(validateSnknodeRevSysTrace(dn, rt));
-			validationEntity.setSnknodeAdvSysTrace(validateSnknodeAdvSysTrace(dn, rt));
-
+			validationEntity.setMsgType(validateMsgType(dn, rt)); // 1
+			validationEntity.setDraftCapture(validateDraftCapture(dn, rt)); // 2
+			validationEntity.setStandin(validateStandin(dn, rt)); // 3
+			validationEntity.setSrcnodeDateSettle(validateSrcnodeDateSettle(dn, rt)); // 4
+			validationEntity.setSrcnodeAmountRequested(validateSrcnodeAmountRequested(dn, rt)); // 5
+			validationEntity.setSrcnodeCashRequested(validateSrcnodeCashRequested(dn, rt)); // 8
+			validationEntity.setSrcnodeCurrencyCode(validateSrcnodeCurrencyCode(dn, rt)); // 11
+			validationEntity.setSrcnodeConversionRate(validateSrcnodeConversionRate(dn, rt));// 12
+			validationEntity.setSrcnodeDateConversion(validateSrcnodeDateConversion(dn, rt));// 13
+			validationEntity.setSnknodeReqSysTrace(validateSnknodeReqSysTrace(dn, rt)); // 15
+			validationEntity.setSnknodeRevSysTrace(validateSnknodeRevSysTrace(dn, rt));// 16
+			validationEntity.setSnknodeAdvSysTrace(validateSnknodeAdvSysTrace(dn, rt));// 17
+			validationEntity.setSnknodeAmountRequested(validateSnknodeAmountRequested(dn, rt)); // 19
+			validationEntity.setSnknodeCashRequested(validateSnknodeCashRequested(dn, rt)); // 22
+			validationEntity.setSnknodeCurrencyCode(validateSnknodeCurrencyCode(dn, rt)); // 25
+			validationEntity.setSnknodeConversionRate(validateSnknodeConversionRate(dn, rt)); // 26
+			validationEntity.setSnknodeDateConversion(validateSnknodeDateConversion(dn, rt)); // 27
+			validationEntity.setTranType(validateTranType(dn, rt)); // 30
+			validationEntity.setToAccount(validateToAccount(dn, rt)); // 32
+			validationEntity.setAmountTranRequested(validateAmountTranRequested(dn, rt)); //33
+			validationEntity.setTimeLocal(validateTimeLocal(dn, rt)); // 40
+			validationEntity.setDateLocal(validateDateLocal(dn, rt)); // 41
 			validationEntities.add(validationEntity);
 		}
 
@@ -65,6 +74,7 @@ public class ValidationService {
 		String hex = Integer.toHexString(msgType).toUpperCase();
 		String calculatedMti = Integer.toHexString(Integer.parseInt(hex, 16) + Integer.parseInt("1010", 16))
 				.toUpperCase();
+		calculatedMti = String.valueOf((Integer.valueOf(calculatedMti)/10)*10);
 		String calculatedFuncCode = Integer.toString((Integer.valueOf(hex) / 100) * 100);
 		return calculatedMti.equals(dn.getMti()) && calculatedFuncCode.equals(dn.getFuncCode());
 	}
@@ -108,20 +118,75 @@ public class ValidationService {
 
 	private boolean validateSnknodeReqSysTrace(DNEntity dn, RTEntity rt) {
 		return Arrays.asList("1110", "1210", "1410").contains(dn.getMti())
-				? dn.getSysAuditTrace().equals(rt.getSnknodeReqSysTrace())
+				? dn.getSysTraceAuditNo().equals(rt.getSnknodeReqSysTrace())
 				: true;
 	}
-	
+
 	private boolean validateSnknodeRevSysTrace(DNEntity dn, RTEntity rt) {
-		return "1430".equals(dn.getMti())
-				? dn.getSysAuditTrace().equals(rt.getSnknodeRevSysTrace())
-				: true;
+		return "1430".equals(dn.getMti()) ? dn.getSysTraceAuditNo().equals(rt.getSnknodeRevSysTrace()) : true;
 	}
-	
+
 	private boolean validateSnknodeAdvSysTrace(DNEntity dn, RTEntity rt) {
-		return "1230".equals(dn.getMti())
-				? dn.getSysAuditTrace().equals(rt.getSnknodeAdvSysTrace())
-				: true;
+		return "1230".equals(dn.getMti()) ? dn.getSysTraceAuditNo().equals(rt.getSnknodeAdvSysTrace()) : true;
+	}
+
+	private boolean validateSnknodeAmountRequested(DNEntity dn, RTEntity rt) {
+		if ("1430".equals(dn.getMti())) {
+			return rt.getSnknodeAmountRequested().equals(dn.getAmtReconIss())
+					&& rt.getSnknodeAmountRequested().equals(dn.getAmtReconNet())
+					&& rt.getSnknodeAmountRequested().equals(dn.getAmtCardBill())
+					&& rt.getSnknodeAmountRequested().equals(dn.getoAmtCardBill())
+					&& rt.getSnknodeAmountRequested().equals(dn.getoAmtReconIss())
+					&& rt.getSnknodeAmountRequested().equals(dn.getoAmtReconNet());
+		} else {
+			return rt.getSnknodeAmountRequested().equals(dn.getAmtReconIss())
+					&& rt.getSnknodeAmountRequested().equals(dn.getAmtReconNet())
+					&& rt.getSnknodeAmountRequested().equals(dn.getAmtCardBill());
+		}
+	}
+
+	private boolean validateSnknodeCashRequested(DNEntity dn, RTEntity rt) {
+		return rt.getSnknodeCashRequested().equals(dn.getAdlRespAmt0());
+	}
+
+	private boolean validateSnknodeCurrencyCode(DNEntity dn, RTEntity rt) {
+		return rt.getSnknodeCurrencyCode().equals(dn.getCurReconIss())
+				&& rt.getSnknodeCurrencyCode().equals(dn.getCurReconNet())
+				&& rt.getSnknodeCurrencyCode().equals(dn.getCurCardBill());
+	}
+
+	private boolean validateSnknodeConversionRate(DNEntity dn, RTEntity rt) {
+		return rt.getSnknodeConversionRate().equals(dn.getCnvRcnIssDePos() + dn.getCnvRcnIssRate());
+	}
+
+	private boolean validateSnknodeDateConversion(DNEntity dn, RTEntity rt) {
+		return rt.getSnknodeDateConversion().equals(dn.getDateCnvIss());
+	}
+
+	private boolean validateTranType(DNEntity dn, RTEntity rt) {
+		return rt.getTranType().equals(dn.getTranTypeId());
+	}
+
+	private boolean validateToAccount(DNEntity dn, RTEntity rt) {
+		return rt.getToAccount().equals(dn.getTranTypeId().substring(4, 6));
+	}
+
+	private boolean validateAmountTranRequested(DNEntity dn, RTEntity rt) {
+		if ("1430".equals(dn.getMti())) {
+			return rt.getAmountTranRequested().equals(dn.getAmtTran())
+					&& rt.getAmountTranRequested().equals(dn.getoAmtTran());
+		} else {
+			return rt.getAmountTranRequested().equals(dn.getAmtTran());
+		}
+
+	}
+
+	private boolean validateTimeLocal(DNEntity dn, RTEntity rt) {
+		return rt.getTimeLocal().equals(dn.getTstampLocal().substring(8));
+	}
+
+	private boolean validateDateLocal(DNEntity dn, RTEntity rt) {
+		return rt.getDateLocal().equals(dn.getTstampLocal().substring(4, 8));
 	}
 
 }

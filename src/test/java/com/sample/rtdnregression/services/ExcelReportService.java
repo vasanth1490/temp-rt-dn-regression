@@ -77,21 +77,33 @@ public class ExcelReportService {
 			rtMap.put(Constants.RT_SNKNODE_REQ_SYS_TRACE, rtEntity.getSnknodeReqSysTrace());
 			rtMap.put(Constants.RT_SNKNODE_REV_SYS_TRACE, rtEntity.getSnknodeRevSysTrace());
 			rtMap.put(Constants.RT_SNKNODE_ADV_SYS_TRACE, rtEntity.getSnknodeAdvSysTrace());
+			rtMap.put(Constants.RT_SNKNODE_AMOUNT_REQUESTED, rtEntity.getSnknodeAmountRequested());
+			rtMap.put(Constants.RT_SNKNODE_CASH_REQUESTED, rtEntity.getSnknodeCashRequested());
+			rtMap.put(Constants.RT_SNKNODE_CURRENCY_CODE, rtEntity.getSnknodeCurrencyCode());
+			rtMap.put(Constants.RT_SNKNODE_CONVERSION_RATE, rtEntity.getSnknodeConversionRate());
+			rtMap.put(Constants.RT_SNKNODE_DATE_CONVERSION, rtEntity.getSnknodeDateConversion());
+			rtMap.put(Constants.RT_TRAN_TYPE, rtEntity.getTranType());
+			rtMap.put(Constants.RT_TO_ACCOUNT, rtEntity.getToAccount());
+			rtMap.put(Constants.RT_AMOUNT_TRAN_REQUESTED, rtEntity.getAmountTranRequested());
+			rtMap.put(Constants.RT_TIME_LOCAL, rtEntity.getTimeLocal());
+			rtMap.put(Constants.RT_DATE_LOCAL, rtEntity.getDateLocal());
 
 			for (int x = 0; x < Constants.rtHeaders.size(); x++) {
 				Cell cell = dataRow.createCell(x);
 				cell.setCellStyle(stylesMap.get(StyleKey.COMMON));
-				
+
 				String value = (String) rtMap.get(Constants.rtHeaders.get(x));
-				if(isNotNumeric(value) || (value.length() > 1 && value.startsWith("0"))) {
+				if (isNotNumeric(value) || (value.length() > 1 && value.startsWith("0"))) {
 					cell.setCellValue(value);
 				} else {
-					cell.setCellValue(Integer.valueOf(value));
+					try {
+						cell.setCellValue(Integer.valueOf(value));
+					} catch (NumberFormatException e) {
+						cell.setCellValue(Double.parseDouble(value));
+					}
+
 				}
 			}
-			
-			System.out.println("Created RT Sheet");
-
 		}
 
 	}
@@ -126,19 +138,37 @@ public class ExcelReportService {
 			dnMap.put(Constants.DN_DATE_CNV_ACQ, dnEntity.getDateCnvAcq());
 			dnMap.put(Constants.DN_CNV_RCN_ACQ_DE_POS, dnEntity.getCnvRcnAcqDePos());
 			dnMap.put(Constants.DN_CNV_RCN_ACQ_RATE, dnEntity.getCnvRcnAcqRate());
-			dnMap.put(Constants.DN_SYS_AUDIT_TRACE, dnEntity.getSysAuditTrace());
-			
+			dnMap.put(Constants.DN_SYS_TRACE_AUDIT_NO, dnEntity.getSysTraceAuditNo());
+			dnMap.put(Constants.DN_AMT_RECON_ISS, dnEntity.getAmtReconIss());
+			dnMap.put(Constants.DN_AMT_RECON_NET, dnEntity.getAmtReconNet());
+			dnMap.put(Constants.DN_AMT_CARD_BILL, dnEntity.getAmtCardBill());
+			dnMap.put(Constants.DN_O_AMT_CARD_BILL, dnEntity.getoAmtCardBill());
+			dnMap.put(Constants.DN_O_AMT_RECON_ISS, dnEntity.getoAmtReconIss());
+			dnMap.put(Constants.DN_O_AMT_RECON_NET, dnEntity.getoAmtReconNet());
+			dnMap.put(Constants.DN_ADL_RESP_AMT0, dnEntity.getAdlRespAmt0());
+			dnMap.put(Constants.DN_CUR_RECON_ISS, dnEntity.getCurReconIss());
+			dnMap.put(Constants.DN_CUR_RECON_NET, dnEntity.getCurReconNet());
+			dnMap.put(Constants.DN_CUR_CARD_BILL, dnEntity.getCurCardBill());
+			dnMap.put(Constants.DN_CNV_RCN_ISS_DE_POS, dnEntity.getCnvRcnIssDePos());
+			dnMap.put(Constants.DN_CNV_RCN_ISS_RATE, dnEntity.getCnvRcnIssRate());
+			dnMap.put(Constants.DN_DATE_CNV_ISS, dnEntity.getDateCnvIss());
+			dnMap.put(Constants.DN_TRAN_TYPE_ID, dnEntity.getTranTypeId());
+			dnMap.put(Constants.DN_AMT_TRAN, dnEntity.getAmtTran());
+			dnMap.put(Constants.DN_O_AMT_TRAN, dnEntity.getoAmtTran());
+			dnMap.put(Constants.DN_TSTAMP_LOCAL, dnEntity.getTstampLocal());
+
 			for (int x = 0; x < Constants.dnHeaders.size(); x++) {
 				Cell cell = dataRow.createCell(x);
 				cell.setCellStyle(stylesMap.get(StyleKey.COMMON));
-				
-				String value = (String)dnMap.get(Constants.dnHeaders.get(x));
-				if(isNotNumeric(value) || (value.length() > 1 && value.startsWith("0"))) {
+
+				String value = (String) dnMap.get(Constants.dnHeaders.get(x));
+				value = value != null ? value.trim() : value;
+				if (isNotNumeric(value) || (value.length() > 1 && value.startsWith("0"))) {
 					cell.setCellValue(value);
 				} else {
 					cell.setCellValue(Integer.valueOf(value));
 				}
-				
+
 			}
 		}
 
@@ -162,7 +192,7 @@ public class ExcelReportService {
 			ValidationEntity validationEntity = validationEntities.get(j - 1);
 
 			Map<String, Object> validationMap = new HashMap<String, Object>();
-			
+
 			validationMap.put(Constants.RT_TRAN_NR, validationEntity.getTranNr());
 			validationMap.put(Constants.RT_MSG_TYPE, validationEntity.isMsgType());
 			validationMap.put(Constants.RT_DRAFT_CAPTURE, validationEntity.isDraftCapture());
@@ -176,12 +206,23 @@ public class ExcelReportService {
 			validationMap.put(Constants.RT_SNKNODE_REQ_SYS_TRACE, validationEntity.isSnknodeReqSysTrace());
 			validationMap.put(Constants.RT_SNKNODE_REV_SYS_TRACE, validationEntity.isSnknodeRevSysTrace());
 			validationMap.put(Constants.RT_SNKNODE_ADV_SYS_TRACE, validationEntity.isSnknodeAdvSysTrace());
+			validationMap.put(Constants.RT_SNKNODE_AMOUNT_REQUESTED, validationEntity.isSnknodeAmountRequested());
+			validationMap.put(Constants.RT_SNKNODE_CASH_REQUESTED, validationEntity.isSnknodeCashRequested());
+			validationMap.put(Constants.RT_SNKNODE_CURRENCY_CODE, validationEntity.isSnknodeCurrencyCode());
+			validationMap.put(Constants.RT_SNKNODE_CONVERSION_RATE, validationEntity.isSnknodeConversionRate());
+			validationMap.put(Constants.RT_SNKNODE_DATE_CONVERSION, validationEntity.isSnknodeDateConversion());
+			validationMap.put(Constants.RT_TRAN_TYPE, validationEntity.isTranType());
+			validationMap.put(Constants.RT_TO_ACCOUNT, validationEntity.isToAccount());
+			validationMap.put(Constants.RT_AMOUNT_TRAN_REQUESTED, validationEntity.isAmountTranRequested());
+			validationMap.put(Constants.RT_TIME_LOCAL, validationEntity.isTimeLocal());
+			validationMap.put(Constants.RT_DATE_LOCAL, validationEntity.isDateLocal());
 
-			for (int x = 0; x < Constants.rtHeaders.size(); x++) {
+			for (int x = 1; x < Constants.rtHeaders.size(); x++) {
 				Cell cell = dataRow.createCell(x);
 
-				if (x == 0) {
+				if (x == 1) {
 					cell.setCellStyle(stylesMap.get(StyleKey.COMMON));
+
 					cell.setCellValue(Integer.valueOf((String) validationMap.get(Constants.rtHeaders.get(x))));
 				} else {
 					boolean flag = (boolean) validationMap.get(Constants.rtHeaders.get(x));
@@ -230,16 +271,16 @@ public class ExcelReportService {
 		return stylesMap;
 
 	}
-	
+
 	private boolean isNotNumeric(String str) {
-        if (str == null || str.isEmpty()) {
-            return true;
-        }
-        try {
-            Double.parseDouble(str);
-        } catch (NumberFormatException e) {
-            return true;
-        }
-        return false;
-    }
+		if (str == null || str.isEmpty()) {
+			return true;
+		}
+		try {
+			Double.parseDouble(str);
+		} catch (NumberFormatException e) {
+			return true;
+		}
+		return false;
+	}
 }

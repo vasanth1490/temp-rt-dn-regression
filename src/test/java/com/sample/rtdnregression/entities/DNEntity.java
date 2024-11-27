@@ -14,13 +14,24 @@ public class DNEntity {
 	private String dateCnvAcq;
 	private String cnvRcnAcqDePos;
 	private String cnvRcnAcqRate;
-	private String sysAuditTrace;
+	private String sysTraceAuditNo;
 	private String amtReconIss;
 	private String amtReconNet;
 	private String amtCardBill;
 	private String oAmtCardBill;
 	private String oAmtReconIss;
 	private String oAmtReconNet;
+	private String adlRespAmt0;
+	private String curReconIss;
+	private String curReconNet;
+	private String curCardBill;
+	private String cnvRcnIssDePos;
+	private String cnvRcnIssRate;
+	private String dateCnvIss;
+	private String tranTypeId;
+	private String amtTran;
+	private String oAmtTran;
+	private String tstampLocal;
 
 	public DNEntity() {
 		super();
@@ -129,14 +140,6 @@ public class DNEntity {
 		this.cnvRcnAcqRate = cnvRcnAcqRate;
 	}
 
-	public String getSysAuditTrace() {
-		return sysAuditTrace;
-	}
-
-	public void setSysAuditTrace(String sysAuditTrace) {
-		this.sysAuditTrace = sysAuditTrace;
-	}
-
 	public String getAmtReconIss() {
 		return amtReconIss;
 	}
@@ -191,6 +194,102 @@ public class DNEntity {
 
 	public void setTranNumber(String tranNumber) {
 		this.tranNumber = tranNumber;
+	}
+
+	public String getSysTraceAuditNo() {
+		return sysTraceAuditNo;
+	}
+
+	public void setSysTraceAuditNo(String sysTraceAuditNo) {
+		this.sysTraceAuditNo = sysTraceAuditNo;
+	}
+
+	public String getAdlRespAmt0() {
+		return adlRespAmt0;
+	}
+
+	public void setAdlRespAmt0(String adlRespAmt0) {
+		this.adlRespAmt0 = adlRespAmt0;
+	}
+
+	public String getCurReconIss() {
+		return curReconIss;
+	}
+
+	public void setCurReconIss(String curReconIss) {
+		this.curReconIss = curReconIss;
+	}
+
+	public String getCurReconNet() {
+		return curReconNet;
+	}
+
+	public void setCurReconNet(String curReconNet) {
+		this.curReconNet = curReconNet;
+	}
+
+	public String getCurCardBill() {
+		return curCardBill;
+	}
+
+	public void setCurCardBill(String curCardBill) {
+		this.curCardBill = curCardBill;
+	}
+
+	public String getCnvRcnIssDePos() {
+		return cnvRcnIssDePos;
+	}
+
+	public void setCnvRcnIssDePos(String cnvRcnIssDePos) {
+		this.cnvRcnIssDePos = cnvRcnIssDePos;
+	}
+
+	public String getCnvRcnIssRate() {
+		return cnvRcnIssRate;
+	}
+
+	public void setCnvRcnIssRate(String cnvRcnIssRate) {
+		this.cnvRcnIssRate = cnvRcnIssRate;
+	}
+
+	public String getDateCnvIss() {
+		return dateCnvIss;
+	}
+
+	public void setDateCnvIss(String dateCnvIss) {
+		this.dateCnvIss = dateCnvIss;
+	}
+
+	public String getTranTypeId() {
+		return tranTypeId;
+	}
+
+	public void setTranTypeId(String tranTypeId) {
+		this.tranTypeId = tranTypeId;
+	}
+
+	public String getAmtTran() {
+		return amtTran;
+	}
+
+	public void setAmtTran(String amtTran) {
+		this.amtTran = amtTran;
+	}
+
+	public String getoAmtTran() {
+		return oAmtTran;
+	}
+
+	public void setoAmtTran(String oAmtTran) {
+		this.oAmtTran = oAmtTran;
+	}
+
+	public String getTstampLocal() {
+		return tstampLocal;
+	}
+
+	public void setTstampLocal(String tstampLocal) {
+		this.tstampLocal = tstampLocal;
 	}
 
 }
