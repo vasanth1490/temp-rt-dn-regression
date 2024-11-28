@@ -23,6 +23,7 @@ public class DNEntity {
 	private String oAmtReconIss;
 	private String oAmtReconNet;
 	private String adlRespAmt0;
+	private String adlRqstAmtTyp0;
 	private String curReconIss;
 	private String curReconNet;
 	private String curCardBill;
@@ -299,6 +300,14 @@ public class DNEntity {
 
 	public void setAdlRqstAmtTyp1(String adlRqstAmtTyp1) {
 		this.adlRqstAmtTyp1 = adlRqstAmtTyp1;
+	}
+
+	public String getAdlRqstAmtTyp0() {
+		return adlRqstAmtTyp0;
+	}
+
+	public void setAdlRqstAmtTyp0(String adlRqstAmtTyp0) {
+		this.adlRqstAmtTyp0 = adlRqstAmtTyp0;
 	}
 
 }

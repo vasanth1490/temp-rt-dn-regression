@@ -36,6 +36,7 @@ public class DNRowMapper implements RowMapper<DNEntity> {
 		entity.setoAmtReconNet(rs.getString(Constants.DN_O_AMT_RECON_NET));
 
 		entity.setAdlRespAmt0(rs.getString(Constants.DN_ADL_RESP_AMT0));
+		entity.setAdlRqstAmtTyp0(rs.getString(Constants.DN_ADL_RQST_AMT_TYP0));
 		entity.setCurReconIss(rs.getString(Constants.DN_CUR_RECON_ISS));
 		entity.setCurReconNet(rs.getString(Constants.DN_CUR_RECON_NET));
 		entity.setCurCardBill(rs.getString(Constants.DN_CUR_CARD_BILL));

@@ -153,7 +153,13 @@ public class ValidationService {
 	}
 
 	private boolean validateSnknodeCashRequested(DNEntity dn, RTEntity rt) {
-		return rt.getSnknodeCashRequested().equals(dn.getAdlRespAmt0());
+		String rtValue = Integer.toString(Double.valueOf(rt.getSnknodeCashRequested()).intValue());
+		
+		if(Integer.valueOf(dn.getAdlRespAmt0()) > 0) {
+			return dn.getAdlRqstAmtTyp0().equals("40");
+		} else {
+			return rtValue.equals(dn.getAdlRespAmt0());	
+		}
 	}
 
 	private boolean validateSnknodeCurrencyCode(DNEntity dn, RTEntity rt) {
