@@ -166,7 +166,7 @@ public class ExcelReportService {
 				if (isNotNumeric(value) || (value.length() > 1 && value.startsWith("0"))) {
 					cell.setCellValue(value);
 				} else {
-					cell.setCellValue(Integer.valueOf(value));
+					cell.setCellValue(Long.valueOf(value));
 				}
 
 			}

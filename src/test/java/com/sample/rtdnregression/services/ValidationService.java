@@ -88,15 +88,16 @@ public class ValidationService {
 	}
 
 	private boolean validateSrcnodeDateSettle(DNEntity dn, RTEntity rt) {
-		return rt.getSrcnodeDateSettle().substring(4).equals(dn.getDateReconAcq());
+		return dn.getDateReconAcq().substring(4).equals(rt.getSrcnodeDateSettle());
 	}
 
 	private boolean validateSrcnodeAmountRequested(DNEntity dn, RTEntity rt) {
+		String rtValue = Integer.toString(Double.valueOf(rt.getSrcnodeAmountRequested()).intValue());
 		if (dn.getMti().equals("1430")) {
-			return rt.getSrcnodeAmountRequested().equals(dn.getAmtReconAcq())
-					&& rt.getSrcnodeAmountRequested().equals(dn.getoAmtReconAcq());
+			return rtValue.equals(dn.getAmtReconAcq())
+					&& rtValue.equals(dn.getoAmtReconAcq());
 		} else {
-			return rt.getSrcnodeAmountRequested().equals(dn.getAmtReconAcq());
+			return rtValue.equals(dn.getAmtReconAcq());
 		}
 	}
 
