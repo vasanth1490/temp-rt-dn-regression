@@ -102,7 +102,13 @@ public class ValidationService {
 	}
 
 	private boolean validateSrcnodeCashRequested(DNEntity dn, RTEntity rt) {
-		return rt.getSrcnodeCashRequested().equals(dn.getAdlRqstAmt1());
+		String rtValue = Integer.toString(Double.valueOf(rt.getSrcnodeCashRequested()).intValue());
+		
+		if(Integer.valueOf(dn.getAdlRqstAmt1()) > 0) {
+			return dn.getAdlRqstAmtTyp1().equals("99");
+		} else {
+			return rtValue.equals(dn.getAdlRqstAmt1());	
+		}
 	}
 
 	private boolean validateSrcnodeCurrencyCode(DNEntity dn, RTEntity rt) {

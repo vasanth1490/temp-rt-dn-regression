@@ -22,6 +22,7 @@ public class DNRowMapper implements RowMapper<DNEntity> {
 		entity.setAmtReconAcq(rs.getString(Constants.DN_AMT_RECON_ACQ));
 		entity.setoAmtReconAcq(rs.getString(Constants.DN_O_AMT_RECON_ACQ));
 		entity.setAdlRqstAmt1(rs.getString(Constants.DN_ADL_RQST_AMT1));
+		entity.setAdlRqstAmtTyp1(rs.getString(Constants.DN_ADL_RQST_AMT_TYP1));
 		entity.setCurReconAcq(rs.getString(Constants.DN_CUR_RECON_ACQ));
 		entity.setDateCnvAcq(rs.getString(Constants.DN_DATE_CNV_ACQ));
 		entity.setCnvRcnAcqDePos(rs.getString(Constants.DN_CNV_RCN_ACQ_DE_POS));

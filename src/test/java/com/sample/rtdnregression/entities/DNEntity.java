@@ -10,6 +10,7 @@ public class DNEntity {
 	private String amtReconAcq;
 	private String oAmtReconAcq;
 	private String adlRqstAmt1;
+	private String adlRqstAmtTyp1;
 	private String curReconAcq;
 	private String dateCnvAcq;
 	private String cnvRcnAcqDePos;
@@ -290,6 +291,14 @@ public class DNEntity {
 
 	public void setTstampLocal(String tstampLocal) {
 		this.tstampLocal = tstampLocal;
+	}
+
+	public String getAdlRqstAmtTyp1() {
+		return adlRqstAmtTyp1;
+	}
+
+	public void setAdlRqstAmtTyp1(String adlRqstAmtTyp1) {
+		this.adlRqstAmtTyp1 = adlRqstAmtTyp1;
 	}
 
 }

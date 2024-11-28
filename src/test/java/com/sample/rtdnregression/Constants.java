@@ -13,6 +13,7 @@ public class Constants {
 	public static final String DN_AMT_RECON_ACQ = "AMT_RECON_ACQ";
 	public static final String DN_O_AMT_RECON_ACQ = "O_AMT_RECON_ACQ";
 	public static final String DN_ADL_RQST_AMT1 = "ADL_RQST_AMT1";
+	public static final String DN_ADL_RQST_AMT_TYP1 = "ADL_RQST_AMT_TYP1";
 	public static final String DN_CUR_RECON_ACQ = "CUR_RECON_ACQ";
 	public static final String DN_DATE_CNV_ACQ = "DATE_CNV_ACQ";
 	public static final String DN_CNV_RCN_ACQ_DE_POS = "CNV_RCN_ACQ_DE_POS";
