@@ -43,10 +43,19 @@ public class RTRowMapper implements RowMapper<RTEntity> {
 		entity.setSnknodeConversionRate(rs.getString(Constants.RT_SNKNODE_CONVERSION_RATE));
 		entity.setSnknodeDateConversion(rs.getString(Constants.RT_SNKNODE_DATE_CONVERSION));
 		entity.setTranType(rs.getString(Constants.RT_TRAN_TYPE));
+		entity.setFromAccount(rs.getString(Constants.RT_FROM_ACCOUNT));
 		entity.setToAccount(rs.getString(Constants.RT_TO_ACCOUNT));
 		entity.setAmountTranRequested(rs.getString(Constants.RT_AMOUNT_TRAN_REQUESTED));
 		entity.setTimeLocal(rs.getString(Constants.RT_TIME_LOCAL));
 		entity.setDateLocal(rs.getString(Constants.RT_DATE_LOCAL));
+		entity.setMerchantType(rs.getString(Constants.RT_MERCHANT_TYPE));
+		entity.setCardAcceptorIdCode(rs.getString(Constants.RT_CARD_ACCEPTOR_ID_CODE));
+		entity.setCurrencyCodeTran(rs.getString(Constants.RT_CURRENCY_CODE_TRAN));
+		entity.setMsgReasonCodeReqOut(rs.getString(Constants.RT_MSG_REASON_CODE_REQ_OUT));
+		entity.setMsgReasonCodeRev(rs.getString(Constants.RT_MSG_REASON_CODE_REV));
+		entity.setMsgReasonCodeAdv(rs.getString(Constants.RT_MSG_REASON_CODE_ADV));
+		entity.setAbortReason(rs.getString(Constants.RT_ABORT_REASON));
+		entity.setAbortRspCode(rs.getString(Constants.RT_ABORT_RSP_CODE));
 		return entity;
 	}
 

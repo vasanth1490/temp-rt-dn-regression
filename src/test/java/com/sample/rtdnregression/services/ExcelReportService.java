@@ -87,6 +87,14 @@ public class ExcelReportService {
 			rtMap.put(Constants.RT_AMOUNT_TRAN_REQUESTED, rtEntity.getAmountTranRequested());
 			rtMap.put(Constants.RT_TIME_LOCAL, rtEntity.getTimeLocal());
 			rtMap.put(Constants.RT_DATE_LOCAL, rtEntity.getDateLocal());
+			rtMap.put(Constants.RT_MERCHANT_TYPE, rtEntity.getMerchantType());
+			rtMap.put(Constants.RT_CARD_ACCEPTOR_ID_CODE, rtEntity.getCardAcceptorIdCode());
+			rtMap.put(Constants.RT_CURRENCY_CODE_TRAN, rtEntity.getCurrencyCodeTran());
+			rtMap.put(Constants.RT_MSG_REASON_CODE_REQ_OUT, rtEntity.getMsgReasonCodeReqOut());
+			rtMap.put(Constants.RT_MSG_REASON_CODE_REV, rtEntity.getMsgReasonCodeRev());
+			rtMap.put(Constants.RT_MSG_REASON_CODE_ADV, rtEntity.getMsgReasonCodeAdv());
+			rtMap.put(Constants.RT_ABORT_REASON, rtEntity.getAbortReason());
+			rtMap.put(Constants.RT_ABORT_RSP_CODE, rtEntity.getAbortRspCode());
 
 			for (int x = 0; x < Constants.rtHeaders.size(); x++) {
 				Cell cell = dataRow.createCell(x);
@@ -156,6 +164,14 @@ public class ExcelReportService {
 			dnMap.put(Constants.DN_AMT_TRAN, dnEntity.getAmtTran());
 			dnMap.put(Constants.DN_O_AMT_TRAN, dnEntity.getoAmtTran());
 			dnMap.put(Constants.DN_TSTAMP_LOCAL, dnEntity.getTstampLocal());
+			dnMap.put(Constants.DN_MERCH_TYPE, dnEntity.getMerchType());
+			dnMap.put(Constants.DN_CARD_ACPT_BUS_CODE, dnEntity.getCardAcptBusCode());
+			dnMap.put(Constants.DN_CARD_ACPT_ID, dnEntity.getCardAcptId());
+			dnMap.put(Constants.DN_RPT_LVL_ID_B, dnEntity.getRptLvlIdB());
+			dnMap.put(Constants.DN_CUR_TRAN, dnEntity.getCurTran());
+			dnMap.put(Constants.DN_MSG_RESON_CODE_ISS, dnEntity.getMsgResonCodeIss());
+			dnMap.put(Constants.DN_MSG_RESON_CODE_ACQ, dnEntity.getMsgResonCodeAcq());
+			dnMap.put(Constants.DN_TRAN_DESC, dnEntity.getTranDesc());
 
 			for (int x = 0; x < Constants.dnHeaders.size(); x++) {
 				Cell cell = dataRow.createCell(x);
@@ -216,6 +232,14 @@ public class ExcelReportService {
 			validationMap.put(Constants.RT_AMOUNT_TRAN_REQUESTED, validationEntity.isAmountTranRequested());
 			validationMap.put(Constants.RT_TIME_LOCAL, validationEntity.isTimeLocal());
 			validationMap.put(Constants.RT_DATE_LOCAL, validationEntity.isDateLocal());
+			validationMap.put(Constants.RT_MERCHANT_TYPE, validationEntity.isMerchantType());
+			validationMap.put(Constants.RT_CARD_ACCEPTOR_ID_CODE, validationEntity.isCardAcceptorIdCode());
+			validationMap.put(Constants.RT_CURRENCY_CODE_TRAN, validationEntity.isCurrencyCodeTran());
+			validationMap.put(Constants.RT_MSG_REASON_CODE_REQ_OUT, validationEntity.isMsgReasonCodeReqOut());
+			validationMap.put(Constants.RT_MSG_REASON_CODE_REV, validationEntity.isMsgReasonCodeRev());
+			validationMap.put(Constants.RT_MSG_REASON_CODE_ADV, validationEntity.isMsgReasonCodeAdv());
+			validationMap.put(Constants.RT_ABORT_REASON, validationEntity.isAbortReason());
+			validationMap.put(Constants.RT_ABORT_RSP_CODE, validationEntity.isAbortRspCode());
 
 			for (int x = 1; x < Constants.rtHeaders.size(); x++) {
 				Cell cell = dataRow.createCell(x);

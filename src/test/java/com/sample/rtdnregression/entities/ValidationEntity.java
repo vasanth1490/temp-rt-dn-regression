@@ -20,10 +20,19 @@ public class ValidationEntity {
 	private boolean snknodeConversionRate;
 	private boolean snknodeDateConversion;
 	private boolean tranType;
+	private boolean fromAccount;
 	private boolean toAccount;
 	private boolean amountTranRequested;
 	private boolean timeLocal;
 	private boolean dateLocal;
+	private boolean merchantType;
+	private boolean cardAcceptorIdCode;
+	private boolean currencyCodeTran;
+	private boolean msgReasonCodeReqOut;
+	private boolean msgReasonCodeRev;
+	private boolean msgReasonCodeAdv;
+	private boolean abortReason;
+	private boolean abortRspCode;
 
 	public boolean isMsgType() {
 		return msgType;
@@ -208,5 +217,79 @@ public class ValidationEntity {
 	public void setDateLocal(boolean dateLocal) {
 		this.dateLocal = dateLocal;
 	}
+
+	public boolean isMerchantType() {
+		return merchantType;
+	}
+
+	public void setMerchantType(boolean merchantType) {
+		this.merchantType = merchantType;
+	}
+
+	public boolean isCardAcceptorIdCode() {
+		return cardAcceptorIdCode;
+	}
+
+	public void setCardAcceptorIdCode(boolean cardAcceptorIdCode) {
+		this.cardAcceptorIdCode = cardAcceptorIdCode;
+	}
+
+	public boolean isCurrencyCodeTran() {
+		return currencyCodeTran;
+	}
+
+	public void setCurrencyCodeTran(boolean currencyCodeTran) {
+		this.currencyCodeTran = currencyCodeTran;
+	}
+
+	public boolean isMsgReasonCodeReqOut() {
+		return msgReasonCodeReqOut;
+	}
+
+	public void setMsgReasonCodeReqOut(boolean msgReasonCodeReqOut) {
+		this.msgReasonCodeReqOut = msgReasonCodeReqOut;
+	}
+
+	public boolean isMsgReasonCodeRev() {
+		return msgReasonCodeRev;
+	}
+
+	public void setMsgReasonCodeRev(boolean msgReasonCodeRev) {
+		this.msgReasonCodeRev = msgReasonCodeRev;
+	}
+
+	public boolean isMsgReasonCodeAdv() {
+		return msgReasonCodeAdv;
+	}
+
+	public void setMsgReasonCodeAdv(boolean msgReasonCodeAdv) {
+		this.msgReasonCodeAdv = msgReasonCodeAdv;
+	}
+
+	public boolean isAbortReason() {
+		return abortReason;
+	}
+
+	public void setAbortReason(boolean abortReason) {
+		this.abortReason = abortReason;
+	}
+
+	public boolean isAbortRspCode() {
+		return abortRspCode;
+	}
+
+	public void setAbortRspCode(boolean abortRspCode) {
+		this.abortRspCode = abortRspCode;
+	}
+
+	public boolean isFromAccount() {
+		return fromAccount;
+	}
+
+	public void setFromAccount(boolean fromAccount) {
+		this.fromAccount = fromAccount;
+	}
+	
+	
 
 }

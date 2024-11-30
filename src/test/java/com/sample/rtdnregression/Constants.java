@@ -37,6 +37,14 @@ public class Constants {
 	public static final String DN_AMT_TRAN = "AMT_TRAN";
 	public static final String DN_O_AMT_TRAN = "O_AMT_TRAN";
 	public static final String DN_TSTAMP_LOCAL = "TSTAMP_LOCAL";
+	public static final String DN_MERCH_TYPE = "MERCH_TYPE";
+	public static final String DN_CARD_ACPT_BUS_CODE = "CARD_ACPT_BUS_CODE";
+	public static final String DN_CARD_ACPT_ID = "CARD_ACPT_ID";
+	public static final String DN_RPT_LVL_ID_B = "RPT_LVL_ID_B";
+	public static final String DN_CUR_TRAN = "CUR_TRAN";
+	public static final String DN_MSG_RESON_CODE_ISS = "MSG_RESON_CODE_ISS";
+	public static final String DN_MSG_RESON_CODE_ACQ = "MSG_RESON_CODE_ACQ";
+	public static final String DN_TRAN_DESC = "TRAN_DESC";
 
 	public static final String RT_NAME = "rtname";
 	public static final String RT_TRAN_NR = "tran_nr";
@@ -58,23 +66,36 @@ public class Constants {
 	public static final String RT_SNKNODE_CONVERSION_RATE = "snknode_conversion_rate";
 	public static final String RT_SNKNODE_DATE_CONVERSION = "snknode_date_conversion";
 	public static final String RT_TRAN_TYPE = "tran_type";
+	public static final String RT_FROM_ACCOUNT = "from_account";
 	public static final String RT_TO_ACCOUNT = "to_account";
 	public static final String RT_AMOUNT_TRAN_REQUESTED = "amount_tran_requested";
 	public static final String RT_TIME_LOCAL = "time_local";
 	public static final String RT_DATE_LOCAL = "date_local";
+	public static final String RT_MERCHANT_TYPE = "merchant_type";
+	public static final String RT_CARD_ACCEPTOR_ID_CODE = "card_acceptor_id_code";
+	public static final String RT_CURRENCY_CODE_TRAN = "currency_code_tran";
+	public static final String RT_MSG_REASON_CODE_REQ_OUT = "msg_reason_code_req_out";
+	public static final String RT_MSG_REASON_CODE_REV = "msg_reason_code_rev";
+	public static final String RT_MSG_REASON_CODE_ADV = "msg_reason_code_adv";
+	public static final String RT_ABORT_REASON = "abort_reason";
+	public static final String RT_ABORT_RSP_CODE = "abort_rsp_code";
 
 	public static final List<String> rtHeaders = Arrays.asList(RT_NAME, RT_TRAN_NR, RT_MSG_TYPE, RT_DRAFT_CAPTURE,
 			RT_STAND_IN, RT_SRCNODE_DATE_SETTLE, RT_SRCNODE_AMOUNT_REQUESTED, RT_SRCNODE_CASH_REQUESTED,
 			RT_SRCNODE_CURRENCY_CODE, RT_SRCNODE_DATE_CONVERSION, RT_SRCNODE_CONVERSION_RATE, RT_SNKNODE_REQ_SYS_TRACE,
 			RT_SNKNODE_REV_SYS_TRACE, RT_SNKNODE_ADV_SYS_TRACE, RT_SNKNODE_AMOUNT_REQUESTED, RT_SNKNODE_CASH_REQUESTED,
 			RT_SNKNODE_CURRENCY_CODE, RT_SNKNODE_CONVERSION_RATE, RT_SNKNODE_DATE_CONVERSION, RT_TRAN_TYPE,
-			RT_TO_ACCOUNT, RT_AMOUNT_TRAN_REQUESTED, RT_TIME_LOCAL, RT_DATE_LOCAL);
+			RT_FROM_ACCOUNT, RT_TO_ACCOUNT, RT_AMOUNT_TRAN_REQUESTED, RT_TIME_LOCAL, RT_DATE_LOCAL, RT_MERCHANT_TYPE,
+			RT_CARD_ACCEPTOR_ID_CODE, RT_CURRENCY_CODE_TRAN, RT_MSG_REASON_CODE_REQ_OUT, RT_MSG_REASON_CODE_REV,
+			RT_MSG_REASON_CODE_ADV, RT_ABORT_REASON, RT_ABORT_RSP_CODE);
 	public static final List<String> dnHeaders = Arrays.asList(DN_TRAN_NUMBER, DN_MTI, DN_FUNC_CODE,
 			DN_DRAFT_CAPTURE_FLG, DN_STANDIN_ACT, DN_DATE_RECON_ACQ, DN_AMT_RECON_ACQ, DN_O_AMT_RECON_ACQ,
-			DN_ADL_RQST_AMT1, DN_ADL_RQST_AMT_TYP1, DN_CUR_RECON_ACQ, DN_DATE_CNV_ACQ, DN_CNV_RCN_ACQ_DE_POS, DN_CNV_RCN_ACQ_RATE,
-			DN_SYS_TRACE_AUDIT_NO, DN_AMT_RECON_ISS, DN_AMT_RECON_NET, DN_AMT_CARD_BILL, DN_O_AMT_CARD_BILL,
-			DN_O_AMT_RECON_ISS, DN_O_AMT_RECON_NET, DN_ADL_RESP_AMT0, DN_ADL_RQST_AMT_TYP0, DN_CUR_RECON_ISS, DN_CUR_RECON_NET,
-			DN_CUR_CARD_BILL, DN_CNV_RCN_ISS_DE_POS, DN_CNV_RCN_ISS_RATE, DN_DATE_CNV_ISS, DN_TRAN_TYPE_ID, DN_AMT_TRAN,
-			DN_O_AMT_TRAN, DN_TSTAMP_LOCAL);
+			DN_ADL_RQST_AMT1, DN_ADL_RQST_AMT_TYP1, DN_CUR_RECON_ACQ, DN_DATE_CNV_ACQ, DN_CNV_RCN_ACQ_DE_POS,
+			DN_CNV_RCN_ACQ_RATE, DN_SYS_TRACE_AUDIT_NO, DN_AMT_RECON_ISS, DN_AMT_RECON_NET, DN_AMT_CARD_BILL,
+			DN_O_AMT_CARD_BILL, DN_O_AMT_RECON_ISS, DN_O_AMT_RECON_NET, DN_ADL_RESP_AMT0, DN_ADL_RQST_AMT_TYP0,
+			DN_CUR_RECON_ISS, DN_CUR_RECON_NET, DN_CUR_CARD_BILL, DN_CNV_RCN_ISS_DE_POS, DN_CNV_RCN_ISS_RATE,
+			DN_DATE_CNV_ISS, DN_TRAN_TYPE_ID, DN_AMT_TRAN, DN_O_AMT_TRAN, DN_TSTAMP_LOCAL, DN_MERCH_TYPE,
+			DN_CARD_ACPT_BUS_CODE, DN_CARD_ACPT_ID, DN_RPT_LVL_ID_B, DN_CUR_TRAN, DN_MSG_RESON_CODE_ISS,
+			DN_MSG_RESON_CODE_ACQ, DN_TRAN_DESC);
 
 }

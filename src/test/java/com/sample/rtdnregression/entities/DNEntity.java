@@ -34,7 +34,15 @@ public class DNEntity {
 	private String amtTran;
 	private String oAmtTran;
 	private String tstampLocal;
-
+	private String merchType;
+	private String cardAcptBusCode;
+	private String cardAcptId;
+	private String rptLvlIdB;
+	private String curTran;
+	private String msgResonCodeIss;
+	private String msgResonCodeAcq;
+	private String tranDesc;
+	
 	public DNEntity() {
 		super();
 	}
@@ -309,5 +317,71 @@ public class DNEntity {
 	public void setAdlRqstAmtTyp0(String adlRqstAmtTyp0) {
 		this.adlRqstAmtTyp0 = adlRqstAmtTyp0;
 	}
+
+	public String getMerchType() {
+		return merchType;
+	}
+
+	public void setMerchType(String merchType) {
+		this.merchType = merchType;
+	}
+
+	public String getCardAcptBusCode() {
+		return cardAcptBusCode;
+	}
+
+	public void setCardAcptBusCode(String cardAcptBusCode) {
+		this.cardAcptBusCode = cardAcptBusCode;
+	}
+
+	public String getCardAcptId() {
+		return cardAcptId;
+	}
+
+	public void setCardAcptId(String cardAcptId) {
+		this.cardAcptId = cardAcptId;
+	}
+
+	public String getRptLvlIdB() {
+		return rptLvlIdB;
+	}
+
+	public void setRptLvlIdB(String rptLvlIdB) {
+		this.rptLvlIdB = rptLvlIdB;
+	}
+
+	public String getMsgResonCodeIss() {
+		return msgResonCodeIss;
+	}
+
+	public void setMsgResonCodeIss(String msgResonCodeIss) {
+		this.msgResonCodeIss = msgResonCodeIss;
+	}
+
+	public String getMsgResonCodeAcq() {
+		return msgResonCodeAcq;
+	}
+
+	public void setMsgResonCodeAcq(String msgResonCodeAcq) {
+		this.msgResonCodeAcq = msgResonCodeAcq;
+	}
+
+	public String getTranDesc() {
+		return tranDesc;
+	}
+
+	public void setTranDesc(String tranDesc) {
+		this.tranDesc = tranDesc;
+	}
+
+	public String getCurTran() {
+		return curTran;
+	}
+
+	public void setCurTran(String curTran) {
+		this.curTran = curTran;
+	}
+	
+	
 
 }

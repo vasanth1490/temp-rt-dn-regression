@@ -21,10 +21,19 @@ public class RTEntity {
 	private String snknodeConversionRate;
 	private String snknodeDateConversion;
 	private String tranType;
+	private String fromAccount;
 	private String toAccount;
 	private String amountTranRequested;
 	private String timeLocal;
 	private String dateLocal;
+	private String merchantType;
+	private String cardAcceptorIdCode;
+	private String currencyCodeTran;
+	private String msgReasonCodeReqOut;
+	private String msgReasonCodeRev;
+	private String msgReasonCodeAdv;
+	private String abortReason;
+	private String abortRspCode;
 
 	public RTEntity() {
 		super();
@@ -226,6 +235,78 @@ public class RTEntity {
 
 	public void setDateLocal(String dateLocal) {
 		this.dateLocal = dateLocal;
+	}
+
+	public String getMerchantType() {
+		return merchantType;
+	}
+
+	public void setMerchantType(String merchantType) {
+		this.merchantType = merchantType;
+	}
+
+	public String getCardAcceptorIdCode() {
+		return cardAcceptorIdCode;
+	}
+
+	public void setCardAcceptorIdCode(String cardAcceptorIdCode) {
+		this.cardAcceptorIdCode = cardAcceptorIdCode;
+	}
+
+	public String getCurrencyCodeTran() {
+		return currencyCodeTran;
+	}
+
+	public void setCurrencyCodeTran(String currencyCodeTran) {
+		this.currencyCodeTran = currencyCodeTran;
+	}
+
+	public String getMsgReasonCodeReqOut() {
+		return msgReasonCodeReqOut;
+	}
+
+	public void setMsgReasonCodeReqOut(String msgReasonCodeReqOut) {
+		this.msgReasonCodeReqOut = msgReasonCodeReqOut;
+	}
+
+	public String getMsgReasonCodeRev() {
+		return msgReasonCodeRev;
+	}
+
+	public void setMsgReasonCodeRev(String msgReasonCodeRev) {
+		this.msgReasonCodeRev = msgReasonCodeRev;
+	}
+
+	public String getMsgReasonCodeAdv() {
+		return msgReasonCodeAdv;
+	}
+
+	public void setMsgReasonCodeAdv(String msgReasonCodeAdv) {
+		this.msgReasonCodeAdv = msgReasonCodeAdv;
+	}
+
+	public String getAbortReason() {
+		return abortReason;
+	}
+
+	public void setAbortReason(String abortReason) {
+		this.abortReason = abortReason;
+	}
+
+	public String getAbortRspCode() {
+		return abortRspCode;
+	}
+
+	public void setAbortRspCode(String abortRspCode) {
+		this.abortRspCode = abortRspCode;
+	}
+
+	public String getFromAccount() {
+		return fromAccount;
+	}
+
+	public void setFromAccount(String fromAccount) {
+		this.fromAccount = fromAccount;
 	}
 
 }
