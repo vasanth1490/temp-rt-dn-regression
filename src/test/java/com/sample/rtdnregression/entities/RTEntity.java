@@ -34,6 +34,21 @@ public class RTEntity {
 	private String msgReasonCodeAdv;
 	private String abortReason;
 	private String abortRspCode;
+	private String srcnodeOriginalData;
+	private String snknodeDateSettle;
+	private String snknodeBatchSettleDate;
+	private String totalsGroup;
+	private String gmtDateTime;
+	private String acquiringInst;
+	private String rspCodeReqRsp;
+	private String cardAcceptorNameLoc;
+	private String inReq;
+	private String inAdv;
+	private String inRev;
+	private String snknodeAcquiringInst;
+	private String cardVerificationResult;
+	private String secure3dResult;
+	private String msgReasonCodeReqIn;
 
 	public RTEntity() {
 		super();
@@ -307,6 +322,126 @@ public class RTEntity {
 
 	public void setFromAccount(String fromAccount) {
 		this.fromAccount = fromAccount;
+	}
+
+	public String getSrcnodeOriginalData() {
+		return srcnodeOriginalData;
+	}
+
+	public void setSrcnodeOriginalData(String srcnodeOriginalData) {
+		this.srcnodeOriginalData = srcnodeOriginalData;
+	}
+
+	public String getSnknodeDateSettle() {
+		return snknodeDateSettle;
+	}
+
+	public void setSnknodeDateSettle(String snknodeDateSettle) {
+		this.snknodeDateSettle = snknodeDateSettle;
+	}
+
+	public String getTotalsGroup() {
+		return totalsGroup;
+	}
+
+	public void setTotalsGroup(String totalsGroup) {
+		this.totalsGroup = totalsGroup;
+	}
+
+	public String getGmtDateTime() {
+		return gmtDateTime;
+	}
+
+	public void setGmtDateTime(String gmtDateTime) {
+		this.gmtDateTime = gmtDateTime;
+	}
+
+	public String getAcquiringInst() {
+		return acquiringInst;
+	}
+
+	public void setAcquiringInst(String acquiringInst) {
+		this.acquiringInst = acquiringInst;
+	}
+
+	public String getRspCodeReqRsp() {
+		return rspCodeReqRsp;
+	}
+
+	public void setRspCodeReqRsp(String rspCodeReqRsp) {
+		this.rspCodeReqRsp = rspCodeReqRsp;
+	}
+
+	public String getCardAcceptorNameLoc() {
+		return cardAcceptorNameLoc;
+	}
+
+	public void setCardAcceptorNameLoc(String cardAcceptorNameLoc) {
+		this.cardAcceptorNameLoc = cardAcceptorNameLoc;
+	}
+
+	public String getInReq() {
+		return inReq;
+	}
+
+	public void setInReq(String inReq) {
+		this.inReq = inReq;
+	}
+
+	public String getInAdv() {
+		return inAdv;
+	}
+
+	public void setInAdv(String inAdv) {
+		this.inAdv = inAdv;
+	}
+
+	public String getInRev() {
+		return inRev;
+	}
+
+	public void setInRev(String inRev) {
+		this.inRev = inRev;
+	}
+
+	public String getSnknodeAcquiringInst() {
+		return snknodeAcquiringInst;
+	}
+
+	public void setSnknodeAcquiringInst(String snknodeAcquiringInst) {
+		this.snknodeAcquiringInst = snknodeAcquiringInst;
+	}
+
+	public String getCardVerificationResult() {
+		return cardVerificationResult;
+	}
+
+	public void setCardVerificationResult(String cardVerificationResult) {
+		this.cardVerificationResult = cardVerificationResult;
+	}
+
+	public String getSecure3dResult() {
+		return secure3dResult;
+	}
+
+	public void setSecure3dResult(String secure3dResult) {
+		this.secure3dResult = secure3dResult;
+	}
+
+	public String getSnknodeBatchSettleDate() {
+		return snknodeBatchSettleDate;
+	}
+
+	public void setSnknodeBatchSettleDate(String snknodeBatchSettleDate) {
+		this.snknodeBatchSettleDate = snknodeBatchSettleDate;
+	}
+
+	public String getMsgReasonCodeReqIn() {
+		return msgReasonCodeReqIn;
+	}
+
+	public void setMsgReasonCodeReqIn(String msgReasonCodeReqIn) {
+		this.msgReasonCodeReqIn = msgReasonCodeReqIn;
 	}
 
 }

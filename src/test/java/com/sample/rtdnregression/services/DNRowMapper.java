@@ -53,7 +53,26 @@ public class DNRowMapper implements RowMapper<DNEntity> {
 		entity.setCurTran(rs.getString(Constants.DN_CUR_TRAN));
 		entity.setMsgResonCodeIss(rs.getString(Constants.DN_MSG_RESON_CODE_ISS));
 		entity.setMsgResonCodeAcq(rs.getString(Constants.DN_MSG_RESON_CODE_ACQ));
-		entity.setTranDesc(rs.getString(Constants.DN_TRAN_DESC));;
+		entity.setTranDesc(rs.getString(Constants.DN_TRAN_DESC));
+		entity.setOdeMti(rs.getString(Constants.DN_ODE_MTI));
+		entity.setOdeSysTraAudNo(rs.getString(Constants.DN_ODE_SYS_TRA_AUD_NO));
+		entity.setOdeTstampLoclTr(rs.getString(Constants.DN_ODE_TSTAMP_LOCL_TR));
+		entity.setOdeInstIsAcq(rs.getString(Constants.DN_ODE_INST_IS_ACQ));
+		entity.setDateReconIss(rs.getString(Constants.DN_DATE_RECON_ISS));
+		entity.setDateReconNet(rs.getString(Constants.DN_DATE_RECON_NET));
+		entity.setInstIdReconIss(rs.getString(Constants.DN_INST_ID_RECON_ISS));
+		entity.setInstIdRecnIssB(rs.getString(Constants.DN_INST_ID_RECN_ISS_B));
+		entity.setGmtTime(rs.getString(Constants.DN_GMT_TIME));
+		entity.setInstIdAcq(rs.getString(Constants.DN_INST_ID_ACQ));
+		entity.setExtRspCode(rs.getString(Constants.DN_EXT_RSP_CODE));
+		entity.setActCode(rs.getString(Constants.DN_ACT_CODE));
+		entity.setCardAcptNameLoc(rs.getString(Constants.DN_CARD_ACPT_NAME_LOC));
+		entity.setCardAcptRegion(rs.getString(Constants.DN_CARD_ACPT_REGION));
+		entity.setCardAcptCountry(rs.getString(Constants.DN_CARD_ACPT_COUNTRY));
+		entity.setInstIdIss(rs.getString(Constants.DN_INST_ID_ISS));
+		entity.setCvvCvcResult(rs.getString(Constants.DN_CVV_CVC_RESULT));
+		entity.setCavvResult(rs.getString(Constants.DN_CAVV_RESULT));
+
 
 		return entity;
 	}

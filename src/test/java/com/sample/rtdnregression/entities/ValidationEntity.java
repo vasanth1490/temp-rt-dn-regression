@@ -33,6 +33,21 @@ public class ValidationEntity {
 	private boolean msgReasonCodeAdv;
 	private boolean abortReason;
 	private boolean abortRspCode;
+	private boolean srcnodeOriginalData;
+	private boolean snknodeDateSettle;
+	private boolean totalsGroup;
+	private boolean gmtDateTime;
+	private boolean acquiringInst;
+	private boolean rspCodeReqRsp;
+	private boolean cardAcceptorNameLoc;
+	private boolean currencyCode;
+	private boolean inReq;
+	private boolean inAdv;
+	private boolean inRev;
+	private boolean snknodeAcquiringInst;
+	private boolean cardVerificationResult;
+	private boolean secure3dResult;
+	private boolean msgReasonCodeReqIn;
 
 	public boolean isMsgType() {
 		return msgType;
@@ -289,7 +304,125 @@ public class ValidationEntity {
 	public void setFromAccount(boolean fromAccount) {
 		this.fromAccount = fromAccount;
 	}
-	
-	
+
+	public boolean isSrcnodeOriginalData() {
+		return srcnodeOriginalData;
+	}
+
+	public void setSrcnodeOriginalData(boolean srcnodeOriginalData) {
+		this.srcnodeOriginalData = srcnodeOriginalData;
+	}
+
+	public boolean isSnknodeDateSettle() {
+		return snknodeDateSettle;
+	}
+
+	public void setSnknodeDateSettle(boolean snknodeDateSettle) {
+		this.snknodeDateSettle = snknodeDateSettle;
+	}
+
+	public boolean isTotalsGroup() {
+		return totalsGroup;
+	}
+
+	public void setTotalsGroup(boolean totalsGroup) {
+		this.totalsGroup = totalsGroup;
+	}
+
+	public boolean isGmtDateTime() {
+		return gmtDateTime;
+	}
+
+	public void setGmtDateTime(boolean gmtDateTime) {
+		this.gmtDateTime = gmtDateTime;
+	}
+
+	public boolean isAcquiringInst() {
+		return acquiringInst;
+	}
+
+	public void setAcquiringInst(boolean acquiringInst) {
+		this.acquiringInst = acquiringInst;
+	}
+
+	public boolean isRspCodeReqRsp() {
+		return rspCodeReqRsp;
+	}
+
+	public void setRspCodeReqRsp(boolean rspCodeReqRsp) {
+		this.rspCodeReqRsp = rspCodeReqRsp;
+	}
+
+	public boolean isCardAcceptorNameLoc() {
+		return cardAcceptorNameLoc;
+	}
+
+	public void setCardAcceptorNameLoc(boolean cardAcceptorNameLoc) {
+		this.cardAcceptorNameLoc = cardAcceptorNameLoc;
+	}
+
+	public boolean isCurrencyCode() {
+		return currencyCode;
+	}
+
+	public void setCurrencyCode(boolean currencyCode) {
+		this.currencyCode = currencyCode;
+	}
+
+	public boolean isInReq() {
+		return inReq;
+	}
+
+	public void setInReq(boolean inReq) {
+		this.inReq = inReq;
+	}
+
+	public boolean isInAdv() {
+		return inAdv;
+	}
+
+	public void setInAdv(boolean inAdv) {
+		this.inAdv = inAdv;
+	}
+
+	public boolean isInRev() {
+		return inRev;
+	}
+
+	public void setInRev(boolean inRev) {
+		this.inRev = inRev;
+	}
+
+	public boolean isSnknodeAcquiringInst() {
+		return snknodeAcquiringInst;
+	}
+
+	public void setSnknodeAcquiringInst(boolean snknodeAcquiringInst) {
+		this.snknodeAcquiringInst = snknodeAcquiringInst;
+	}
+
+	public boolean isCardVerificationResult() {
+		return cardVerificationResult;
+	}
+
+	public void setCardVerificationResult(boolean cardVerificationResult) {
+		this.cardVerificationResult = cardVerificationResult;
+	}
+
+	public boolean isSecure3dResult() {
+		return secure3dResult;
+	}
+
+	public void setSecure3dResult(boolean secure3dResult) {
+		this.secure3dResult = secure3dResult;
+	}
+
+	public boolean isMsgReasonCodeReqIn() {
+		return msgReasonCodeReqIn;
+	}
+
+	public void setMsgReasonCodeReqIn(boolean msgReasonCodeReqIn) {
+		this.msgReasonCodeReqIn = msgReasonCodeReqIn;
+	}
 
 }

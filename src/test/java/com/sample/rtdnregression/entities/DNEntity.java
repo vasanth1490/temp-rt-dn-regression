@@ -42,7 +42,26 @@ public class DNEntity {
 	private String msgResonCodeIss;
 	private String msgResonCodeAcq;
 	private String tranDesc;
-	
+
+	private String odeMti;
+	private String odeSysTraAudNo;
+	private String odeTstampLoclTr;
+	private String odeInstIsAcq;
+	private String dateReconIss;
+	private String dateReconNet;
+	private String instIdReconIss;
+	private String instIdRecnIssB;
+	private String gmtTime;
+	private String instIdAcq;
+	private String extRspCode;
+	private String actCode;
+	private String cardAcptNameLoc;
+	private String cardAcptRegion;
+	private String cardAcptCountry;
+	private String instIdIss;
+	private String cvvCvcResult;
+	private String cavvResult;
+
 	public DNEntity() {
 		super();
 	}
@@ -381,7 +400,149 @@ public class DNEntity {
 	public void setCurTran(String curTran) {
 		this.curTran = curTran;
 	}
-	
-	
+
+	public String getOdeMti() {
+		return odeMti;
+	}
+
+	public void setOdeMti(String odeMti) {
+		this.odeMti = odeMti;
+	}
+
+	public String getOdeSysTraAudNo() {
+		return odeSysTraAudNo;
+	}
+
+	public void setOdeSysTraAudNo(String odeSysTraAudNo) {
+		this.odeSysTraAudNo = odeSysTraAudNo;
+	}
+
+	public String getOdeTstampLoclTr() {
+		return odeTstampLoclTr;
+	}
+
+	public void setOdeTstampLoclTr(String odeTstampLoclTr) {
+		this.odeTstampLoclTr = odeTstampLoclTr;
+	}
+
+	public String getOdeInstIsAcq() {
+		return odeInstIsAcq;
+	}
+
+	public void setOdeInstIsAcq(String odeInstIsAcq) {
+		this.odeInstIsAcq = odeInstIsAcq;
+	}
+
+	public String getDateReconIss() {
+		return dateReconIss;
+	}
+
+	public void setDateReconIss(String dateReconIss) {
+		this.dateReconIss = dateReconIss;
+	}
+
+	public String getDateReconNet() {
+		return dateReconNet;
+	}
+
+	public void setDateReconNet(String dateReconNet) {
+		this.dateReconNet = dateReconNet;
+	}
+
+	public String getInstIdReconIss() {
+		return instIdReconIss;
+	}
+
+	public void setInstIdReconIss(String instIdReconIss) {
+		this.instIdReconIss = instIdReconIss;
+	}
+
+	public String getInstIdRecnIssB() {
+		return instIdRecnIssB;
+	}
+
+	public void setInstIdRecnIssB(String instIdRecnIssB) {
+		this.instIdRecnIssB = instIdRecnIssB;
+	}
+
+	public String getGmtTime() {
+		return gmtTime;
+	}
+
+	public void setGmtTime(String gmtTime) {
+		this.gmtTime = gmtTime;
+	}
+
+	public String getInstIdAcq() {
+		return instIdAcq;
+	}
+
+	public void setInstIdAcq(String instIdAcq) {
+		this.instIdAcq = instIdAcq;
+	}
+
+	public String getExtRspCode() {
+		return extRspCode;
+	}
+
+	public void setExtRspCode(String extRspCode) {
+		this.extRspCode = extRspCode;
+	}
+
+	public String getActCode() {
+		return actCode;
+	}
+
+	public void setActCode(String actCode) {
+		this.actCode = actCode;
+	}
+
+	public String getCardAcptNameLoc() {
+		return cardAcptNameLoc;
+	}
+
+	public void setCardAcptNameLoc(String cardAcptNameLoc) {
+		this.cardAcptNameLoc = cardAcptNameLoc;
+	}
+
+	public String getCardAcptRegion() {
+		return cardAcptRegion;
+	}
+
+	public void setCardAcptRegion(String cardAcptRegion) {
+		this.cardAcptRegion = cardAcptRegion;
+	}
+
+	public String getCardAcptCountry() {
+		return cardAcptCountry;
+	}
+
+	public void setCardAcptCountry(String cardAcptCountry) {
+		this.cardAcptCountry = cardAcptCountry;
+	}
+
+	public String getInstIdIss() {
+		return instIdIss;
+	}
+
+	public void setInstIdIss(String instIdIss) {
+		this.instIdIss = instIdIss;
+	}
+
+	public String getCvvCvcResult() {
+		return cvvCvcResult;
+	}
+
+	public void setCvvCvcResult(String cvvCvcResult) {
+		this.cvvCvcResult = cvvCvcResult;
+	}
+
+	public String getCavvResult() {
+		return cavvResult;
+	}
+
+	public void setCavvResult(String cavvResult) {
+		this.cavvResult = cavvResult;
+	}
 
 }

@@ -56,6 +56,20 @@ public class RTRowMapper implements RowMapper<RTEntity> {
 		entity.setMsgReasonCodeAdv(rs.getString(Constants.RT_MSG_REASON_CODE_ADV));
 		entity.setAbortReason(rs.getString(Constants.RT_ABORT_REASON));
 		entity.setAbortRspCode(rs.getString(Constants.RT_ABORT_RSP_CODE));
+		entity.setSrcnodeOriginalData(rs.getString(Constants.RT_SRCNODE_ORIGINAL_DATA));
+		entity.setSnknodeDateSettle(rs.getString(Constants.RT_SNKNODE_DATE_SETTLE));
+		entity.setTotalsGroup(rs.getString(Constants.RT_TOTALS_GROUP));
+		entity.setGmtDateTime(rs.getString(Constants.RT_GMT_DATE_TIME));
+		entity.setAcquiringInst(rs.getString(Constants.RT_ACQUIRING_INST));
+		entity.setRspCodeReqRsp(rs.getString(Constants.RT_RSP_CODE_REQ_RSP));
+		entity.setCardAcceptorNameLoc(rs.getString(Constants.RT_CARD_ACCEPTOR_NAME_LOC));
+		entity.setInReq(rs.getString(Constants.RT_IN_REQ));
+		entity.setInAdv(rs.getString(Constants.RT_IN_ADV));
+		entity.setInRev(rs.getString(Constants.RT_IN_REV));
+		entity.setSnknodeAcquiringInst(rs.getString(Constants.RT_SNKNODE_ACQUIRING_INST));
+		entity.setCardVerificationResult(rs.getString(Constants.RT_CARD_VERIFICATION_RESULT));
+		entity.setSecure3dResult(rs.getString(Constants.RT_SECURE_3D_RESULT));
+
 		return entity;
 	}
 

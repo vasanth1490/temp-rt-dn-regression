@@ -95,6 +95,21 @@ public class ExcelReportService {
 			rtMap.put(Constants.RT_MSG_REASON_CODE_ADV, rtEntity.getMsgReasonCodeAdv());
 			rtMap.put(Constants.RT_ABORT_REASON, rtEntity.getAbortReason());
 			rtMap.put(Constants.RT_ABORT_RSP_CODE, rtEntity.getAbortRspCode());
+			
+			rtMap.put(Constants.RT_SRCNODE_ORIGINAL_DATA, rtEntity.getSrcnodeOriginalData());
+			rtMap.put(Constants.RT_SNKNODE_DATE_SETTLE, rtEntity.getSnknodeDateSettle());
+			rtMap.put(Constants.RT_TOTALS_GROUP, rtEntity.getTotalsGroup());
+			rtMap.put(Constants.RT_GMT_DATE_TIME, rtEntity.getGmtDateTime());
+			rtMap.put(Constants.RT_ACQUIRING_INST, rtEntity.getAcquiringInst());
+			rtMap.put(Constants.RT_RSP_CODE_REQ_RSP, rtEntity.getRspCodeReqRsp());
+			rtMap.put(Constants.RT_CARD_ACCEPTOR_NAME_LOC, rtEntity.getCardAcceptorNameLoc());
+			rtMap.put(Constants.RT_IN_REQ, rtEntity.getInReq());
+			rtMap.put(Constants.RT_IN_ADV, rtEntity.getInAdv());
+			rtMap.put(Constants.RT_IN_REV, rtEntity.getInRev());
+			rtMap.put(Constants.RT_SNKNODE_ACQUIRING_INST, rtEntity.getSnknodeAcquiringInst());
+			rtMap.put(Constants.RT_CARD_VERIFICATION_RESULT, rtEntity.getCardVerificationResult());
+			rtMap.put(Constants.RT_SECURE_3D_RESULT, rtEntity.getSecure3dResult());
+
 
 			for (int x = 0; x < Constants.rtHeaders.size(); x++) {
 				Cell cell = dataRow.createCell(x);
@@ -172,6 +187,26 @@ public class ExcelReportService {
 			dnMap.put(Constants.DN_MSG_RESON_CODE_ISS, dnEntity.getMsgResonCodeIss());
 			dnMap.put(Constants.DN_MSG_RESON_CODE_ACQ, dnEntity.getMsgResonCodeAcq());
 			dnMap.put(Constants.DN_TRAN_DESC, dnEntity.getTranDesc());
+			
+			dnMap.put(Constants.DN_ODE_MTI, dnEntity.getOdeMti());
+			dnMap.put(Constants.DN_ODE_SYS_TRA_AUD_NO, dnEntity.getOdeSysTraAudNo());
+			dnMap.put(Constants.DN_ODE_TSTAMP_LOCL_TR, dnEntity.getOdeTstampLoclTr());
+			dnMap.put(Constants.DN_ODE_INST_IS_ACQ, dnEntity.getOdeInstIsAcq());
+			dnMap.put(Constants.DN_DATE_RECON_ISS, dnEntity.getDateReconIss());
+			dnMap.put(Constants.DN_DATE_RECON_NET, dnEntity.getDateReconNet());
+			dnMap.put(Constants.DN_INST_ID_RECON_ISS, dnEntity.getInstIdReconIss());
+			dnMap.put(Constants.DN_INST_ID_RECN_ISS_B, dnEntity.getInstIdRecnIssB());
+			dnMap.put(Constants.DN_GMT_TIME, dnEntity.getGmtTime());
+			dnMap.put(Constants.DN_INST_ID_ACQ, dnEntity.getInstIdAcq());
+			dnMap.put(Constants.DN_EXT_RSP_CODE, dnEntity.getExtRspCode());
+			dnMap.put(Constants.DN_ACT_CODE, dnEntity.getActCode());
+			dnMap.put(Constants.DN_CARD_ACPT_NAME_LOC, dnEntity.getCardAcptNameLoc());
+			dnMap.put(Constants.DN_CARD_ACPT_REGION, dnEntity.getCardAcptRegion());
+			dnMap.put(Constants.DN_CARD_ACPT_COUNTRY, dnEntity.getCardAcptCountry());
+			dnMap.put(Constants.DN_INST_ID_ISS, dnEntity.getInstIdIss());
+			dnMap.put(Constants.DN_CVV_CVC_RESULT, dnEntity.getCvvCvcResult());
+			dnMap.put(Constants.DN_CAVV_RESULT, dnEntity.getCavvResult());
+
 
 			for (int x = 0; x < Constants.dnHeaders.size(); x++) {
 				Cell cell = dataRow.createCell(x);
@@ -240,6 +275,21 @@ public class ExcelReportService {
 			validationMap.put(Constants.RT_MSG_REASON_CODE_ADV, validationEntity.isMsgReasonCodeAdv());
 			validationMap.put(Constants.RT_ABORT_REASON, validationEntity.isAbortReason());
 			validationMap.put(Constants.RT_ABORT_RSP_CODE, validationEntity.isAbortRspCode());
+			
+			validationMap.put(Constants.RT_SRCNODE_ORIGINAL_DATA, validationEntity.isSrcnodeOriginalData());
+			validationMap.put(Constants.RT_SNKNODE_DATE_SETTLE, validationEntity.isSnknodeDateSettle());
+			validationMap.put(Constants.RT_TOTALS_GROUP, validationEntity.isTotalsGroup());
+			validationMap.put(Constants.RT_GMT_DATE_TIME, validationEntity.isGmtDateTime());
+			validationMap.put(Constants.RT_ACQUIRING_INST, validationEntity.isAcquiringInst());
+			validationMap.put(Constants.RT_RSP_CODE_REQ_RSP, validationEntity.isRspCodeReqRsp());
+			validationMap.put(Constants.RT_CARD_ACCEPTOR_NAME_LOC, validationEntity.isCardAcceptorNameLoc());
+			validationMap.put(Constants.RT_IN_REQ, validationEntity.isInReq());
+			validationMap.put(Constants.RT_IN_ADV, validationEntity.isInAdv());
+			validationMap.put(Constants.RT_IN_REV, validationEntity.isInRev());
+			validationMap.put(Constants.RT_SNKNODE_ACQUIRING_INST, validationEntity.isSnknodeAcquiringInst());
+			validationMap.put(Constants.RT_CARD_VERIFICATION_RESULT, validationEntity.isCardVerificationResult());
+			validationMap.put(Constants.RT_SECURE_3D_RESULT, validationEntity.isSecure3dResult());
+
 
 			for (int x = 1; x < Constants.rtHeaders.size(); x++) {
 				Cell cell = dataRow.createCell(x);

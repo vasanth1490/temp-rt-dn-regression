@@ -1,7 +1,10 @@
 package com.sample.rtdnregression.services;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,7 +48,9 @@ public class ValidationService {
 			validationEntity.setStandin(validateStandin(dn, rt)); // 3
 			validationEntity.setSrcnodeDateSettle(validateSrcnodeDateSettle(dn, rt)); // 4
 			validationEntity.setSrcnodeAmountRequested(validateSrcnodeAmountRequested(dn, rt)); // 5
+			// 6 7 No Mapping
 			validationEntity.setSrcnodeCashRequested(validateSrcnodeCashRequested(dn, rt)); // 8
+			// 9 10 No Mapping
 			validationEntity.setSrcnodeCurrencyCode(validateSrcnodeCurrencyCode(dn, rt)); // 11
 			validationEntity.setSrcnodeConversionRate(validateSrcnodeConversionRate(dn, rt));// 12
 			validationEntity.setSrcnodeDateConversion(validateSrcnodeDateConversion(dn, rt));// 13
@@ -64,13 +69,28 @@ public class ValidationService {
 			validationEntity.setTimeLocal(validateTimeLocal(dn, rt)); // 40
 			validationEntity.setDateLocal(validateDateLocal(dn, rt)); // 41
 			validationEntity.setMerchantType(validateMerchantType(dn, rt));// 43
-			validationEntity.setCardAcceptorIdCode(validateCardAcceptorIdCode(dn, rt)); //51
-			validationEntity.setCurrencyCodeTran(validateCurrencyCodeTran(dn, rt));
+			validationEntity.setCardAcceptorIdCode(validateCardAcceptorIdCode(dn, rt)); // 51
+			validationEntity.setCurrencyCodeTran(validateCurrencyCodeTran(dn, rt)); // 54
 			validationEntity.setMsgReasonCodeReqOut(validateMsgReasonCodeReqOut(dn, rt));// 61
 			validationEntity.setMsgReasonCodeRev(validateMsgReasonCodeRev(dn, rt)); // 62
 			validationEntity.setMsgReasonCodeAdv(validateMsgReasonCodeAdv(dn, rt)); // 63
-			validationEntity.setAbortReason(validateAbortReason(dn, rt));
-			validationEntity.setAbortRspCode(validateAbortRspCode(dn, rt));
+			validationEntity.setAbortReason(validateAbortReason(dn, rt)); // 67
+			validationEntity.setAbortRspCode(validateAbortRspCode(dn, rt)); // 69
+
+			validationEntity.setSrcnodeOriginalData(validateSrcnodeOriginalData(dn, rt)); // 14
+			validationEntity.setSnknodeDateSettle(validateSnknodeDateSettle(dn, rt)); // 18
+			validationEntity.setTotalsGroup(validateTotalsGroup(dn, rt)); // 29
+			validationEntity.setGmtDateTime(validateGmtDateTime(dn, rt)); // 39
+			validationEntity.setAcquiringInst(validateAcquiringInst(dn, rt)); // 44
+			validationEntity.setRspCodeReqRsp(validateRspCodeReqRsp(dn, rt));
+			validationEntity.setCardAcceptorNameLoc(validateCardAcceptorNameLoc(dn, rt)); // 52
+			validationEntity.setInReq(validateInReq(dn, rt));
+			validationEntity.setInAdv(validateInAdv(dn, rt));
+			validationEntity.setInRev(validateInRev(dn, rt));
+			validationEntity.setSnknodeAcquiringInst(validateSnknodeAcquiringInst(dn, rt)); // 87
+			validationEntity.setCardVerificationResult(validateCardVerificationResult(dn, rt)); // 91
+			validationEntity.setSecure3dResult(validateSecure3dResult(dn, rt)); // 92
+			validationEntity.setMsgReasonCodeReqIn(validateMsgReasonCodeReqIn(dn, rt)); // 60
 
 			validationEntities.add(validationEntity);
 		}
@@ -202,7 +222,7 @@ public class ValidationService {
 		return compareStrings(rt.getTranType(),
 				dn.getTranTypeId() != null ? dn.getTranTypeId().substring(0, 2) : dn.getTranTypeId());
 	}
-	
+
 	private boolean validateFromAccount(DNEntity dn, RTEntity rt) {
 		return compareStrings(rt.getToAccount(),
 				dn.getTranTypeId() != null ? dn.getTranTypeId().substring(2, 4) : dn.getTranTypeId());
@@ -281,6 +301,112 @@ public class ValidationService {
 		}
 
 		return a == b || (a != null && a.equals(b));
+	}
+
+	private boolean validateSrcnodeOriginalData(DNEntity dn, RTEntity rt) {
+		String rtVal = rt.getSrcnodeOriginalData();
+		if (rtVal == null) {
+			return true;
+		} else {
+			return compareStrings(rtVal.substring(0, 4).replaceFirst("0", "1"), dn.getOdeMti())
+					&& compareStrings(rtVal.substring(4, 10), dn.getOdeSysTraAudNo())
+					&& compareStrings(rtVal.substring(10, 20), dn.getOdeTstampLoclTr().substring(4))
+					&& compareStrings(rtVal.substring(20, 31), dn.getOdeInstIsAcq());
+		}
+	}
+
+	private boolean validateSnknodeDateSettle(DNEntity dn, RTEntity rt) {
+		String rtVal = rt.getSnknodeDateSettle();
+		if (rtVal == null) {
+			rtVal = rt.getSnknodeBatchSettleDate().substring(5, 7) + rt.getSnknodeBatchSettleDate().substring(8, 10);
+		}
+		return compareStrings(rtVal, dn.getDateReconIss().substring(4))
+				&& compareStrings(rtVal, dn.getDateReconNet().substring(4));
+	}
+
+	private boolean validateTotalsGroup(DNEntity dn, RTEntity rt) {
+		String rtVal = rt.getTotalsGroup().replaceAll("(?i)1$", "").toUpperCase();
+		return compareStrings(rtVal, dn.getInstIdReconIss().replaceAll("(?i)AU$", "").toUpperCase())
+				&& compareStrings(rtVal, dn.getInstIdRecnIssB().replaceAll("(?i)AU$", "").toUpperCase());
+	}
+
+	private boolean validateGmtDateTime(DNEntity dn, RTEntity rt) {
+		return compareStrings(rt.getGmtDateTime(), dn.getGmtTime().substring(4));
+	}
+
+	private boolean validateAcquiringInst(DNEntity dn, RTEntity rt) {
+		return rt.getAcquiringInst() == null && dn.getInstIdAcq().isEmpty();
+	}
+
+	private boolean validateRspCodeReqRsp(DNEntity dn, RTEntity rt) {
+
+		// Add your validation logic here
+		return false;
+	}
+
+	private boolean validateCardAcceptorNameLoc(DNEntity dn, RTEntity rt) {
+		String rtStoreName = rt.getCardAcceptorNameLoc().substring(0, 23).trim();
+		String rtCity = rt.getCardAcceptorNameLoc().substring(23, 36).trim();
+		String rtStateCode = String.format("%03d",
+				Integer.parseInt(rt.getCardAcceptorNameLoc().substring(36, 38).trim()));
+		String rtCountryCode = rt.getCardAcceptorNameLoc().substring(38, 40).trim();
+
+		String dnStoreName = dn.getCardAcptNameLoc().substring(0, 23).trim();
+		String dnCity = dn.getCardAcptNameLoc().substring(55, 68).trim();
+		String dnStateCode = dn.getCardAcptRegion();
+		String dnCountryCode = dn.getCardAcptCountry();
+
+		return compareStrings(rtStoreName, dnStoreName) && compareStrings(rtCity, dnCity)
+				&& compareStrings(rtStateCode, dnStateCode) && rtCountryCode.equals("AU")
+				&& dnCountryCode.equals("AUS");
+	}
+
+	private boolean validateInReq(DNEntity dn, RTEntity rt) {
+//		if (Arrays.asList("1110", "1210", "1410").contains(dn.getMti())) {
+//			String convertedRTVal = convertDate("yyyy-MM-dd HH:mm:ss.SSS", "yyyyMMddHHmmssSS", rt.getInReq()).substring(0,16);
+//			return compareStrings(convertedRTVal, dn.getTst);
+//		}
+		return false;
+	}
+
+	private boolean validateInAdv(DNEntity dn, RTEntity rt) {
+		// Add your validation logic here
+		return false;
+	}
+
+	private boolean validateInRev(DNEntity dn, RTEntity rt) {
+		// Add your validation logic here
+		return false;
+	}
+
+	private boolean validateSnknodeAcquiringInst(DNEntity dn, RTEntity rt) {
+		return rt.getSnknodeAcquiringInst() == null && dn.getInstIdIss().isEmpty();
+	}
+
+	private boolean validateCardVerificationResult(DNEntity dn, RTEntity rt) {
+		return rt.getCardVerificationResult() == null && dn.getCvvCvcResult().isEmpty();
+	}
+
+	private boolean validateSecure3dResult(DNEntity dn, RTEntity rt) {
+		return rt.getSecure3dResult() == null && dn.getCavvResult().isEmpty();
+	}
+
+	private boolean validateMsgReasonCodeReqIn(DNEntity dn, RTEntity rt) {
+		if (Arrays.asList("1110", "1210", "1410").contains(dn.getMti())) {
+			if (rt.getMsgReasonCodeReqIn() == null) {
+				return dn.getMsgResonCodeAcq().isEmpty();
+			} else {
+				return compareStrings(rt.getMsgReasonCodeReqIn(), dn.getMsgResonCodeAcq());
+			}
+		}
+		return true;
+	}
+	
+	private String convertDate(String srcFormat, String destFormat, String dateStr) throws ParseException {
+		SimpleDateFormat srcDateFormat = new SimpleDateFormat(srcFormat);
+		Date date = srcDateFormat.parse(dateStr);
+		SimpleDateFormat destDateFormat = new SimpleDateFormat(destFormat);
+		return destDateFormat.format(date);
 	}
 
 }
