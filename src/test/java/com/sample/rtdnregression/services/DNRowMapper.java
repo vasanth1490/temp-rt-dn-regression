@@ -72,7 +72,30 @@ public class DNRowMapper implements RowMapper<DNEntity> {
 		entity.setInstIdIss(rs.getString(Constants.DN_INST_ID_ISS));
 		entity.setCvvCvcResult(rs.getString(Constants.DN_CVV_CVC_RESULT));
 		entity.setCavvResult(rs.getString(Constants.DN_CAVV_RESULT));
-
+		
+		entity.setCardAcptTermId(rs.getString(Constants.DN_CARD_ACPT_TERM_ID));
+		entity.setNetTermId(rs.getString(Constants.DN_NET_TERM_ID));
+		entity.setPosCrdDatInCap(rs.getString(Constants.DN_POS_CRD_DAT_IN_CAP));
+		entity.setPosCrdhldrAuthC(rs.getString(Constants.DN_POS_CRDHLDR_AUTH_C));
+		entity.setPosCardCaptCap(rs.getString(Constants.DN_POS_CARD_CAPT_CAP));
+		entity.setPosOperEnv(rs.getString(Constants.DN_POS_OPER_ENV));
+		entity.setPosCrdhldrPresnt(rs.getString(Constants.DN_POS_CRDHLDR_PRESNT));
+		entity.setPosCardPres(rs.getString(Constants.DN_POS_CARD_PRES));
+		entity.setPosCrdDatInMod(rs.getString(Constants.DN_POS_CRD_DAT_IN_MOD));
+		entity.setPosCrdhldrAMeth(rs.getString(Constants.DN_POS_CRDHLDR_A_METH));
+		entity.setPosCrdhldrAuth(rs.getString(Constants.DN_POS_CRDHLDR_AUTH));
+		entity.setPosCrdDatOtCap(rs.getString(Constants.DN_POS_CRD_DAT_OT_CAP));
+		entity.setPosTermOutCap(rs.getString(Constants.DN_POS_TERM_OUT_CAP));
+		entity.setPosPinCaptCap(rs.getString(Constants.DN_POS_PIN_CAPT_CAP));
+		entity.setPosTermOptr(rs.getString(Constants.DN_POS_TERM_OPTR));
+		entity.setTermClass(rs.getString(Constants.DN_TERM_CLASS));
+		entity.setFinLTstampTrans(rs.getString(Constants.DN_FIN_L_TSTAMP_TRANS));
+		entity.setFinRecordTstampTrans(rs.getString(Constants.DN_FIN_RECORD_TSTAMP_TRANS));
+		entity.setMciUcafData(rs.getString(Constants.DN_MCI_UCAF_DATA));
+		
+		entity.setAdlRqstAmt0(rs.getString(Constants.DN_ADL_RQST_AMT0));
+		entity.setAdlDataPrivIss(rs.getString(Constants.DN_ADL_DATA_PRIV_ISS));
+		entity.setProcIdIss(rs.getString(Constants.DN_PROC_ID_ISS));
 
 		return entity;
 	}

@@ -62,6 +62,33 @@ public class DNEntity {
 	private String cvvCvcResult;
 	private String cavvResult;
 
+	private String cardAcptTermId;
+	private String netTermId;
+	private String posCrdDatInCap;
+	private String posCrdhldrAuthC;
+	private String posCardCaptCap;
+	private String posOperEnv;
+	private String posCrdhldrPresnt;
+	private String posCardPres;
+	private String posCrdDatInMod;
+	private String posCrdhldrAMeth;
+	private String posCrdhldrAuth;
+	private String posCrdDatOtCap;
+	private String posTermOutCap;
+	private String posPinCaptCap;
+	private String posTermOptr;
+	private String termClass;
+	private String finLTstampTrans;
+	private String finRecordTstampTrans;
+	private String mciUcafData;
+
+	private String tranDisposition;
+	private String actionCode;
+	private String istRespRevCode;
+	private String adlRqstAmt0;
+	private String adlDataPrivIss;
+	private String procIdIss;
+
 	public DNEntity() {
 		super();
 	}
@@ -543,6 +570,206 @@ public class DNEntity {
 
 	public void setCavvResult(String cavvResult) {
 		this.cavvResult = cavvResult;
+	}
+
+	public String getCardAcptTermId() {
+		return cardAcptTermId;
+	}
+
+	public void setCardAcptTermId(String cardAcptTermId) {
+		this.cardAcptTermId = cardAcptTermId;
+	}
+
+	public String getNetTermId() {
+		return netTermId;
+	}
+
+	public void setNetTermId(String netTermId) {
+		this.netTermId = netTermId;
+	}
+
+	public String getPosCrdDatInCap() {
+		return posCrdDatInCap;
+	}
+
+	public void setPosCrdDatInCap(String posCrdDatInCap) {
+		this.posCrdDatInCap = posCrdDatInCap;
+	}
+
+	public String getPosCrdhldrAuthC() {
+		return posCrdhldrAuthC;
+	}
+
+	public void setPosCrdhldrAuthC(String posCrdhldrAuthC) {
+		this.posCrdhldrAuthC = posCrdhldrAuthC;
+	}
+
+	public String getPosCardCaptCap() {
+		return posCardCaptCap;
+	}
+
+	public void setPosCardCaptCap(String posCardCaptCap) {
+		this.posCardCaptCap = posCardCaptCap;
+	}
+
+	public String getPosOperEnv() {
+		return posOperEnv;
+	}
+
+	public void setPosOperEnv(String posOperEnv) {
+		this.posOperEnv = posOperEnv;
+	}
+
+	public String getPosCrdhldrPresnt() {
+		return posCrdhldrPresnt;
+	}
+
+	public void setPosCrdhldrPresnt(String posCrdhldrPresnt) {
+		this.posCrdhldrPresnt = posCrdhldrPresnt;
+	}
+
+	public String getPosCardPres() {
+		return posCardPres;
+	}
+
+	public void setPosCardPres(String posCardPres) {
+		this.posCardPres = posCardPres;
+	}
+
+	public String getPosCrdDatInMod() {
+		return posCrdDatInMod;
+	}
+
+	public void setPosCrdDatInMod(String posCrdDatInMod) {
+		this.posCrdDatInMod = posCrdDatInMod;
+	}
+
+	public String getPosCrdhldrAMeth() {
+		return posCrdhldrAMeth;
+	}
+
+	public void setPosCrdhldrAMeth(String posCrdhldrAMeth) {
+		this.posCrdhldrAMeth = posCrdhldrAMeth;
+	}
+
+	public String getPosCrdhldrAuth() {
+		return posCrdhldrAuth;
+	}
+
+	public void setPosCrdhldrAuth(String posCrdhldrAuth) {
+		this.posCrdhldrAuth = posCrdhldrAuth;
+	}
+
+	public String getPosCrdDatOtCap() {
+		return posCrdDatOtCap;
+	}
+
+	public void setPosCrdDatOtCap(String posCrdDatOtCap) {
+		this.posCrdDatOtCap = posCrdDatOtCap;
+	}
+
+	public String getPosTermOutCap() {
+		return posTermOutCap;
+	}
+
+	public void setPosTermOutCap(String posTermOutCap) {
+		this.posTermOutCap = posTermOutCap;
+	}
+
+	public String getPosPinCaptCap() {
+		return posPinCaptCap;
+	}
+
+	public void setPosPinCaptCap(String posPinCaptCap) {
+		this.posPinCaptCap = posPinCaptCap;
+	}
+
+	public String getPosTermOptr() {
+		return posTermOptr;
+	}
+
+	public void setPosTermOptr(String posTermOptr) {
+		this.posTermOptr = posTermOptr;
+	}
+
+	public String getTermClass() {
+		return termClass;
+	}
+
+	public void setTermClass(String termClass) {
+		this.termClass = termClass;
+	}
+
+	public String getFinLTstampTrans() {
+		return finLTstampTrans;
+	}
+
+	public void setFinLTstampTrans(String finLTstampTrans) {
+		this.finLTstampTrans = finLTstampTrans;
+	}
+
+	public String getFinRecordTstampTrans() {
+		return finRecordTstampTrans;
+	}
+
+	public void setFinRecordTstampTrans(String finRecordTstampTrans) {
+		this.finRecordTstampTrans = finRecordTstampTrans;
+	}
+
+	public String getMciUcafData() {
+		return mciUcafData;
+	}
+
+	public void setMciUcafData(String mciUcafData) {
+		this.mciUcafData = mciUcafData;
+	}
+
+	public String getTranDisposition() {
+		return tranDisposition;
+	}
+
+	public void setTranDisposition(String tranDisposition) {
+		this.tranDisposition = tranDisposition;
+	}
+
+	public String getActionCode() {
+		return actionCode;
+	}
+
+	public void setActionCode(String actionCode) {
+		this.actionCode = actionCode;
+	}
+
+	public String getIstRespRevCode() {
+		return istRespRevCode;
+	}
+
+	public void setIstRespRevCode(String istRespRevCode) {
+		this.istRespRevCode = istRespRevCode;
+	}
+
+	public String getAdlRqstAmt0() {
+		return adlRqstAmt0;
+	}
+
+	public void setAdlRqstAmt0(String adlRqstAmt0) {
+		this.adlRqstAmt0 = adlRqstAmt0;
+	}
+
+	public String getAdlDataPrivIss() {
+		return adlDataPrivIss;
+	}
+
+	public void setAdlDataPrivIss(String adlDataPrivIss) {
+		this.adlDataPrivIss = adlDataPrivIss;
+	}
+
+	public String getProcIdIss() {
+		return procIdIss;
+	}
+
+	public void setProcIdIss(String procIdIss) {
+		this.procIdIss = procIdIss;
 	}
 
 }

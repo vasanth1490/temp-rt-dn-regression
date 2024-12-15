@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import com.sample.rtdnregression.entities.DNEntity;
+import com.sample.rtdnregression.entities.XIstRespRevCodEntity;
 
 @Service
 public class DNService {
@@ -18,6 +19,12 @@ public class DNService {
 	public List<DNEntity> getDNData() {
 		String sql = "SELECT * FROM dn";
 		List<DNEntity> dnEntities = jdbcTemplate.query(sql, new DNRowMapper());
+		return dnEntities;
+	}
+
+	public List<XIstRespRevCodEntity> getXIstRespRevCod() {
+		String sql = "SELECT * FROM dn";
+		List<XIstRespRevCodEntity> dnEntities = jdbcTemplate.query(sql, new XIstRespRevCodRowMapper());
 		return dnEntities;
 	}
 }

@@ -50,6 +50,13 @@ public class RTEntity {
 	private String secure3dResult;
 	private String msgReasonCodeReqIn;
 
+	private String cardAcceptorTermId;
+	private String posDataCode;
+	private String ucafData;
+	
+	private String amountCashRequested;
+	private String addrVerificationResult;
+
 	public RTEntity() {
 		super();
 	}
@@ -443,5 +450,47 @@ public class RTEntity {
 	public void setMsgReasonCodeReqIn(String msgReasonCodeReqIn) {
 		this.msgReasonCodeReqIn = msgReasonCodeReqIn;
 	}
+
+	public String getCardAcceptorTermId() {
+		return cardAcceptorTermId;
+	}
+
+	public void setCardAcceptorTermId(String cardAcceptorTermId) {
+		this.cardAcceptorTermId = cardAcceptorTermId;
+	}
+
+	public String getPosDataCode() {
+		return posDataCode;
+	}
+
+	public void setPosDataCode(String posDataCode) {
+		this.posDataCode = posDataCode;
+	}
+
+	public String getUcafData() {
+		return ucafData;
+	}
+
+	public void setUcafData(String ucafData) {
+		this.ucafData = ucafData;
+	}
+
+	public String getAmountCashRequested() {
+		return amountCashRequested;
+	}
+
+	public void setAmountCashRequested(String amountCashRequested) {
+		this.amountCashRequested = amountCashRequested;
+	}
+
+	public String getAddrVerificationResult() {
+		return addrVerificationResult;
+	}
+
+	public void setAddrVerificationResult(String addrVerificationResult) {
+		this.addrVerificationResult = addrVerificationResult;
+	}
+	
+	
 
 }

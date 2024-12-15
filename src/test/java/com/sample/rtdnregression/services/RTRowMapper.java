@@ -70,6 +70,13 @@ public class RTRowMapper implements RowMapper<RTEntity> {
 		entity.setCardVerificationResult(rs.getString(Constants.RT_CARD_VERIFICATION_RESULT));
 		entity.setSecure3dResult(rs.getString(Constants.RT_SECURE_3D_RESULT));
 
+		entity.setCardAcceptorTermId(rs.getString(Constants.RT_CARD_ACCEPTOR_TERM_ID));
+		entity.setPosDataCode(rs.getString(Constants.RT_POS_DATA_CODE));
+		entity.setUcafData(rs.getString(Constants.RT_UCAF_DATA));
+
+		entity.setAmountCashRequested(rs.getString(Constants.RT_AMOUNT_CASH_REQUESTED));
+		entity.setAddrVerificationResult(rs.getString(Constants.RT_ADDR_VERIFICATION_RESULT));
+
 		return entity;
 	}
 

@@ -2,427 +2,372 @@ package com.sample.rtdnregression.entities;
 
 public class ValidationEntity {
 	private String tranNr;
-	private boolean msgType;
-	private boolean draftCapture;
-	private boolean standin;
-	private boolean srcnodeDateSettle;
-	private boolean srcnodeAmountRequested;
-	private boolean srcnodeCashRequested;
-	private boolean srcnodeCurrencyCode;
-	private boolean srcnodeDateConversion;
-	private boolean srcnodeConversionRate;
-	private boolean snknodeReqSysTrace;
-	private boolean snknodeRevSysTrace;
-	private boolean snknodeAdvSysTrace;
-	private boolean snknodeAmountRequested;
-	private boolean snknodeCashRequested;
-	private boolean snknodeCurrencyCode;
-	private boolean snknodeConversionRate;
-	private boolean snknodeDateConversion;
-	private boolean tranType;
-	private boolean fromAccount;
-	private boolean toAccount;
-	private boolean amountTranRequested;
-	private boolean timeLocal;
-	private boolean dateLocal;
-	private boolean merchantType;
-	private boolean cardAcceptorIdCode;
-	private boolean currencyCodeTran;
-	private boolean msgReasonCodeReqOut;
-	private boolean msgReasonCodeRev;
-	private boolean msgReasonCodeAdv;
-	private boolean abortReason;
-	private boolean abortRspCode;
-	private boolean srcnodeOriginalData;
-	private boolean snknodeDateSettle;
-	private boolean totalsGroup;
-	private boolean gmtDateTime;
-	private boolean acquiringInst;
-	private boolean rspCodeReqRsp;
-	private boolean cardAcceptorNameLoc;
-	private boolean currencyCode;
-	private boolean inReq;
-	private boolean inAdv;
-	private boolean inRev;
-	private boolean snknodeAcquiringInst;
-	private boolean cardVerificationResult;
-	private boolean secure3dResult;
-	private boolean msgReasonCodeReqIn;
+	private boolean msgType1;
+	private boolean draftCapture2;
+	private boolean standin3;
+	private boolean srcnodeDateSettle4;
+	private boolean srcnodeAmountRequested5;
+	private boolean srcnodeCashRequested8;
 
-	public boolean isMsgType() {
-		return msgType;
-	}
+	private boolean srcnodeCurrencyCode11;
+	private boolean srcnodeConversionRate12;
+	private boolean srcnodeDateConversion13;
+	private boolean srcnodeOriginalData14;
+	private boolean snknodeReqSysTrace15;
+	private boolean snknodeRevSysTrace16;
+	private boolean snknodeAdvSysTrace17;
+	private boolean snknodeDateSettle18;
+	private boolean snknodeAmountRequested19;
 
-	public void setMsgType(boolean msgType) {
-		this.msgType = msgType;
-	}
+	private boolean snknodeCashRequested22;
+	private boolean snknodeCurrencyCode25;
+	private boolean snknodeConversionRate26;
+	private boolean snknodeDateConversion27;
+	private boolean totalsGroup29;
+	private boolean tranType30;
 
-	public boolean isDraftCapture() {
-		return draftCapture;
-	}
+	private boolean fromAccount31;
+	private boolean toAccount32;
+	private boolean amountTranRequested33;
+	private boolean amountCashRequested36;
+	private boolean gmtDateTime39;
+	private boolean timeLocal40;
 
-	public void setDraftCapture(boolean draftCapture) {
-		this.draftCapture = draftCapture;
-	}
+	private boolean dateLocal41;
+	private boolean merchantType43;
+	private boolean acquiringInst44;
+	private boolean rspCodeReqRsp47;
+	private boolean cardAcceptorTermId50;
+	
+	private boolean cardAcceptorIdCode51;
+	private boolean cardAcceptorNameLoc52;
+	private boolean currencyCodeTran54;
+	private boolean posDataCode58;
+	private boolean msgReasonCodeReqIn60;
+	
+	private boolean msgReasonCodeReqOut61;
+	private boolean msgReasonCodeRev62;
+	private boolean msgReasonCodeAdv63;
+	private boolean addrVerificationResult65;
+	private boolean abortReason67;
+	private boolean abortRspCode69;
+	private boolean inReq70;
 
-	public boolean isStandin() {
-		return standin;
-	}
-
-	public void setStandin(boolean standin) {
-		this.standin = standin;
-	}
-
-	public boolean isSrcnodeDateSettle() {
-		return srcnodeDateSettle;
-	}
-
-	public void setSrcnodeDateSettle(boolean srcnodeDateSettle) {
-		this.srcnodeDateSettle = srcnodeDateSettle;
-	}
-
-	public boolean isSrcnodeAmountRequested() {
-		return srcnodeAmountRequested;
-	}
-
-	public void setSrcnodeAmountRequested(boolean srcnodeAmountRequested) {
-		this.srcnodeAmountRequested = srcnodeAmountRequested;
-	}
-
-	public boolean isSrcnodeCashRequested() {
-		return srcnodeCashRequested;
-	}
-
-	public void setSrcnodeCashRequested(boolean srcnodeCashRequested) {
-		this.srcnodeCashRequested = srcnodeCashRequested;
-	}
-
-	public boolean isSrcnodeCurrencyCode() {
-		return srcnodeCurrencyCode;
-	}
-
-	public void setSrcnodeCurrencyCode(boolean srcnodeCurrencyCode) {
-		this.srcnodeCurrencyCode = srcnodeCurrencyCode;
-	}
-
-	public boolean isSrcnodeDateConversion() {
-		return srcnodeDateConversion;
-	}
-
-	public void setSrcnodeDateConversion(boolean srcnodeDateConversion) {
-		this.srcnodeDateConversion = srcnodeDateConversion;
-	}
-
-	public boolean isSrcnodeConversionRate() {
-		return srcnodeConversionRate;
-	}
-
-	public void setSrcnodeConversionRate(boolean srcnodeConversionRate) {
-		this.srcnodeConversionRate = srcnodeConversionRate;
-	}
+	private boolean inAdv72;
+	private boolean inRev74;
+	
+	private boolean snknodeAcquiringInst87;
+	
+	private boolean cardVerificationResult91;
+	private boolean secure3dResult92;
+	private boolean ucafData98;
 
 	public String getTranNr() {
 		return tranNr;
 	}
-
 	public void setTranNr(String tranNr) {
 		this.tranNr = tranNr;
 	}
-
-	public boolean isSnknodeReqSysTrace() {
-		return snknodeReqSysTrace;
-	}
-
-	public void setSnknodeReqSysTrace(boolean snknodeReqSysTrace) {
-		this.snknodeReqSysTrace = snknodeReqSysTrace;
-	}
-
-	public boolean isSnknodeRevSysTrace() {
-		return snknodeRevSysTrace;
-	}
-
-	public void setSnknodeRevSysTrace(boolean snknodeRevSysTrace) {
-		this.snknodeRevSysTrace = snknodeRevSysTrace;
-	}
-
-	public boolean isSnknodeAdvSysTrace() {
-		return snknodeAdvSysTrace;
-	}
-
-	public void setSnknodeAdvSysTrace(boolean snknodeAdvSysTrace) {
-		this.snknodeAdvSysTrace = snknodeAdvSysTrace;
-	}
-
-	public boolean isSnknodeAmountRequested() {
-		return snknodeAmountRequested;
-	}
-
-	public void setSnknodeAmountRequested(boolean snknodeAmountRequested) {
-		this.snknodeAmountRequested = snknodeAmountRequested;
-	}
-
-	public boolean isSnknodeCashRequested() {
-		return snknodeCashRequested;
-	}
-
-	public void setSnknodeCashRequested(boolean snknodeCashRequested) {
-		this.snknodeCashRequested = snknodeCashRequested;
-	}
-
-	public boolean isSnknodeCurrencyCode() {
-		return snknodeCurrencyCode;
-	}
-
-	public void setSnknodeCurrencyCode(boolean snknodeCurrencyCode) {
-		this.snknodeCurrencyCode = snknodeCurrencyCode;
-	}
-
-	public boolean isSnknodeConversionRate() {
-		return snknodeConversionRate;
-	}
-
-	public void setSnknodeConversionRate(boolean snknodeConversionRate) {
-		this.snknodeConversionRate = snknodeConversionRate;
-	}
-
-	public boolean isSnknodeDateConversion() {
-		return snknodeDateConversion;
-	}
-
-	public void setSnknodeDateConversion(boolean snknodeDateConversion) {
-		this.snknodeDateConversion = snknodeDateConversion;
-	}
-
-	public boolean isTranType() {
-		return tranType;
-	}
-
-	public void setTranType(boolean tranType) {
-		this.tranType = tranType;
-	}
-
-	public boolean isToAccount() {
-		return toAccount;
-	}
-
-	public void setToAccount(boolean toAccount) {
-		this.toAccount = toAccount;
-	}
-
-	public boolean isAmountTranRequested() {
-		return amountTranRequested;
-	}
-
-	public void setAmountTranRequested(boolean amountTranRequested) {
-		this.amountTranRequested = amountTranRequested;
-	}
-
-	public boolean isTimeLocal() {
-		return timeLocal;
-	}
-
-	public void setTimeLocal(boolean timeLocal) {
-		this.timeLocal = timeLocal;
-	}
-
-	public boolean isDateLocal() {
-		return dateLocal;
-	}
-
-	public void setDateLocal(boolean dateLocal) {
-		this.dateLocal = dateLocal;
-	}
-
-	public boolean isMerchantType() {
-		return merchantType;
-	}
-
-	public void setMerchantType(boolean merchantType) {
-		this.merchantType = merchantType;
-	}
-
-	public boolean isCardAcceptorIdCode() {
-		return cardAcceptorIdCode;
-	}
-
-	public void setCardAcceptorIdCode(boolean cardAcceptorIdCode) {
-		this.cardAcceptorIdCode = cardAcceptorIdCode;
-	}
-
-	public boolean isCurrencyCodeTran() {
-		return currencyCodeTran;
-	}
-
-	public void setCurrencyCodeTran(boolean currencyCodeTran) {
-		this.currencyCodeTran = currencyCodeTran;
-	}
-
-	public boolean isMsgReasonCodeReqOut() {
-		return msgReasonCodeReqOut;
-	}
-
-	public void setMsgReasonCodeReqOut(boolean msgReasonCodeReqOut) {
-		this.msgReasonCodeReqOut = msgReasonCodeReqOut;
-	}
-
-	public boolean isMsgReasonCodeRev() {
-		return msgReasonCodeRev;
-	}
-
-	public void setMsgReasonCodeRev(boolean msgReasonCodeRev) {
-		this.msgReasonCodeRev = msgReasonCodeRev;
-	}
-
-	public boolean isMsgReasonCodeAdv() {
-		return msgReasonCodeAdv;
-	}
-
-	public void setMsgReasonCodeAdv(boolean msgReasonCodeAdv) {
-		this.msgReasonCodeAdv = msgReasonCodeAdv;
-	}
-
-	public boolean isAbortReason() {
-		return abortReason;
-	}
-
-	public void setAbortReason(boolean abortReason) {
-		this.abortReason = abortReason;
-	}
-
-	public boolean isAbortRspCode() {
-		return abortRspCode;
-	}
-
-	public void setAbortRspCode(boolean abortRspCode) {
-		this.abortRspCode = abortRspCode;
-	}
-
-	public boolean isFromAccount() {
-		return fromAccount;
-	}
-
-	public void setFromAccount(boolean fromAccount) {
-		this.fromAccount = fromAccount;
-	}
-
-	public boolean isSrcnodeOriginalData() {
-		return srcnodeOriginalData;
-	}
-
-	public void setSrcnodeOriginalData(boolean srcnodeOriginalData) {
-		this.srcnodeOriginalData = srcnodeOriginalData;
-	}
-
-	public boolean isSnknodeDateSettle() {
-		return snknodeDateSettle;
-	}
-
-	public void setSnknodeDateSettle(boolean snknodeDateSettle) {
-		this.snknodeDateSettle = snknodeDateSettle;
-	}
-
-	public boolean isTotalsGroup() {
-		return totalsGroup;
-	}
-
-	public void setTotalsGroup(boolean totalsGroup) {
-		this.totalsGroup = totalsGroup;
-	}
-
-	public boolean isGmtDateTime() {
-		return gmtDateTime;
-	}
-
-	public void setGmtDateTime(boolean gmtDateTime) {
-		this.gmtDateTime = gmtDateTime;
-	}
-
-	public boolean isAcquiringInst() {
-		return acquiringInst;
-	}
-
-	public void setAcquiringInst(boolean acquiringInst) {
-		this.acquiringInst = acquiringInst;
-	}
-
-	public boolean isRspCodeReqRsp() {
-		return rspCodeReqRsp;
-	}
-
-	public void setRspCodeReqRsp(boolean rspCodeReqRsp) {
-		this.rspCodeReqRsp = rspCodeReqRsp;
-	}
-
-	public boolean isCardAcceptorNameLoc() {
-		return cardAcceptorNameLoc;
-	}
-
-	public void setCardAcceptorNameLoc(boolean cardAcceptorNameLoc) {
-		this.cardAcceptorNameLoc = cardAcceptorNameLoc;
-	}
-
-	public boolean isCurrencyCode() {
-		return currencyCode;
-	}
-
-	public void setCurrencyCode(boolean currencyCode) {
-		this.currencyCode = currencyCode;
-	}
-
-	public boolean isInReq() {
-		return inReq;
-	}
-
-	public void setInReq(boolean inReq) {
-		this.inReq = inReq;
-	}
-
-	public boolean isInAdv() {
-		return inAdv;
-	}
-
-	public void setInAdv(boolean inAdv) {
-		this.inAdv = inAdv;
-	}
-
-	public boolean isInRev() {
-		return inRev;
-	}
-
-	public void setInRev(boolean inRev) {
-		this.inRev = inRev;
-	}
-
-	public boolean isSnknodeAcquiringInst() {
-		return snknodeAcquiringInst;
-	}
-
-	public void setSnknodeAcquiringInst(boolean snknodeAcquiringInst) {
-		this.snknodeAcquiringInst = snknodeAcquiringInst;
-	}
-
-	public boolean isCardVerificationResult() {
-		return cardVerificationResult;
-	}
-
-	public void setCardVerificationResult(boolean cardVerificationResult) {
-		this.cardVerificationResult = cardVerificationResult;
-	}
-
-	public boolean isSecure3dResult() {
-		return secure3dResult;
-	}
-
-	public void setSecure3dResult(boolean secure3dResult) {
-		this.secure3dResult = secure3dResult;
-	}
-
-	public boolean isMsgReasonCodeReqIn() {
-		return msgReasonCodeReqIn;
-	}
-
-	public void setMsgReasonCodeReqIn(boolean msgReasonCodeReqIn) {
-		this.msgReasonCodeReqIn = msgReasonCodeReqIn;
-	}
-
+	public boolean isMsgType1() {
+		return msgType1;
+	}
+	public void setMsgType1(boolean msgType1) {
+		this.msgType1 = msgType1;
+	}
+	public boolean isDraftCapture2() {
+		return draftCapture2;
+	}
+	public void setDraftCapture2(boolean draftCapture2) {
+		this.draftCapture2 = draftCapture2;
+	}
+	public boolean isStandin3() {
+		return standin3;
+	}
+	public void setStandin3(boolean standin3) {
+		this.standin3 = standin3;
+	}
+	public boolean isSrcnodeDateSettle4() {
+		return srcnodeDateSettle4;
+	}
+	public void setSrcnodeDateSettle4(boolean srcnodeDateSettle4) {
+		this.srcnodeDateSettle4 = srcnodeDateSettle4;
+	}
+	public boolean isSrcnodeAmountRequested5() {
+		return srcnodeAmountRequested5;
+	}
+	public void setSrcnodeAmountRequested5(boolean srcnodeAmountRequested5) {
+		this.srcnodeAmountRequested5 = srcnodeAmountRequested5;
+	}
+	public boolean isSrcnodeCashRequested8() {
+		return srcnodeCashRequested8;
+	}
+	public void setSrcnodeCashRequested8(boolean srcnodeCashRequested8) {
+		this.srcnodeCashRequested8 = srcnodeCashRequested8;
+	}
+	public boolean isSrcnodeCurrencyCode11() {
+		return srcnodeCurrencyCode11;
+	}
+	public void setSrcnodeCurrencyCode11(boolean srcnodeCurrencyCode11) {
+		this.srcnodeCurrencyCode11 = srcnodeCurrencyCode11;
+	}
+	public boolean isSrcnodeConversionRate12() {
+		return srcnodeConversionRate12;
+	}
+	public void setSrcnodeConversionRate12(boolean srcnodeConversionRate12) {
+		this.srcnodeConversionRate12 = srcnodeConversionRate12;
+	}
+	public boolean isSrcnodeDateConversion13() {
+		return srcnodeDateConversion13;
+	}
+	public void setSrcnodeDateConversion13(boolean srcnodeDateConversion13) {
+		this.srcnodeDateConversion13 = srcnodeDateConversion13;
+	}
+	public boolean isSrcnodeOriginalData14() {
+		return srcnodeOriginalData14;
+	}
+	public void setSrcnodeOriginalData14(boolean srcnodeOriginalData14) {
+		this.srcnodeOriginalData14 = srcnodeOriginalData14;
+	}
+	public boolean isSnknodeReqSysTrace15() {
+		return snknodeReqSysTrace15;
+	}
+	public void setSnknodeReqSysTrace15(boolean snknodeReqSysTrace15) {
+		this.snknodeReqSysTrace15 = snknodeReqSysTrace15;
+	}
+	public boolean isSnknodeRevSysTrace16() {
+		return snknodeRevSysTrace16;
+	}
+	public void setSnknodeRevSysTrace16(boolean snknodeRevSysTrace16) {
+		this.snknodeRevSysTrace16 = snknodeRevSysTrace16;
+	}
+	public boolean isSnknodeAdvSysTrace17() {
+		return snknodeAdvSysTrace17;
+	}
+	public void setSnknodeAdvSysTrace17(boolean snknodeAdvSysTrace17) {
+		this.snknodeAdvSysTrace17 = snknodeAdvSysTrace17;
+	}
+	public boolean isSnknodeDateSettle18() {
+		return snknodeDateSettle18;
+	}
+	public void setSnknodeDateSettle18(boolean snknodeDateSettle18) {
+		this.snknodeDateSettle18 = snknodeDateSettle18;
+	}
+	public boolean isSnknodeAmountRequested19() {
+		return snknodeAmountRequested19;
+	}
+	public void setSnknodeAmountRequested19(boolean snknodeAmountRequested19) {
+		this.snknodeAmountRequested19 = snknodeAmountRequested19;
+	}
+	public boolean isSnknodeCashRequested22() {
+		return snknodeCashRequested22;
+	}
+	public void setSnknodeCashRequested22(boolean snknodeCashRequested22) {
+		this.snknodeCashRequested22 = snknodeCashRequested22;
+	}
+	public boolean isSnknodeCurrencyCode25() {
+		return snknodeCurrencyCode25;
+	}
+	public void setSnknodeCurrencyCode25(boolean snknodeCurrencyCode25) {
+		this.snknodeCurrencyCode25 = snknodeCurrencyCode25;
+	}
+	public boolean isSnknodeConversionRate26() {
+		return snknodeConversionRate26;
+	}
+	public void setSnknodeConversionRate26(boolean snknodeConversionRate26) {
+		this.snknodeConversionRate26 = snknodeConversionRate26;
+	}
+	public boolean isSnknodeDateConversion27() {
+		return snknodeDateConversion27;
+	}
+	public void setSnknodeDateConversion27(boolean snknodeDateConversion27) {
+		this.snknodeDateConversion27 = snknodeDateConversion27;
+	}
+	public boolean isTotalsGroup29() {
+		return totalsGroup29;
+	}
+	public void setTotalsGroup29(boolean totalsGroup29) {
+		this.totalsGroup29 = totalsGroup29;
+	}
+	public boolean isTranType30() {
+		return tranType30;
+	}
+	public void setTranType30(boolean tranType30) {
+		this.tranType30 = tranType30;
+	}
+	public boolean isFromAccount31() {
+		return fromAccount31;
+	}
+	public void setFromAccount31(boolean fromAccount31) {
+		this.fromAccount31 = fromAccount31;
+	}
+	public boolean isToAccount32() {
+		return toAccount32;
+	}
+	public void setToAccount32(boolean toAccount32) {
+		this.toAccount32 = toAccount32;
+	}
+	public boolean isAmountTranRequested33() {
+		return amountTranRequested33;
+	}
+	public void setAmountTranRequested33(boolean amountTranRequested33) {
+		this.amountTranRequested33 = amountTranRequested33;
+	}
+	public boolean isAmountCashRequested36() {
+		return amountCashRequested36;
+	}
+	public void setAmountCashRequested36(boolean amountCashRequested36) {
+		this.amountCashRequested36 = amountCashRequested36;
+	}
+	public boolean isGmtDateTime39() {
+		return gmtDateTime39;
+	}
+	public void setGmtDateTime39(boolean gmtDateTime39) {
+		this.gmtDateTime39 = gmtDateTime39;
+	}
+	public boolean isTimeLocal40() {
+		return timeLocal40;
+	}
+	public void setTimeLocal40(boolean timeLocal40) {
+		this.timeLocal40 = timeLocal40;
+	}
+	public boolean isDateLocal41() {
+		return dateLocal41;
+	}
+	public void setDateLocal41(boolean dateLocal41) {
+		this.dateLocal41 = dateLocal41;
+	}
+	public boolean isMerchantType43() {
+		return merchantType43;
+	}
+	public void setMerchantType43(boolean merchantType43) {
+		this.merchantType43 = merchantType43;
+	}
+	public boolean isAcquiringInst44() {
+		return acquiringInst44;
+	}
+	public void setAcquiringInst44(boolean acquiringInst44) {
+		this.acquiringInst44 = acquiringInst44;
+	}
+	public boolean isRspCodeReqRsp47() {
+		return rspCodeReqRsp47;
+	}
+	public void setRspCodeReqRsp47(boolean rspCodeReqRsp47) {
+		this.rspCodeReqRsp47 = rspCodeReqRsp47;
+	}
+	public boolean isCardAcceptorTermId50() {
+		return cardAcceptorTermId50;
+	}
+	public void setCardAcceptorTermId50(boolean cardAcceptorTermId50) {
+		this.cardAcceptorTermId50 = cardAcceptorTermId50;
+	}
+	public boolean isCardAcceptorIdCode51() {
+		return cardAcceptorIdCode51;
+	}
+	public void setCardAcceptorIdCode51(boolean cardAcceptorIdCode51) {
+		this.cardAcceptorIdCode51 = cardAcceptorIdCode51;
+	}
+	public boolean isCardAcceptorNameLoc52() {
+		return cardAcceptorNameLoc52;
+	}
+	public void setCardAcceptorNameLoc52(boolean cardAcceptorNameLoc52) {
+		this.cardAcceptorNameLoc52 = cardAcceptorNameLoc52;
+	}
+	public boolean isCurrencyCodeTran54() {
+		return currencyCodeTran54;
+	}
+	public void setCurrencyCodeTran54(boolean currencyCodeTran54) {
+		this.currencyCodeTran54 = currencyCodeTran54;
+	}
+	public boolean isPosDataCode58() {
+		return posDataCode58;
+	}
+	public void setPosDataCode58(boolean posDataCode58) {
+		this.posDataCode58 = posDataCode58;
+	}
+	public boolean isMsgReasonCodeReqIn60() {
+		return msgReasonCodeReqIn60;
+	}
+	public void setMsgReasonCodeReqIn60(boolean msgReasonCodeReqIn60) {
+		this.msgReasonCodeReqIn60 = msgReasonCodeReqIn60;
+	}
+	public boolean isMsgReasonCodeReqOut61() {
+		return msgReasonCodeReqOut61;
+	}
+	public void setMsgReasonCodeReqOut61(boolean msgReasonCodeReqOut61) {
+		this.msgReasonCodeReqOut61 = msgReasonCodeReqOut61;
+	}
+	public boolean isMsgReasonCodeRev62() {
+		return msgReasonCodeRev62;
+	}
+	public void setMsgReasonCodeRev62(boolean msgReasonCodeRev62) {
+		this.msgReasonCodeRev62 = msgReasonCodeRev62;
+	}
+	public boolean isMsgReasonCodeAdv63() {
+		return msgReasonCodeAdv63;
+	}
+	public void setMsgReasonCodeAdv63(boolean msgReasonCodeAdv63) {
+		this.msgReasonCodeAdv63 = msgReasonCodeAdv63;
+	}
+	public boolean isAddrVerificationResult65() {
+		return addrVerificationResult65;
+	}
+	public void setAddrVerificationResult65(boolean addrVerificationResult65) {
+		this.addrVerificationResult65 = addrVerificationResult65;
+	}
+	public boolean isAbortReason67() {
+		return abortReason67;
+	}
+	public void setAbortReason67(boolean abortReason67) {
+		this.abortReason67 = abortReason67;
+	}
+	public boolean isAbortRspCode69() {
+		return abortRspCode69;
+	}
+	public void setAbortRspCode69(boolean abortRspCode69) {
+		this.abortRspCode69 = abortRspCode69;
+	}
+	public boolean isInReq70() {
+		return inReq70;
+	}
+	public void setInReq70(boolean inReq70) {
+		this.inReq70 = inReq70;
+	}
+	public boolean isInAdv72() {
+		return inAdv72;
+	}
+	public void setInAdv72(boolean inAdv72) {
+		this.inAdv72 = inAdv72;
+	}
+	public boolean isInRev74() {
+		return inRev74;
+	}
+	public void setInRev74(boolean inRev74) {
+		this.inRev74 = inRev74;
+	}
+	public boolean isSnknodeAcquiringInst87() {
+		return snknodeAcquiringInst87;
+	}
+	public void setSnknodeAcquiringInst87(boolean snknodeAcquiringInst87) {
+		this.snknodeAcquiringInst87 = snknodeAcquiringInst87;
+	}
+	public boolean isCardVerificationResult91() {
+		return cardVerificationResult91;
+	}
+	public void setCardVerificationResult91(boolean cardVerificationResult91) {
+		this.cardVerificationResult91 = cardVerificationResult91;
+	}
+	public boolean isSecure3dResult92() {
+		return secure3dResult92;
+	}
+	public void setSecure3dResult92(boolean secure3dResult92) {
+		this.secure3dResult92 = secure3dResult92;
+	}
+	public boolean isUcafData98() {
+		return ucafData98;
+	}
+	public void setUcafData98(boolean ucafData98) {
+		this.ucafData98 = ucafData98;
+	}
+	
+	
 }
