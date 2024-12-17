@@ -33,15 +33,32 @@ public class ValidationService {
 	public void validation() {
 		List<RTEntity> rtEntities = rtService.getRTData();
 		List<DNEntity> dnEntities = dnService.getDNData();
+
+		List<RTEntity> rtEntitiesMT = rtEntities.stream()
+				.filter(r -> dnEntities.stream().anyMatch(d -> d.getTranNumber().equals(r.getTranNr())))
+				.collect(Collectors.toList());
+
+		List<DNEntity> dnEntitiesMT = dnEntities.stream()
+				.filter(d -> rtEntities.stream().anyMatch(r -> r.getTranNr().equals(d.getTranNumber())))
+				.collect(Collectors.toList());
+
+		List<RTEntity> rtEntitiesNMT = rtEntities.stream()
+				.filter(r -> dnEntities.stream().allMatch(d -> !d.getTranNumber().equals(r.getTranNr())))
+				.collect(Collectors.toList());
+
+		List<DNEntity> dnEntitiesNMT = dnEntities.stream()
+				.filter(d -> rtEntities.stream().allMatch(r -> !r.getTranNr().equals(d.getTranNumber())))
+				.collect(Collectors.toList());
+
 		List<XIstRespRevCodEntity> istRespRevCodEntities = dnService.getXIstRespRevCod();
 		List<ValidationEntity> validationEntities = new ArrayList<ValidationEntity>();
 
 		Map<String, DNEntity> dnMap = new HashMap<>();
-		for (DNEntity dn : dnEntities) {
+		for (DNEntity dn : dnEntitiesMT) {
 			dnMap.put(dn.getTranNumber(), dn);
 		}
 
-		for (RTEntity rt : rtEntities) {
+		for (RTEntity rt : rtEntitiesMT) {
 			DNEntity dn = dnMap.get(rt.getTranNr());
 			ValidationEntity validationEntity = new ValidationEntity();
 
@@ -109,7 +126,8 @@ public class ValidationService {
 			validationEntities.add(validationEntity);
 		}
 
-		excelService.createExcel(rtEntities, dnEntities, validationEntities, istRespRevCodEntities);
+		excelService.createExcel(rtEntities, dnEntities, validationEntities, istRespRevCodEntities, rtEntitiesNMT,
+				dnEntitiesNMT);
 
 	}
 
@@ -390,7 +408,7 @@ public class ValidationService {
 			return compareStrings(rtVal.substring(0, 4).replaceFirst("0", "1"), dn.getOdeMti())
 					&& compareStrings(rtVal.substring(4, 10), dn.getOdeSysTraAudNo())
 					&& compareStrings(rtVal.substring(10, 20), dn.getOdeTstampLoclTr().substring(4))
-					&& compareStrings(rtVal.substring(20, 31), dn.getOdeInstIsAcq());
+					&& compareStrings(rtVal.substring(20, 31), dn.getOdeInstIdAcq());
 		}
 	}
 
@@ -425,7 +443,7 @@ public class ValidationService {
 		String rtCountryCode = rt.getCardAcceptorNameLoc().substring(38, 40).trim();
 
 		String dnStoreName = dn.getCardAcptNameLoc().substring(0, 23).trim();
-		String dnCity = dn.getCardAcptNameLoc().substring(55, 68).trim();
+		String dnCity = dn.getCardAcptNameLoc().substring(55).trim();
 		String dnStateCode = dn.getCardAcptRegion();
 		String dnCountryCode = dn.getCardAcptCountry();
 

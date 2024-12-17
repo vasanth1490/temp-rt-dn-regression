@@ -46,7 +46,7 @@ public class DNEntity {
 	private String odeMti;
 	private String odeSysTraAudNo;
 	private String odeTstampLoclTr;
-	private String odeInstIsAcq;
+	private String odeInstIdAcq;
 	private String dateReconIss;
 	private String dateReconNet;
 	private String instIdReconIss;
@@ -452,12 +452,12 @@ public class DNEntity {
 		this.odeTstampLoclTr = odeTstampLoclTr;
 	}
 
-	public String getOdeInstIsAcq() {
-		return odeInstIsAcq;
+	public String getOdeInstIdAcq() {
+		return odeInstIdAcq;
 	}
 
-	public void setOdeInstIsAcq(String odeInstIsAcq) {
-		this.odeInstIsAcq = odeInstIsAcq;
+	public void setOdeInstIdAcq(String odeInstIdAcq) {
+		this.odeInstIdAcq = odeInstIdAcq;
 	}
 
 	public String getDateReconIss() {

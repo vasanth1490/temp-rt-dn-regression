@@ -57,7 +57,7 @@ public class DNRowMapper implements RowMapper<DNEntity> {
 		entity.setOdeMti(rs.getString(Constants.DN_ODE_MTI));
 		entity.setOdeSysTraAudNo(rs.getString(Constants.DN_ODE_SYS_TRA_AUD_NO));
 		entity.setOdeTstampLoclTr(rs.getString(Constants.DN_ODE_TSTAMP_LOCL_TR));
-		entity.setOdeInstIsAcq(rs.getString(Constants.DN_ODE_INST_IS_ACQ));
+		entity.setOdeInstIdAcq(rs.getString(Constants.DN_ODE_INST_ID_ACQ));
 		entity.setDateReconIss(rs.getString(Constants.DN_DATE_RECON_ISS));
 		entity.setDateReconNet(rs.getString(Constants.DN_DATE_RECON_NET));
 		entity.setInstIdReconIss(rs.getString(Constants.DN_INST_ID_RECON_ISS));

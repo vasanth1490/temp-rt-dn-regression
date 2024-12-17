@@ -48,7 +48,7 @@ public class Constants {
 	public static final String DN_ODE_MTI = "ODE_MTI";
 	public static final String DN_ODE_SYS_TRA_AUD_NO = "ODE_SYS_TRA_AUD_NO";
 	public static final String DN_ODE_TSTAMP_LOCL_TR = "ODE_TSTAMP_LOCL_TR";
-	public static final String DN_ODE_INST_IS_ACQ = "ODE_INST_IS_ACQ";
+	public static final String DN_ODE_INST_ID_ACQ = "ODE_INST_ID_ACQ";
 	public static final String DN_DATE_RECON_ISS = "DATE_RECON_ISS";
 	public static final String DN_DATE_RECON_NET = "DATE_RECON_NET";
 	public static final String DN_INST_ID_RECON_ISS = "INST_ID_RECON_ISS";
@@ -195,7 +195,10 @@ public class Constants {
 	public static final String V_CARD_VERIFICATION_RESULT_91 = "card_verification_result_91";
 	public static final String V_SECURE_3D_RESULT_92 = "secure_3d_result_92";
 	public static final String V_UCAF_DATA_98 = "ucaf_data_98";
-
+	
+	public static final String NMT_TRAN_NUMBER = "Tran Number";
+	public static final String NMT_DB = "DB";
+	
 	public static final List<String> rtHeaders = Arrays.asList(RT_NAME, RT_TRAN_NR, RT_MSG_TYPE, RT_DRAFT_CAPTURE,
 			RT_STAND_IN, RT_SRCNODE_DATE_SETTLE, RT_SRCNODE_AMOUNT_REQUESTED, RT_SRCNODE_CASH_REQUESTED,
 			RT_SRCNODE_CURRENCY_CODE, RT_SRCNODE_DATE_CONVERSION, RT_SRCNODE_CONVERSION_RATE, RT_SNKNODE_REQ_SYS_TRACE,
@@ -218,7 +221,7 @@ public class Constants {
 			DN_DATE_CNV_ISS, DN_TRAN_TYPE_ID, DN_AMT_TRAN, DN_O_AMT_TRAN, DN_TSTAMP_LOCAL, DN_MERCH_TYPE,
 			DN_CARD_ACPT_BUS_CODE, DN_CARD_ACPT_ID, DN_RPT_LVL_ID_B, DN_CUR_TRAN, DN_MSG_RESON_CODE_ISS,
 			DN_MSG_RESON_CODE_ACQ, DN_TRAN_DESC, DN_ODE_MTI, DN_ODE_SYS_TRA_AUD_NO, DN_ODE_TSTAMP_LOCL_TR,
-			DN_ODE_INST_IS_ACQ, DN_DATE_RECON_ISS, DN_DATE_RECON_NET, DN_INST_ID_RECON_ISS, DN_INST_ID_RECN_ISS_B,
+			DN_ODE_INST_ID_ACQ, DN_DATE_RECON_ISS, DN_DATE_RECON_NET, DN_INST_ID_RECON_ISS, DN_INST_ID_RECN_ISS_B,
 			DN_GMT_TIME, DN_INST_ID_ACQ, DN_EXT_RSP_CODE, DN_ACT_CODE, DN_CARD_ACPT_NAME_LOC, DN_CARD_ACPT_REGION,
 			DN_CARD_ACPT_COUNTRY, DN_INST_ID_ISS, DN_CVV_CVC_RESULT, DN_CAVV_RESULT, DN_CARD_ACPT_TERM_ID,
 			DN_NET_TERM_ID, DN_POS_CRD_DAT_IN_CAP, DN_POS_CRDHLDR_AUTH_C, DN_POS_CARD_CAPT_CAP, DN_POS_OPER_ENV,
@@ -246,5 +249,7 @@ public class Constants {
 
 	public static final List<String> istRespRevCodHeaders = Arrays.asList(DN_TRAN_DISPOSITION, DN_ACTION_CODE,
 			DN_IST_RESP_REV_CODE);
+	
+	public static final List<String> nmtHeaders = Arrays.asList(NMT_TRAN_NUMBER, NMT_DB);
 
 }

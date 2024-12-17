@@ -29,7 +29,8 @@ import com.sample.rtdnregression.models.StyleKey;
 public class ExcelReportService {
 
 	public void createExcel(List<RTEntity> rtEntities, List<DNEntity> dnEntities,
-			List<ValidationEntity> validationEntities, List<XIstRespRevCodEntity> istRespRevCodEntities) {
+			List<ValidationEntity> validationEntities, List<XIstRespRevCodEntity> istRespRevCodEntities,
+			List<RTEntity> rtEntitiesNMT, List<DNEntity> dnEntitiesNMT) {
 		String fileName = "result.xlsx";
 
 		try (Workbook workbook = new XSSFWorkbook()) {
@@ -37,6 +38,7 @@ public class ExcelReportService {
 			createRTSheet(workbook, rtEntities, stylesMap);
 			createDNSheet(workbook, dnEntities, stylesMap);
 			createIstRespRevCodSheet(workbook, istRespRevCodEntities, stylesMap);
+			createNotMatchingTrans(workbook, rtEntitiesNMT, dnEntitiesNMT, stylesMap);
 			createValidationSheet(workbook, validationEntities, stylesMap);
 
 			try (FileOutputStream fileOut = new FileOutputStream(fileName)) {
@@ -46,6 +48,50 @@ public class ExcelReportService {
 			e.printStackTrace();
 		}
 
+	}
+
+	private void createNotMatchingTrans(Workbook workbook, List<RTEntity> rtEntitiesNMT, List<DNEntity> dnEntitiesNMT,
+			Map<StyleKey, CellStyle> stylesMap) {
+		Sheet sheet = workbook.createSheet("NotMatchingTrans");
+		Row headerRow = sheet.createRow(0);
+
+		for (int i = 0; i < Constants.nmtHeaders.size(); i++) {
+			Cell cell = headerRow.createCell(i);
+			cell.setCellValue(Constants.nmtHeaders.get(i));
+			cell.setCellStyle(stylesMap.get(StyleKey.HEADER));
+		}
+
+		for (int j = 1; j <= rtEntitiesNMT.size(); j++) {
+			Row dataRow = sheet.createRow(j);
+
+			RTEntity entity = rtEntitiesNMT.get(j - 1);
+
+			Map<String, String> nmtMap = new HashMap<String, String>();
+			nmtMap.put(Constants.NMT_TRAN_NUMBER, entity.getTranNr());
+			nmtMap.put(Constants.NMT_DB, "RT");
+
+			for (int x = 0; x < Constants.nmtHeaders.size(); x++) {
+				Cell cell = dataRow.createCell(x);
+				cell.setCellStyle(stylesMap.get(StyleKey.COMMON));
+				cell.setCellValue(nmtMap.get(Constants.nmtHeaders.get(x)));
+			}
+		}
+
+		for (int j = 1; j <= dnEntitiesNMT.size(); j++) {
+			Row dataRow = sheet.createRow(j);
+
+			DNEntity entity = dnEntitiesNMT.get(j - 1);
+
+			Map<String, String> nmtMap = new HashMap<String, String>();
+			nmtMap.put(Constants.NMT_TRAN_NUMBER, entity.getTranNumber());
+			nmtMap.put(Constants.NMT_DB, "DN");
+
+			for (int x = 0; x < Constants.nmtHeaders.size(); x++) {
+				Cell cell = dataRow.createCell(x);
+				cell.setCellStyle(stylesMap.get(StyleKey.COMMON));
+				cell.setCellValue(nmtMap.get(Constants.nmtHeaders.get(x)));
+			}
+		}
 	}
 
 	private void createIstRespRevCodSheet(Workbook workbook, List<XIstRespRevCodEntity> istRespRevCodEntities,
@@ -234,7 +280,7 @@ public class ExcelReportService {
 			dnMap.put(Constants.DN_ODE_MTI, dnEntity.getOdeMti());
 			dnMap.put(Constants.DN_ODE_SYS_TRA_AUD_NO, dnEntity.getOdeSysTraAudNo());
 			dnMap.put(Constants.DN_ODE_TSTAMP_LOCL_TR, dnEntity.getOdeTstampLoclTr());
-			dnMap.put(Constants.DN_ODE_INST_IS_ACQ, dnEntity.getOdeInstIsAcq());
+			dnMap.put(Constants.DN_ODE_INST_ID_ACQ, dnEntity.getOdeInstIdAcq());
 			dnMap.put(Constants.DN_DATE_RECON_ISS, dnEntity.getDateReconIss());
 			dnMap.put(Constants.DN_DATE_RECON_NET, dnEntity.getDateReconNet());
 			dnMap.put(Constants.DN_INST_ID_RECON_ISS, dnEntity.getInstIdReconIss());
@@ -296,9 +342,9 @@ public class ExcelReportService {
 
 		Row headerRow = sheet.createRow(0);
 
-		for (int i = 0; i < Constants.rtHeaders.size(); i++) {
+		for (int i = 0; i < Constants.validationHeaders.size(); i++) {
 			Cell cell = headerRow.createCell(i);
-			cell.setCellValue(Constants.rtHeaders.get(i));
+			cell.setCellValue(Constants.validationHeaders.get(i));
 			cell.setCellStyle(stylesMap.get(StyleKey.HEADER));
 		}
 
@@ -376,9 +422,14 @@ public class ExcelReportService {
 				if (x == 1) {
 					cell.setCellStyle(stylesMap.get(StyleKey.COMMON));
 
-					cell.setCellValue(Integer.valueOf((String) validationMap.get(Constants.rtHeaders.get(x))));
+					cell.setCellValue(Integer.valueOf((String) validationMap.get(Constants.validationHeaders.get(x))));
 				} else {
-					boolean flag = (boolean) validationMap.get(Constants.rtHeaders.get(x));
+					boolean flag = false;
+					if (validationMap.get(Constants.validationHeaders.get(x)) instanceof Boolean) {
+						flag = (Boolean) validationMap.get(Constants.validationHeaders.get(x));
+					}
+					// boolean flag = (boolean)
+					// validationMap.get(Constants.validationHeaders.get(x));
 					cell.setCellValue(flag ? "Passed" : "Failed");
 					if (flag) {
 						cell.setCellStyle(stylesMap.get(StyleKey.GREENCELL));
