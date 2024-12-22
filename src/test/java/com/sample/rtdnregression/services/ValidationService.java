@@ -37,7 +37,7 @@ public class ValidationService {
 		List<RTEntity> rtEntitiesMT = rtEntities.stream()
 				.filter(r -> dnEntities.stream().anyMatch(d -> d.getTranNumber().equals(r.getTranNr())))
 				.collect(Collectors.toList());
-
+		
 		List<DNEntity> dnEntitiesMT = dnEntities.stream()
 				.filter(d -> rtEntities.stream().anyMatch(r -> r.getTranNr().equals(d.getTranNumber())))
 				.collect(Collectors.toList());
@@ -140,20 +140,23 @@ public class ValidationService {
 	}
 
 	private boolean validateAmountCashRequested36(DNEntity dn, RTEntity rt) {
+		String rtValue = Integer.toString(Double.valueOf(rt.getAmountCashRequested()).intValue());
 		if (compareStrings("40", dn.getAdlRqstAmtTyp1())) {
-			return compareStrings("5500", rt.getAmountCashRequested()) && compareStrings("5500", dn.getAdlRqstAmt0());
+			return compareStrings("5500", rtValue) && compareStrings("5500", dn.getAdlRqstAmt0());
 		} else {
-			return compareStrings("0", rt.getAmountCashRequested()) && compareStrings("0", dn.getAdlRqstAmt0())
+			return compareStrings("0", rtValue) && compareStrings("0", dn.getAdlRqstAmt0())
 					&& compareStrings("", dn.getAdlRqstAmtTyp1());
 		}
 	}
 
 	private boolean validateRspCodeReqRsp47(DNEntity dn, RTEntity rt,
 			List<XIstRespRevCodEntity> istRespRevCodEntities) {
+		
 		String expectedActionCode = null;
 
 		List<XIstRespRevCodEntity> filteredList = istRespRevCodEntities.stream()
 				.filter(e -> e.getIstRespRevCode().equals(rt.getRspCodeReqRsp())).collect(Collectors.toList());
+		
 		if (filteredList.size() < 1) {
 			return false;
 		} else if (filteredList.size() == 1) {
@@ -188,7 +191,7 @@ public class ValidationService {
 				&& compareStrings(rt.getPosDataCode().substring(10, 11), dn.getPosTermOutCap())
 				&& compareStrings(rt.getPosDataCode().substring(11, 12), dn.getPosPinCaptCap())
 				&& compareStrings(rt.getPosDataCode().substring(12, 13), dn.getPosTermOptr())
-				&& compareStrings(rt.getPosDataCode().substring(14, 15), dn.getTermClass());
+				&& compareStrings(rt.getPosDataCode().substring(13, 15), dn.getTermClass());
 	}
 
 	private boolean validateCardAcceptorTermId50(DNEntity dn, RTEntity rt) {
@@ -265,17 +268,19 @@ public class ValidationService {
 	}
 
 	private boolean validateSnknodeAmountRequested19(DNEntity dn, RTEntity rt) {
+		String rtValue = Integer.toString(Double.valueOf(rt.getSnknodeAmountRequested()).intValue());
+
 		if ("1430".equals(dn.getMti())) {
-			return rt.getSnknodeAmountRequested().equals(dn.getAmtReconIss())
-					&& rt.getSnknodeAmountRequested().equals(dn.getAmtReconNet())
-					&& rt.getSnknodeAmountRequested().equals(dn.getAmtCardBill())
-					&& rt.getSnknodeAmountRequested().equals(dn.getoAmtCardBill())
-					&& rt.getSnknodeAmountRequested().equals(dn.getoAmtReconIss())
-					&& rt.getSnknodeAmountRequested().equals(dn.getoAmtReconNet());
+			return rtValue.equals(dn.getAmtReconIss())
+					&& rtValue.equals(dn.getAmtReconNet())
+					&& rtValue.equals(dn.getAmtCardBill())
+					&& rtValue.equals(dn.getoAmtCardBill())
+					&& rtValue.equals(dn.getoAmtReconIss())
+					&& rtValue.equals(dn.getoAmtReconNet());
 		} else {
-			return rt.getSnknodeAmountRequested().equals(dn.getAmtReconIss())
-					&& rt.getSnknodeAmountRequested().equals(dn.getAmtReconNet())
-					&& rt.getSnknodeAmountRequested().equals(dn.getAmtCardBill());
+			return rtValue.equals(dn.getAmtReconIss())
+					&& rtValue.equals(dn.getAmtReconNet())
+					&& rtValue.equals(dn.getAmtCardBill());
 		}
 	}
 
@@ -382,11 +387,22 @@ public class ValidationService {
 	}
 
 	private boolean validateAbortReason67(DNEntity dn, RTEntity rt) {
-		return compareStrings(rt.getAbortReason(), dn.getTranDesc().split("|")[2]);
+		String dnVal = dn.getTranDesc().split("\\|", -1)[2];
+		String rtVal = rt.getAbortReason();
+		if(rtVal == null) {
+			return dnVal.isBlank();
+		} else {
+			return compareStrings(dnVal, rtVal);
+		}
 	}
-
 	private boolean validateAbortRspCode69(DNEntity dn, RTEntity rt) {
-		return compareStrings(rt.getAbortRspCode(), dn.getTranDesc().split("|")[3]);
+		String dnVal = dn.getTranDesc().split("\\|", -1)[3];
+		String rtVal = rt.getAbortRspCode();
+		if(rtVal == null) {
+			return dnVal.isBlank();
+		} else {
+			return compareStrings(dnVal, rtVal);
+		}
 	}
 
 	private boolean compareStrings(String a, String b) {
@@ -422,9 +438,9 @@ public class ValidationService {
 	}
 
 	private boolean validateTotalsGroup29(DNEntity dn, RTEntity rt) {
-		String rtVal = rt.getTotalsGroup().replaceAll("(?i)1$", "").toUpperCase();
-		return compareStrings(rtVal, dn.getInstIdReconIss().replaceAll("(?i)AU$", "").toUpperCase())
-				&& compareStrings(rtVal, dn.getInstIdRecnIssB().replaceAll("(?i)AU$", "").toUpperCase());
+		String rtVal = rt.getTotalsGroup().replaceAll("(?i)1\\s*$", "").toUpperCase();
+		return compareStrings(rtVal, dn.getInstIdReconIss().replaceAll("(?i)AU\\s*$", "").toUpperCase())
+				&& compareStrings(rtVal, dn.getInstIdRecnIssB().replaceAll("(?i)AU\\s*$", "").toUpperCase());
 	}
 
 	private boolean validateGmtDateTime39(DNEntity dn, RTEntity rt) {
@@ -432,13 +448,13 @@ public class ValidationService {
 	}
 
 	private boolean validateAcquiringInst44(DNEntity dn, RTEntity rt) {
-		return rt.getAcquiringInst() == null && dn.getInstIdAcq().isEmpty();
+		return rt.getAcquiringInst() == null && dn.getInstIdAcq().trim().isEmpty();
 	}
 
 	private boolean validateCardAcceptorNameLoc52(DNEntity dn, RTEntity rt) {
 		String rtStoreName = rt.getCardAcceptorNameLoc().substring(0, 23).trim();
 		String rtCity = rt.getCardAcceptorNameLoc().substring(23, 36).trim();
-		String rtStateCode = String.format("%03d",
+		String rtStateCode = String.format("%02d",
 				Integer.parseInt(rt.getCardAcceptorNameLoc().substring(36, 38).trim()));
 		String rtCountryCode = rt.getCardAcceptorNameLoc().substring(38, 40).trim();
 
@@ -498,21 +514,22 @@ public class ValidationService {
 	}
 
 	private boolean validateSnknodeAcquiringInst87(DNEntity dn, RTEntity rt) {
-		return rt.getSnknodeAcquiringInst() == null && dn.getInstIdIss().isEmpty();
+		return compareStrings(rt.getSnknodeAcquiringInst(), dn.getInstIdIss());
+		
 	}
 
 	private boolean validateCardVerificationResult91(DNEntity dn, RTEntity rt) {
-		return rt.getCardVerificationResult() == null && dn.getCvvCvcResult().isEmpty();
+		return rt.getCardVerificationResult() == null && dn.getCvvCvcResult().trim().isEmpty();
 	}
 
 	private boolean validateSecure3dResult92(DNEntity dn, RTEntity rt) {
-		return rt.getSecure3dResult() == null && dn.getCavvResult().isEmpty();
+		return rt.getSecure3dResult() == null && dn.getCavvResult().trim().isEmpty();
 	}
 
 	private boolean validateMsgReasonCodeReqIn60(DNEntity dn, RTEntity rt) {
 		if (Arrays.asList("1110", "1210", "1410").contains(dn.getMti())) {
 			if (rt.getMsgReasonCodeReqIn() == null) {
-				return dn.getMsgResonCodeAcq().isEmpty();
+				return dn.getMsgResonCodeAcq().trim().isEmpty();
 			} else {
 				return compareStrings(rt.getMsgReasonCodeReqIn(), dn.getMsgResonCodeAcq());
 			}

@@ -416,7 +416,7 @@ public class ExcelReportService {
 			validationMap.put(Constants.V_SECURE_3D_RESULT_92, validationEntity.isSecure3dResult92());
 			validationMap.put(Constants.V_UCAF_DATA_98, validationEntity.isUcafData98());
 
-			for (int x = 1; x < Constants.rtHeaders.size(); x++) {
+			for (int x = 1; x < Constants.validationHeaders.size(); x++) {
 				Cell cell = dataRow.createCell(x);
 
 				if (x == 1) {
