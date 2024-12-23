@@ -33,7 +33,13 @@ public class ValidationService {
 	public void validation() {
 		List<RTEntity> rtEntities = rtService.getRTData();
 		List<DNEntity> dnEntities = dnService.getDNData();
+		List<XIstRespRevCodEntity> istRespRevCodEntities = dnService.getXIstRespRevCod();
 
+//		List<RTEntity> rtEntities = new ArrayList<RTEntity>();
+//		List<DNEntity> dnEntities = new ArrayList<DNEntity>();
+//		List<XIstRespRevCodEntity> istRespRevCodEntities = new ArrayList<XIstRespRevCodEntity>();
+
+		
 		List<RTEntity> rtEntitiesMT = rtEntities.stream()
 				.filter(r -> dnEntities.stream().anyMatch(d -> d.getTranNumber().equals(r.getTranNr())))
 				.collect(Collectors.toList());
@@ -50,7 +56,6 @@ public class ValidationService {
 				.filter(d -> rtEntities.stream().allMatch(r -> !r.getTranNr().equals(d.getTranNumber())))
 				.collect(Collectors.toList());
 
-		List<XIstRespRevCodEntity> istRespRevCodEntities = dnService.getXIstRespRevCod();
 		List<ValidationEntity> validationEntities = new ArrayList<ValidationEntity>();
 
 		Map<String, DNEntity> dnMap = new HashMap<>();
@@ -161,9 +166,14 @@ public class ValidationService {
 			return false;
 		} else if (filteredList.size() == 1) {
 			expectedActionCode = filteredList.get(0).getActionCode();
-		} else if (filteredList.size() > 1 && dn.getMti().equals("1430")) {
-			expectedActionCode = filteredList.stream().filter(e -> e.getTranDisposition().equals("3")).findFirst().get()
-					.getActionCode();
+		} else if (filteredList.size() > 1) {
+			if(dn.getMti().equals("1430")) {
+				expectedActionCode = filteredList.stream().filter(e -> e.getTranDisposition().equals("3")).findFirst().get()
+						.getActionCode();
+			} else {
+				expectedActionCode = filteredList.get(0).getActionCode();
+			}
+			
 		}
 
 		return compareStrings(rt.getRspCodeReqRsp(), dn.getExtRspCode())
