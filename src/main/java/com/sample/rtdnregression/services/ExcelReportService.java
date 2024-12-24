@@ -199,6 +199,8 @@ public class ExcelReportService {
 			rtMap.put(Constants.RT_UCAF_DATA, rtEntity.getUcafData());
 			rtMap.put(Constants.RT_AMOUNT_CASH_REQUESTED, rtEntity.getAmountCashRequested());
 			rtMap.put(Constants.RT_ADDR_VERIFICATION_RESULT, rtEntity.getAddrVerificationResult());
+			
+			rtMap.put(Constants.RT_RET_REF_NO, rtEntity.getRetRefNo());
 
 			for (int x = 0; x < Constants.rtHeaders.size(); x++) {
 				Cell cell = dataRow.createCell(x);
@@ -318,6 +320,14 @@ public class ExcelReportService {
 			dnMap.put(Constants.DN_ADL_RQST_AMT0, dnEntity.getAdlRqstAmt0());
 			dnMap.put(Constants.DN_ADL_DATA_PRIV_ISS, dnEntity.getAdlDataPrivIss());
 			dnMap.put(Constants.DN_PROC_ID_ISS, dnEntity.getProcIdIss());
+			
+			dnMap.put(Constants.DN_RETRIEVAL_REF_NO, dnEntity.getRetrievalRefNo());
+			dnMap.put(Constants.DN_PAN_INDICATOR, dnEntity.getPanIndicator());
+			dnMap.put(Constants.DN_TOKEN_REQUESTOR_ID, dnEntity.getTokenRequestorId());
+			dnMap.put(Constants.DN_PAN, dnEntity.getPan());
+			dnMap.put(Constants.DN_BIN_LENGTH, dnEntity.getBinLength());
+			dnMap.put(Constants.DN_REF_DATA_ISS_FMT, dnEntity.getRefDataIssFmt());
+
 
 			for (int x = 0; x < Constants.dnHeaders.size(); x++) {
 				Cell cell = dataRow.createCell(x);
@@ -415,6 +425,13 @@ public class ExcelReportService {
 			validationMap.put(Constants.V_CARD_VERIFICATION_RESULT_91, validationEntity.isCardVerificationResult91());
 			validationMap.put(Constants.V_SECURE_3D_RESULT_92, validationEntity.isSecure3dResult92());
 			validationMap.put(Constants.V_UCAF_DATA_98, validationEntity.isUcafData98());
+			
+			
+			validationMap.put(Constants.V_QUEUE_NUMBER_104, validationEntity.isQueueNumber104());
+			validationMap.put(Constants.V_RETRIEVAL_REFERENCE_NUMBER_105, validationEntity.isRetrievalReferenceNumber105());
+			validationMap.put(Constants.V_PAN_INDICATOR_106, validationEntity.isPanIndicator106());
+			validationMap.put(Constants.V_BIN_LENGTH_107, validationEntity.isBinLength107());
+			validationMap.put(Constants.V_REFERENCE_DATA_ISSUER_FORMAT_108, validationEntity.isReferenceDataIssuerFormat108());
 
 			for (int x = 1; x < Constants.validationHeaders.size(); x++) {
 				Cell cell = dataRow.createCell(x);
