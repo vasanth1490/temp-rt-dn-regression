@@ -89,6 +89,13 @@ public class DNEntity {
 	private String adlDataPrivIss;
 	private String procIdIss;
 
+	private String retrievalRefNo;
+	private String panIndicator;
+	private String tokenRequestorId;
+	private String pan;
+	private String binLength;
+	private String refDataIssFmt;
+
 	public DNEntity() {
 		super();
 	}
@@ -770,6 +777,54 @@ public class DNEntity {
 
 	public void setProcIdIss(String procIdIss) {
 		this.procIdIss = procIdIss;
+	}
+
+	public String getRetrievalRefNo() {
+		return retrievalRefNo;
+	}
+
+	public void setRetrievalRefNo(String retrievalRefNo) {
+		this.retrievalRefNo = retrievalRefNo;
+	}
+
+	public String getPanIndicator() {
+		return panIndicator;
+	}
+
+	public void setPanIndicator(String panIndicator) {
+		this.panIndicator = panIndicator;
+	}
+
+	public String getTokenRequestorId() {
+		return tokenRequestorId;
+	}
+
+	public void setTokenRequestorId(String tokenRequestorId) {
+		this.tokenRequestorId = tokenRequestorId;
+	}
+
+	public String getPan() {
+		return pan;
+	}
+
+	public void setPan(String pan) {
+		this.pan = pan;
+	}
+
+	public String getBinLength() {
+		return binLength;
+	}
+
+	public void setBinLength(String binLength) {
+		this.binLength = binLength;
+	}
+
+	public String getRefDataIssFmt() {
+		return refDataIssFmt;
+	}
+
+	public void setRefDataIssFmt(String refDataIssFmt) {
+		this.refDataIssFmt = refDataIssFmt;
 	}
 
 }

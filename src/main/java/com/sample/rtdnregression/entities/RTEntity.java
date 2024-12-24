@@ -56,6 +56,8 @@ public class RTEntity {
 	
 	private String amountCashRequested;
 	private String addrVerificationResult;
+	
+	private String retRefNo;
 
 	public RTEntity() {
 		super();
@@ -489,6 +491,14 @@ public class RTEntity {
 
 	public void setAddrVerificationResult(String addrVerificationResult) {
 		this.addrVerificationResult = addrVerificationResult;
+	}
+
+	public String getRetRefNo() {
+		return retRefNo;
+	}
+
+	public void setRetRefNo(String retRefNo) {
+		this.retRefNo = retRefNo;
 	}
 	
 	

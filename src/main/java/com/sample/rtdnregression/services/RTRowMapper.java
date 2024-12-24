@@ -76,6 +76,8 @@ public class RTRowMapper implements RowMapper<RTEntity> {
 
 		entity.setAmountCashRequested(rs.getString(Constants.RT_AMOUNT_CASH_REQUESTED));
 		entity.setAddrVerificationResult(rs.getString(Constants.RT_ADDR_VERIFICATION_RESULT));
+		
+		entity.setRetRefNo(rs.getString(Constants.RT_RET_REF_NO));
 
 		return entity;
 	}

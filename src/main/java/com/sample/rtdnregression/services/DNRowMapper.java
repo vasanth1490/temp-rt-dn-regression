@@ -96,6 +96,13 @@ public class DNRowMapper implements RowMapper<DNEntity> {
 		entity.setAdlRqstAmt0(rs.getString(Constants.DN_ADL_RQST_AMT0));
 		entity.setAdlDataPrivIss(rs.getString(Constants.DN_ADL_DATA_PRIV_ISS));
 		entity.setProcIdIss(rs.getString(Constants.DN_PROC_ID_ISS));
+		
+		entity.setRetrievalRefNo(rs.getString(Constants.DN_RETRIEVAL_REF_NO));
+		entity.setPanIndicator(rs.getString(Constants.DN_PAN_INDICATOR));
+		entity.setTokenRequestorId(rs.getString(Constants.DN_TOKEN_REQUESTOR_ID));
+		entity.setPan(rs.getString(Constants.DN_PAN));
+		entity.setBinLength(rs.getString(Constants.DN_BIN_LENGTH));
+		entity.setRefDataIssFmt(rs.getString(Constants.DN_REF_DATA_ISS_FMT));
 
 		return entity;
 	}
