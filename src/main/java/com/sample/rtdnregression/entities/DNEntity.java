@@ -96,6 +96,9 @@ public class DNEntity {
 	private String binLength;
 	private String refDataIssFmt;
 
+	private String dataRsp;
+	private String refDataIss;
+
 	public DNEntity() {
 		super();
 	}
@@ -825,6 +828,22 @@ public class DNEntity {
 
 	public void setRefDataIssFmt(String refDataIssFmt) {
 		this.refDataIssFmt = refDataIssFmt;
+	}
+
+	public String getDataRsp() {
+		return dataRsp;
+	}
+
+	public void setDataRsp(String dataRsp) {
+		this.dataRsp = dataRsp;
+	}
+
+	public String getRefDataIss() {
+		return refDataIss;
+	}
+
+	public void setRefDataIss(String refDataIss) {
+		this.refDataIss = refDataIss;
 	}
 
 }

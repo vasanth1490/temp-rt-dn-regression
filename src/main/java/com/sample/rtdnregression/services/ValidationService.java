@@ -10,8 +10,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
 import com.sample.rtdnregression.entities.DNEntity;
 import com.sample.rtdnregression.entities.RTEntity;
@@ -126,12 +131,16 @@ public class ValidationService {
 			validationEntity.setCardVerificationResult91(validateCardVerificationResult91(dn, rt)); // 91
 			validationEntity.setSecure3dResult92(validateSecure3dResult92(dn, rt)); // 92
 			validationEntity.setUcafData98(validateUcafData98(dn, rt));
+			
+			validationEntity.setTokenRequestorId103(validateTokenRequestorId103(dn, rt));
 
 			validationEntity.setQueueNumber104(validateQueueNumber104(dn, rt));
 			validationEntity.setRetrievalReferenceNumber105(validateRetrievalReferenceNumber105(dn, rt));
 			validationEntity.setPanIndicator106(validatePanIndicator106(dn, rt));
 			validationEntity.setBinLength107(validateBinLength107(dn, rt));
 			validationEntity.setReferenceDataIssuerFormat108(validateReferenceDataIssuerFormat108(dn, rt));
+
+			validationEntity.setReferenceDataIssuer109(validateReferenceDataIssuer109(dn, rt));
 
 			validationEntities.add(validationEntity);
 		}
@@ -141,8 +150,70 @@ public class ValidationService {
 
 	}
 
+	private boolean validateTokenRequestorId103(DNEntity dn, RTEntity rt) {
+		if(dn.getTokenRequestorId().isBlank()) {
+			return true;
+		} else {
+			String xmlPart = dn.getDataRsp().replaceAll("(?s).*?(<\\?xml [\\s\\S]*?</TokenData>).*", "$1");
+			String tokenReqId = "";
+			try {
+				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+				Document document = factory.newDocumentBuilder()
+						.parse(new java.io.ByteArrayInputStream(xmlPart.getBytes("UTF-8")));
+				document.getDocumentElement().normalize();
+				tokenReqId = getNodeVal(document.getElementsByTagName("TokenRequestorId"));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return compareStrings(tokenReqId, dn.getTokenRequestorId());
+		}
+		
+	}
+
+	private boolean validateReferenceDataIssuer109(DNEntity dn, RTEntity rt) {
+		String refDataIss = dn.getRefDataIss();
+		String sysTraceRDI = refDataIss.substring(0, 6).trim();
+		String sysTraceDR = null;
+
+		String acqInstIdCodeRDI = refDataIss.substring(6, 17).trim();
+		String acqInstIdCodeDR = null;
+
+		String retrievalRefNrRDI = refDataIss.substring(17, 29).trim();
+		String retrievalRefNrDR = null;
+
+		String tranIdRDI = refDataIss.substring(30, 45).trim();
+		String tranIdDR = null;
+
+		String nwrkIdRDI = refDataIss.substring(67, 71).trim();
+		String nwrkIdDR = null;
+
+		String xmlPart = dn.getDataRsp().replaceAll("(?s).*?(<\\?xml [\\s\\S]*?</Sms>).*", "$1");
+
+		try {
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			Document document = factory.newDocumentBuilder()
+					.parse(new java.io.ByteArrayInputStream(xmlPart.getBytes("UTF-8")));
+			document.getDocumentElement().normalize();
+			sysTraceDR = getNodeVal(document.getElementsByTagName("SysTrace"));
+			acqInstIdCodeDR = getNodeVal(document.getElementsByTagName("AcqInstIdCode"));
+			retrievalRefNrDR = getNodeVal(document.getElementsByTagName("RetrievalRefNr"));
+			tranIdDR = getNodeVal(document.getElementsByTagName("TranId"));
+			nwrkIdDR = getNodeVal(document.getElementsByTagName("NwrkId"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		if (!sysTraceRDI.isEmpty()) {
+			return compareStrings(sysTraceRDI, sysTraceDR) && compareStrings(acqInstIdCodeRDI, acqInstIdCodeDR)
+					&& compareStrings(retrievalRefNrRDI, retrievalRefNrDR) && compareStrings(tranIdRDI, tranIdDR)
+					&& compareStrings(nwrkIdRDI, nwrkIdDR);
+		}
+		return true;
+	}
+
 	private boolean validateReferenceDataIssuerFormat108(DNEntity dn, RTEntity rt) {
-		if(compareStrings(dn.getProcIdIss(), "VISA")) {
+		if (compareStrings(dn.getProcIdIss(), "VISA")) {
 			return compareStrings("4", dn.getRefDataIssFmt());
 		} else {
 			return compareStrings("0", dn.getRefDataIssFmt());
@@ -150,7 +221,7 @@ public class ValidationService {
 	}
 
 	private boolean validateBinLength107(DNEntity dn, RTEntity rt) {
-		if(dn.getPan().length() <= 15) {
+		if (dn.getPan().length() <= 15) {
 			return compareStrings("6", dn.getBinLength());
 		} else {
 			return compareStrings("8", dn.getBinLength());
@@ -606,6 +677,15 @@ public class ValidationService {
 		Date date = srcDateFormat.parse(dateStr);
 		SimpleDateFormat destDateFormat = new SimpleDateFormat(destFormat);
 		return destDateFormat.format(date);
+	}
+
+	private static String getNodeVal(NodeList nodeList) {
+		String value = null;
+		if (nodeList.getLength() > 0) {
+			Element element = (Element) nodeList.item(0);
+			value = element.getTextContent();
+		}
+		return value;
 	}
 
 }

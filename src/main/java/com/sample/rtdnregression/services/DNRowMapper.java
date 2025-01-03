@@ -103,6 +103,9 @@ public class DNRowMapper implements RowMapper<DNEntity> {
 		entity.setPan(rs.getString(Constants.DN_PAN));
 		entity.setBinLength(rs.getString(Constants.DN_BIN_LENGTH));
 		entity.setRefDataIssFmt(rs.getString(Constants.DN_REF_DATA_ISS_FMT));
+		
+		entity.setDataRsp(rs.getString(Constants.DN_DATA_RSP));
+		entity.setRefDataIss(rs.getString(Constants.DN_REF_DATA_ISS));
 
 		return entity;
 	}

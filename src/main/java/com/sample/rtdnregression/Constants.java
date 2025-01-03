@@ -88,13 +88,16 @@ public class Constants {
 	public static final String DN_ADL_RQST_AMT0 = "ADL_RQST_AMT0";
 	public static final String DN_ADL_DATA_PRIV_ISS = "ADL_DATA_PRIV_ISS";
 	public static final String DN_PROC_ID_ISS = "PROC_ID_ISS";
-	
+
 	public static final String DN_RETRIEVAL_REF_NO = "RETRIEVAL_REF_NO";
 	public static final String DN_PAN_INDICATOR = "PAN_INDICATOR";
 	public static final String DN_TOKEN_REQUESTOR_ID = "TOKEN_REQUESTOR_ID";
 	public static final String DN_PAN = "PAN";
 	public static final String DN_BIN_LENGTH = "BIN_LENGTH";
 	public static final String DN_REF_DATA_ISS_FMT = "REF_DATA_ISS_FMT";
+
+	public static final String DN_DATA_RSP = "DATA_RSP";
+	public static final String DN_REF_DATA_ISS = "REF_DATA_ISS";
 
 	public static final String RT_NAME = "rtname";
 	public static final String RT_TRAN_NR = "tran_nr";
@@ -203,11 +206,13 @@ public class Constants {
 	public static final String V_CARD_VERIFICATION_RESULT_91 = "card_verification_result_91";
 	public static final String V_SECURE_3D_RESULT_92 = "secure_3d_result_92";
 	public static final String V_UCAF_DATA_98 = "ucaf_data_98";
+	public static final String V_TOKEN_REQUESTOR_ID = "token_requestor_id_103";
 	public static final String V_QUEUE_NUMBER_104 = "queue_number_104";
 	public static final String V_RETRIEVAL_REFERENCE_NUMBER_105 = "retrieval_reference_number_105";
 	public static final String V_PAN_INDICATOR_106 = "pan_indicator_106";
 	public static final String V_BIN_LENGTH_107 = "bin_length_107";
 	public static final String V_REFERENCE_DATA_ISSUER_FORMAT_108 = "reference_data_issuer_format_108";
+	public static final String V_REFERENCE_DATA_ISSUER_109 = "reference_data_issuer_109";
 
 	public static final String NMT_TRAN_NUMBER = "Tran Number";
 	public static final String NMT_DB = "DB";
@@ -242,7 +247,8 @@ public class Constants {
 			DN_POS_CRD_DAT_OT_CAP, DN_POS_TERM_OUT_CAP, DN_POS_PIN_CAPT_CAP, DN_POS_TERM_OPTR, DN_TERM_CLASS,
 			DN_FIN_L_TSTAMP_TRANS, DN_FIN_RECORD_TSTAMP_TRANS, DN_MCI_UCAF_DATA, DN_TRAN_DISPOSITION, DN_ACTION_CODE,
 			DN_IST_RESP_REV_CODE, DN_ADL_RQST_AMT0, DN_ADL_DATA_PRIV_ISS, DN_PROC_ID_ISS, DN_RETRIEVAL_REF_NO,
-			DN_PAN_INDICATOR, DN_TOKEN_REQUESTOR_ID, DN_PAN, DN_BIN_LENGTH, DN_REF_DATA_ISS_FMT
+			DN_PAN_INDICATOR, DN_TOKEN_REQUESTOR_ID, DN_PAN, DN_BIN_LENGTH, DN_REF_DATA_ISS_FMT, DN_DATA_RSP,
+			DN_REF_DATA_ISS
 
 	);
 
@@ -259,9 +265,9 @@ public class Constants {
 			V_CURRENCY_CODE_TRAN_54, V_POS_DATA_CODE_58, V_MSG_REASON_CODE_REQ_IN_60, V_MSG_REASON_CODE_REQ_OUT_61,
 			V_MSG_REASON_CODE_REV_62, V_MSG_REASON_CODE_ADV_63, V_ADDR_VERIFICATION_RESULT_65, V_ABORT_REASON_67,
 			V_ABORT_RSP_CODE_69, V_IN_REQ_70, V_IN_ADV_72, V_IN_REV_74, V_SNKNODE_ACQUIRING_INST_87,
-			V_CARD_VERIFICATION_RESULT_91, V_SECURE_3D_RESULT_92, V_UCAF_DATA_98, V_QUEUE_NUMBER_104,
-			V_RETRIEVAL_REFERENCE_NUMBER_105, V_PAN_INDICATOR_106, V_BIN_LENGTH_107,
-			V_REFERENCE_DATA_ISSUER_FORMAT_108);
+			V_CARD_VERIFICATION_RESULT_91, V_SECURE_3D_RESULT_92, V_UCAF_DATA_98, V_TOKEN_REQUESTOR_ID,
+			V_QUEUE_NUMBER_104, V_RETRIEVAL_REFERENCE_NUMBER_105, V_PAN_INDICATOR_106, V_BIN_LENGTH_107,
+			V_REFERENCE_DATA_ISSUER_FORMAT_108, V_REFERENCE_DATA_ISSUER_109);
 
 	public static final List<String> istRespRevCodHeaders = Arrays.asList(DN_TRAN_DISPOSITION, DN_ACTION_CODE,
 			DN_IST_RESP_REV_CODE);

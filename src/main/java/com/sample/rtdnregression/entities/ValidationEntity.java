@@ -62,11 +62,15 @@ public class ValidationEntity {
 	private boolean secure3dResult92;
 	private boolean ucafData98;
 
+	private boolean tokenRequestorId103;
+
 	private boolean queueNumber104;
 	private boolean retrievalReferenceNumber105;
 	private boolean panIndicator106;
 	private boolean binLength107;
 	private boolean referenceDataIssuerFormat108;
+
+	private boolean referenceDataIssuer109;
 
 	public String getTranNr() {
 		return tranNr;
@@ -516,4 +520,19 @@ public class ValidationEntity {
 		this.referenceDataIssuerFormat108 = referenceDataIssuerFormat108;
 	}
 
+	public boolean isReferenceDataIssuer109() {
+		return referenceDataIssuer109;
+	}
+
+	public void setReferenceDataIssuer109(boolean referenceDataIssuer109) {
+		this.referenceDataIssuer109 = referenceDataIssuer109;
+	}
+
+	public boolean isTokenRequestorId103() {
+		return tokenRequestorId103;
+	}
+
+	public void setTokenRequestorId103(boolean tokenRequestorId103) {
+		this.tokenRequestorId103 = tokenRequestorId103;
+	}
 }
