@@ -62,6 +62,8 @@ public class ValidationEntity {
 	private boolean secure3dResult92;
 	private boolean ucafData98;
 
+	private boolean mpWallet102;
+	
 	private boolean tokenRequestorId103;
 
 	private boolean queueNumber104;
@@ -71,6 +73,8 @@ public class ValidationEntity {
 	private boolean referenceDataIssuerFormat108;
 
 	private boolean referenceDataIssuer109;
+	
+	private boolean additionalDataPrivateIssuer110;
 
 	public String getTranNr() {
 		return tranNr;
@@ -534,5 +538,21 @@ public class ValidationEntity {
 
 	public void setTokenRequestorId103(boolean tokenRequestorId103) {
 		this.tokenRequestorId103 = tokenRequestorId103;
+	}
+
+	public boolean isMpWallet102() {
+		return mpWallet102;
+	}
+
+	public void setMpWallet102(boolean mpWallet102) {
+		this.mpWallet102 = mpWallet102;
+	}
+
+	public boolean isAdditionalDataPrivateIssuer110() {
+		return additionalDataPrivateIssuer110;
+	}
+
+	public void setAdditionalDataPrivateIssuer110(boolean additionalDataPrivateIssuer110) {
+		this.additionalDataPrivateIssuer110 = additionalDataPrivateIssuer110;
 	}
 }

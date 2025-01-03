@@ -98,6 +98,7 @@ public class DNEntity {
 
 	private String dataRsp;
 	private String refDataIss;
+	private String posEntryMode;
 
 	public DNEntity() {
 		super();
@@ -844,6 +845,14 @@ public class DNEntity {
 
 	public void setRefDataIss(String refDataIss) {
 		this.refDataIss = refDataIss;
+	}
+
+	public String getPosEntryMode() {
+		return posEntryMode;
+	}
+
+	public void setPosEntryMode(String posEntryMode) {
+		this.posEntryMode = posEntryMode;
 	}
 
 }

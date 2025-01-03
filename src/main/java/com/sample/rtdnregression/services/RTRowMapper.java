@@ -78,6 +78,10 @@ public class RTRowMapper implements RowMapper<RTEntity> {
 		entity.setAddrVerificationResult(rs.getString(Constants.RT_ADDR_VERIFICATION_RESULT));
 		
 		entity.setRetRefNo(rs.getString(Constants.RT_RET_REF_NO));
+		
+		entity.setStructuredDataReq(rs.getString(Constants.RT_STRUCTURED_DATA_REQ));
+		entity.setAuthIdResp(rs.getString(Constants.RT_AUTH_ID_RESP));
+		
 
 		return entity;
 	}

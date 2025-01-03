@@ -106,6 +106,7 @@ public class DNRowMapper implements RowMapper<DNEntity> {
 		
 		entity.setDataRsp(rs.getString(Constants.DN_DATA_RSP));
 		entity.setRefDataIss(rs.getString(Constants.DN_REF_DATA_ISS));
+		entity.setPosEntryMode(rs.getString(Constants.DN_POS_ENTRY_MODE));
 
 		return entity;
 	}

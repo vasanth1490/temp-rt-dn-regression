@@ -131,7 +131,9 @@ public class ValidationService {
 			validationEntity.setCardVerificationResult91(validateCardVerificationResult91(dn, rt)); // 91
 			validationEntity.setSecure3dResult92(validateSecure3dResult92(dn, rt)); // 92
 			validationEntity.setUcafData98(validateUcafData98(dn, rt));
-			
+
+			validationEntity.setMpWallet102(validateMpWallet102(dn, rt));
+
 			validationEntity.setTokenRequestorId103(validateTokenRequestorId103(dn, rt));
 
 			validationEntity.setQueueNumber104(validateQueueNumber104(dn, rt));
@@ -142,6 +144,8 @@ public class ValidationService {
 
 			validationEntity.setReferenceDataIssuer109(validateReferenceDataIssuer109(dn, rt));
 
+			validationEntity.setAdditionalDataPrivateIssuer110(validateAdditionalDataPrivateIssuer110(dn, rt));
+
 			validationEntities.add(validationEntity);
 		}
 
@@ -150,8 +154,42 @@ public class ValidationService {
 
 	}
 
+	private boolean validateAdditionalDataPrivateIssuer110(DNEntity dn, RTEntity rt) {
+		if (compareStrings(dn.getProcIdIss(), "VISA")) {
+			boolean isDataIdentifierValid = compareStrings("VD", dn.getAdlDataPrivIss().substring(0, 2));
+			boolean isPanDTValid = false;
+			if (rt.getAuthIdResp() == null && compareStrings(dn.getMti().trim().substring(2, 3), "3")
+					&& dn.getPosEntryMode().trim().startsWith("02")) {
+				isPanDTValid = compareStrings("90", dn.getAdlDataPrivIss().substring(13, 15));
+
+			} else {
+				isPanDTValid = compareStrings(dn.getPosEntryMode().trim().substring(0, 2),
+						dn.getAdlDataPrivIss().substring(13, 15));
+			}
+
+			boolean isProcessCodeValid = compareStrings(dn.getAdlDataPrivIss().substring(19, 25),
+					rt.getTranType().substring(0, 6));
+			return isDataIdentifierValid && isPanDTValid && isProcessCodeValid;
+
+		}
+		return true;
+	}
+
+	private boolean validateMpWallet102(DNEntity dn, RTEntity rt) {
+		String input = rt.getStructuredDataReq();
+		String keyword = "MP_WALLET";
+		int keywordIndex = input.indexOf(keyword);
+		if (keywordIndex != -1) {
+			String afterKeyword = input.substring(keywordIndex + keyword.length());
+			String extractedValue = afterKeyword.substring(2, 5);
+			return Arrays.asList("101", "103", "216", "217", "801").contains(extractedValue);
+		} else {
+			return true;
+		}
+	}
+
 	private boolean validateTokenRequestorId103(DNEntity dn, RTEntity rt) {
-		if(dn.getTokenRequestorId().isBlank()) {
+		if (dn.getTokenRequestorId().isBlank()) {
 			return true;
 		} else {
 			String xmlPart = dn.getDataRsp().replaceAll("(?s).*?(<\\?xml [\\s\\S]*?</TokenData>).*", "$1");
@@ -165,10 +203,10 @@ public class ValidationService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+
 			return compareStrings(tokenReqId, dn.getTokenRequestorId());
 		}
-		
+
 	}
 
 	private boolean validateReferenceDataIssuer109(DNEntity dn, RTEntity rt) {

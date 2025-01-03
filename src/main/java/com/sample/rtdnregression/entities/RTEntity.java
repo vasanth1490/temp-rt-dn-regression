@@ -58,6 +58,9 @@ public class RTEntity {
 	private String addrVerificationResult;
 	
 	private String retRefNo;
+	
+	private String structuredDataReq;
+	private String authIdResp;
 
 	public RTEntity() {
 		super();
@@ -499,6 +502,22 @@ public class RTEntity {
 
 	public void setRetRefNo(String retRefNo) {
 		this.retRefNo = retRefNo;
+	}
+
+	public String getStructuredDataReq() {
+		return structuredDataReq;
+	}
+
+	public void setStructuredDataReq(String structuredDataReq) {
+		this.structuredDataReq = structuredDataReq;
+	}
+
+	public String getAuthIdResp() {
+		return authIdResp;
+	}
+
+	public void setAuthIdResp(String authIdResp) {
+		this.authIdResp = authIdResp;
 	}
 	
 	
